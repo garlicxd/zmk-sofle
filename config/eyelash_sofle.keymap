@@ -40,42 +40,32 @@
 #define ARR 7
 
 / {
-    &mt {
-        flavor = "balanced";
-        require-prior-idle-ms = <100>;
-        quick-tap-ms = <125>;
-        tapping-term-ms = <150>;
-    };
+    behaviors {
 
-    &lt {
-        flavor = "balanced";
-        require-prior-idle-ms = <100>;
-        quick-tap-ms = <125>;
-        tapping-term-ms = <150>;
-    };
+        scroll_encoder: scroll_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+        };
 
-    scroll_encoder: scroll_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-    };
+        volume_encoder: volume_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+        };
 
-    volume_encoder: volume_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-    };
+        rgb_br_encoder: rgb_br_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>;
+        };
 
-    rgb_br_encoder: rgb_br_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>;
-    };
-
-    zoom_encoder: zoom_encoder {
-        compatible = "zmk,behavior-sensor-rotate";
-        #sensor-binding-cells = <0>;
-        bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>;
+        zoom_encoder: zoom_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>;
+        };
+        
     };
 
     keymap {
