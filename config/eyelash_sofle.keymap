@@ -49,22 +49,22 @@
         // the order of sensors in your board's DTS file (e.g., chosen { zmk,sensors = <&left_encoder &right_joy_x &right_joy_y>; })
 
         // Alpha Layer Sensors
-        alpha_encoder_bindings_behavior: alpha_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>, <&kp C_MUTE>; };
-        alpha_joy_x_bindings_behavior: alpha_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp RIGHT>, <&kp LEFT>; };
-        alpha_joy_y_bindings_behavior: alpha_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp DOWN>, <&kp UP>; };
+        alpha_encoder_bindings_behavior: alpha_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp C_VOL_UP &kp C_VOL_DN &kp C_MUTE>; };
+        alpha_joy_x_bindings_behavior: alpha_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp RIGHT &kp LEFT>; };
+        alpha_joy_y_bindings_behavior: alpha_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp DOWN &kp UP>; };
 
         // System Layer Sensors
-        system_encoder_bindings_behavior: system_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_BRI_INC>, <&rgb_ug RGB_BRI_DEC>, <&rgb_ug RGB_TOG>; };
-        system_joy_x_bindings_behavior: system_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_EFF_INC>, <&rgb_ug RGB_EFF_DEC>; };
-        system_joy_y_bindings_behavior: system_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_SPD_INC>, <&rgb_ug RGB_SPD_DEC>; };
+        system_encoder_bindings_behavior: system_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_BRI_INC &rgb_ug RGB_BRI_DEC &rgb_ug RGB_TOG>; };
+        system_joy_x_bindings_behavior: system_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_EFF_INC &rgb_ug RGB_EFF_DEC>; };
+        system_joy_y_bindings_behavior: system_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_SPD_INC &rgb_ug RGB_SPD_DEC>; };
 
         // Mouse Layer Sensors
-        mouse_encoder_bindings_behavior: mouse_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp MWH_UP>, <&kp MWH_DOWN>, <&mkp MB3>; };
-        mouse_joy_x_bindings_behavior: mouse_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&mmv RIGHT>, <&mmv LEFT>; };
-        mouse_joy_y_bindings_behavior: mouse_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&mmv DOWN>, <&mmv UP>; };
+        mouse_encoder_bindings_behavior: mouse_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp MWH_UP &kp MWH_DOWN &mkp MB3>; };
+        mouse_joy_x_bindings_behavior: mouse_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&mmv RIGHT &mmv LEFT>; };
+        mouse_joy_y_bindings_behavior: mouse_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&mmv DOWN &mmv UP>; };
    
         // SNAV Layer Sensors (Encoder for mouse wheel, joystick axes are &none for global mouse passthrough)
-        snav_encoder_bindings_behavior: snav_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SNAV_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp MWH_UP>, <&kp MWH_DOWN>; };
+        snav_encoder_bindings_behavior: snav_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SNAV_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp MWH_UP &kp MWH_DOWN>; };
         // No specific behavior nodes needed for &none joystick bindings on SNAV
     };
 
