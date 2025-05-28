@@ -186,16 +186,16 @@
 
         /* ALPHA LAYER */
         ALP {
-            bindings = <
-&kp ESC     &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP_ARROW     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp BACKSPACE
-&kp TAB     &kp Q      &kp W         &kp E         &kp R   &kp T        &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O            &kp P       &kp BSLH
-&kp CAPS    &kp A      &kp S         &kp D         &kp F   &kp G        &kp LEFT_ARROW   &kp H      &kp J      &kp K      &kp L            &kp SEMI    &kp APOS
-&kp LSHFT   &kp Z      &kp X         &kp C         &kp V   &kp B        &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA  &kp DOT          &kp FSLH    &kp ENTER
-&kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
-            >;
-
+            display-name = "ALP";
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
-            display-name = "LAYER0";
+            bindings = <
+&trans      &trans      &trans      &kp AT      &kp DEL     &kp PRSCRN      &trans          &kp TILDE   &trans          &trans      &trans  &trans
+&kp AMPS    &kp B       &kp Y       &kp O       &kp U       &kp BSPC        &kp X           &kp L       &kp D           &kp W       &kp V   &kp Z
+&kp QMARK   &kp C       &hm_lctl_i  &hm_lalt_e  &hm_lsft_a  &kp MINUS       &kp K           &hm_rsft_h  &hm_ralt_t      &hm_rctl_n  &kp S   &kp EXCL
+&kp SEMI    &kp COMMA   &kp COLON   &kp SLASH   &kp DOT     &kp DQT         &kp J           &kp M       &kp G           &kp P       &kp F   &kp Q
+&lt_snav_tab &lt_sys_sqt &kp SPACE &lt_mou_ent &mo MOU
+&lt_spe_esc &lt_sym_r &lt_nav_under &to QWE &mo ALP
+            >;
         };
 
         /* SPECIAL CHARS LAYER */
@@ -217,12 +217,12 @@
             display-name = "SYM";
             sensor-bindings = <&scroll_encoder>;
             bindings = <
-            &trans &trans &trans &kp CARET &kp DEL &kp PRSCRN      &trans &kp TILDE &trans &trans &trans &trans
-            &kp AMPS &kp PIPE &kp LPAR &kp LBRC &kp RPAR &kp BSPC        &kp GT &kp GRAVE &kp STAR &kp N8 &kp N9 &trans
-            &kp QMARK &kp PRCNT &kp LBKT &kp RBRC &kp RBKT &kp MINUS       &kp PLUS &kp EQUAL &kp N0 &kp N1 &kp N2 &kp EXCL
-            &kp SEMI &kp COMMA &kp COLON &kp SLASH &kp DOT &kp DQT         &kp LT &kp N3 &kp N4 &kp N5 &kp N6 &kp N7
-            &kp BSLH &trans &kp DLLR &trans &mo MOU
-            &lt_spe_esc &lt_sym_r &lt_nav_under &to QWE &mo ALP
+&trans &trans &trans &kp CARET &kp DEL &kp PRSCRN      &trans &kp TILDE &trans &trans &trans &trans
+&kp AMPS &kp PIPE &kp LPAR &kp LBRC &kp RPAR &kp BSPC        &kp GT &kp GRAVE &kp STAR &kp N8 &kp N9 &trans
+&kp QMARK &kp PRCNT &kp LBKT &kp RBRC &kp RBKT &kp MINUS       &kp PLUS &kp EQUAL &kp N0 &kp N1 &kp N2 &kp EXCL
+&kp SEMI &kp COMMA &kp COLON &kp SLASH &kp DOT &kp DQT         &kp LT &kp N3 &kp N4 &kp N5 &kp N6 &kp N7
+&kp BSLH &trans &kp DLLR &trans &mo MOU
+&lt_spe_esc &lt_sym_r &lt_nav_under &to QWE &mo ALP
             >;
         };
 
@@ -231,12 +231,12 @@
             display-name = "NAV";
             sensor-bindings = <&scroll_encoder>;
             bindings = <
-            &trans &trans &trans &kp PG_UP &kp DEL &trans      &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans &kp UP &trans &kp BSPC      &trans &trans &trans &kp N8 &kp N9 &trans
-            &trans &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END       &trans &trans &kp N0 &kp N1 &kp N2 &trans
-            &trans &trans &trans &kp PG_DN &trans &trans      &trans &kp N3 &kp N4 &kp N5 &kp N6 &kp N7
-            &lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
-            &lt_spe_esc &lt_sym_r &lt_nav_under &to QWE &mo ALP
+&trans &trans &trans &kp PG_UP &kp DEL &trans      &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &kp UP &trans &kp BSPC      &trans &trans &trans &kp N8 &kp N9 &trans
+&trans &kp HOME &kp LEFT &kp DOWN &kp RIGHT &kp END       &trans &trans &kp N0 &kp N1 &kp N2 &trans
+&trans &trans &trans &kp PG_DN &trans &trans      &trans &kp N3 &kp N4 &kp N5 &kp N6 &kp N7
+&lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
+&lt_spe_esc &lt_sym_r &lt_nav_under &to QWE &mo ALP
             >;
         };
 
@@ -245,12 +245,12 @@
             display-name = "SYS";
             sensor-bindings = <&scroll_encoder>;
             bindings = <
-            &trans &trans &trans &trans &bt BT_CLR &bt BT_CLR_ALL  &trans &trans &trans &trans &trans &trans
-            &trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans &trans &trans &trans &trans &trans
-            &trans &out OUT_USB &out OUT_BLE &trans &rst_macro &boot_macro     &boot_macro &rst_macro &trans &trans &trans &trans
-            &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
-            &lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
-            &lt_spe_esc &lt_sym_r &lt_nav_under &rgb_ug RGB_RST &mo ALP
+&trans &trans &trans &trans &bt BT_CLR &bt BT_CLR_ALL  &trans &trans &trans &trans &trans &trans
+&trans &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4   &trans &trans &trans &trans &trans &trans
+&trans &out OUT_USB &out OUT_BLE &trans &rst_macro &boot_macro     &boot_macro &rst_macro &trans &trans &trans &trans
+&trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+&lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
+&lt_spe_esc &lt_sym_r &lt_nav_under &rgb_ug RGB_RST &mo ALP
             >;
         };
 
@@ -259,12 +259,12 @@
             display-name = "SNAV";
             sensor-bindings = <&scroll_encoder>;
             bindings = <
-            &trans &trans &kp LG(AT) &kp LG(DEL) &kp LG(PRSCRN) &trans      &trans &kp LG(TILDE) &trans &trans &trans &trans
-            &kp LG(AMPS) &kp LG(B) &kp LG(Y) &kp LG(O) &kp LG(U) &kp LG(BSPC)   &kp LG(X) &kp LG(L) &kp LG(D) &kp LG(W) &kp LG(V) &kp LG(Z)
-            &kp LG(QMARK) &kp LG(C) &kp LG(I) &kp LG(E) &kp LG(A) &kp LG(MINUS)  &kp LG(K) &kp LG(H) &kp LG(T) &kp LG(N) &kp LG(S) &kp LG(EXCL)
-            &kp LG(SEMI) &kp LG(COMMA) &kp LG(COLON) &kp LG(SLASH) &kp LG(DOT) &kp LG(DQT)    &kp LG(J) &kp LG(M) &kp LG(G) &kp LG(P) &kp LG(F) &kp LG(Q)
-            &lt_snav_tab &lt_sys_sqt &kp LG(SPACE) &lt_mou_ent &mo MOU
-            &lt_spe_esc &lt_sym_r &lt_nav_under &mkp MB3 &mo ALP
+&trans &trans &kp LG(AT) &kp LG(DEL) &kp LG(PRSCRN) &trans      &trans &kp LG(TILDE) &trans &trans &trans &trans
+&kp LG(AMPS) &kp LG(B) &kp LG(Y) &kp LG(O) &kp LG(U) &kp LG(BSPC)   &kp LG(X) &kp LG(L) &kp LG(D) &kp LG(W) &kp LG(V) &kp LG(Z)
+&kp LG(QMARK) &kp LG(C) &kp LG(I) &kp LG(E) &kp LG(A) &kp LG(MINUS)  &kp LG(K) &kp LG(H) &kp LG(T) &kp LG(N) &kp LG(S) &kp LG(EXCL)
+&kp LG(SEMI) &kp LG(COMMA) &kp LG(COLON) &kp LG(SLASH) &kp LG(DOT) &kp LG(DQT)    &kp LG(J) &kp LG(M) &kp LG(G) &kp LG(P) &kp LG(F) &kp LG(Q)
+&lt_snav_tab &lt_sys_sqt &kp LG(SPACE) &lt_mou_ent &mo MOU
+&lt_spe_esc &lt_sym_r &lt_nav_under &mkp MB3 &mo ALP
             >;
         };
 
@@ -273,12 +273,12 @@
             display-name = "MOU";
             sensor-bindings = <&scroll_encoder>;
             bindings = <
-            &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans &trans &trans &trans      &trans &trans &mkp MB3 &trans &trans &trans
-            &trans &trans &hm_lctl_i &hm_lalt_e &hm_lsft_a &trans      &trans &mkp MB1 &mkp MB2 &mkp MB4 &mkp MB5 &trans
-            &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
-            &lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
-            &lt_spe_esc &lt_sym_r &lt_nav_under &mkp MB3 &mo ALP
+&trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans &trans      &trans &trans &mkp MB3 &trans &trans &trans
+&trans &trans &hm_lctl_i &hm_lalt_e &hm_lsft_a &trans      &trans &mkp MB1 &mkp MB2 &mkp MB4 &mkp MB5 &trans
+&trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
+&lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
+&lt_spe_esc &lt_sym_r &lt_nav_under &mkp MB3 &mo ALP
             >;
         };
 
@@ -287,12 +287,12 @@
             display-name = "QWE";
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             bindings = <
-            &kp MINUS &kp PLUS &kp N1 &kp N2 &kp N3 &kp N4        &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp TILDE
-            &kp RBRC &kp LSHFT &kp Q &kp W &kp E &kp R         &kp T &kp Y &kp U &kp I &kp O &kp P
-            &kp LBRC &kp LCTRL &kp A &kp S &kp D &kp F         &kp G &kp H &kp J &kp K &kp L &kp SEMI
-            &kp DQT &kp LALT &kp Z &kp X &kp C &kp V         &kp B &kp N &kp M &kp COMMA &kp DOT &kp SLASH
-            &lt_snav_tab &lt_sys_sqt &kp SPACE &lt_mou_ent &mo MOU
-            &lt_spe_esc &lt_sym_r &lt_nav_under &to ALP &mo ALP
+&kp MINUS &kp PLUS &kp N1 &kp N2 &kp N3 &kp N4        &kp N5 &kp N6 &kp N7 &kp N8 &kp N9 &kp TILDE
+&kp RBRC &kp LSHFT &kp Q &kp W &kp E &kp R         &kp T &kp Y &kp U &kp I &kp O &kp P
+&kp LBRC &kp LCTRL &kp A &kp S &kp D &kp F         &kp G &kp H &kp J &kp K &kp L &kp SEMI
+&kp DQT &kp LALT &kp Z &kp X &kp C &kp V         &kp B &kp N &kp M &kp COMMA &kp DOT &kp SLASH
+&lt_snav_tab &lt_sys_sqt &kp SPACE &lt_mou_ent &mo MOU
+&lt_spe_esc &lt_sym_r &lt_nav_under &to ALP &mo ALP
             >;
         };
     };
