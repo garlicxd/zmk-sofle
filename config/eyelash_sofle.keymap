@@ -192,7 +192,7 @@
             // LEFT HAND                                                                            JOYSTICK        RIGHT HAND
             &trans        &trans         &trans         &kp CARET      &kp DELETE     &kp PSCRN      &kp UP         &trans         &kp TILDE      &trans         &trans         &trans         &trans
             &kp AMPS      &kp PIPE       &kp LPAR       &kp LBRC       &kp RPAR       &kp BSPC       &kp DOWN       &kp GT         &kp GRAVE      &kp ASTRK      &kp N8         &kp N9         &trans
-            &kp QMARK     &kp PRCNT      &kp LBKT       &kp RBKT       &kp LPAR       &kp MINUS      &kp LEFT       &kp PLUS       &kp EQUAL      &kp N0         &kp N1         &kp N2         &kp EXCL
+            &kp QMARK     &kp PRCNT      &kp LBKT       &kp RBRC       &kp RBRC       &kp MINUS      &kp LEFT       &kp PLUS       &kp EQUAL      &kp N0         &kp N1         &kp N2         &kp EXCL
             &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &kp DOT        &kp DQT        &kp RIGHT      &kp LT         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7
             &trans        &trans         &trans         &lm NAV BSLH   &trans         &kp DLLR       &kp ENTER      &trans         &trans         &trans         &trans         &trans
             >;
