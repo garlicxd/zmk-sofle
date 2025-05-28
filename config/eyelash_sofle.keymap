@@ -108,7 +108,7 @@
         // Knob: Mouse Wheel | Joystick: Mouse Movement
         ///////////////////////////////////////////////////////////////////////////////////
         MOU {
-            sensor-bindings = <&inc_dec_kp C_WH_D C_WH_U>;
+            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
             bindings = <
             // LEFT HAND                                                                             JOYSTICK        RIGHT HAND
             &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
