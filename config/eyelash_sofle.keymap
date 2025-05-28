@@ -1,3 +1,5 @@
+// TODO: add seperate homerow configuration, different timings
+
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200
 #define ZMK_POINTING_DEFAULT_SCRL_VAL 25
 
@@ -38,6 +40,22 @@
 #define ARR 7
 
 / {
+    &mt {
+        flavor = "balanced";
+        require-prior-idle-ms = <100>;
+        quick-tap-ms = <125>;
+        tapping-term-ms = <150>;
+        global-quick-tap;
+    };
+
+    &lt {
+        flavor = "balanced";
+        require-prior-idle-ms = <100>;
+        quick-tap-ms = <125>;
+        tapping-term-ms = <150>;
+        global-quick-tap;
+    };
+
     scroll_encoder: scroll_encoder {
         compatible = "zmk,behavior-sensor-rotate";
         #sensor-binding-cells = <0>;
