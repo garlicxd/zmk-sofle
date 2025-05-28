@@ -43,7 +43,31 @@
         lt_spe_esc:  lt_spe_esc  { compatible = "zmk,behavior-hold-tap"; label = "LT_SPE_ESC";  #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SPE>,  <&kp ESCAPE>; };
         lt_sym_r:    lt_sym_r    { compatible = "zmk,behavior-hold-tap"; label = "LT_SYM_R";    #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SYM>,  <&kp R>; };
         lt_nav_under:lt_nav_under{ compatible = "zmk,behavior-hold-tap"; label = "LT_NAV_UNDER";#binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo NAV>,  <&kp UNDER>; }; // User table had _ for TNav
+
+        // Sensor Binding Behaviors (to be referenced by sensor-bindings in layers)
+        // IMPORTANT: The order of behaviors in a layer's `sensor-bindings` property MUST match
+        // the order of sensors in your board's DTS file (e.g., chosen { zmk,sensors = <&left_encoder &right_joy_x &right_joy_y>; })
+
+        // Alpha Layer Sensors
+        alpha_encoder_bindings_behavior: alpha_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>, <&kp C_MUTE>; };
+        alpha_joy_x_bindings_behavior: alpha_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp RIGHT>, <&kp LEFT>; };
+        alpha_joy_y_bindings_behavior: alpha_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp DOWN>, <&kp UP>; };
+
+        // System Layer Sensors
+        system_encoder_bindings_behavior: system_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_BRI_INC>, <&rgb_ug RGB_BRI_DEC>, <&rgb_ug RGB_TOG>; };
+        system_joy_x_bindings_behavior: system_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_EFF_INC>, <&rgb_ug RGB_EFF_DEC>; };
+        system_joy_y_bindings_behavior: system_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SYSTEM_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_SPD_INC>, <&rgb_ug RGB_SPD_DEC>; };
+
+        // Mouse Layer Sensors
+        mouse_encoder_bindings_behavior: mouse_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp MWH_UP>, <&kp MWH_DOWN>, <&mkp MB3>; };
+        mouse_joy_x_bindings_behavior: mouse_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&mmv RIGHT>, <&mmv LEFT>; };
+        mouse_joy_y_bindings_behavior: mouse_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&mmv DOWN>, <&mmv UP>; };
+   
+        // SNAV Layer Sensors (Encoder for mouse wheel, joystick axes are &none for global mouse passthrough)
+        snav_encoder_bindings_behavior: snav_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SNAV_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp MWH_UP>, <&kp MWH_DOWN>; };
+        // No specific behavior nodes needed for &none joystick bindings on SNAV
     };
+
 
     macros {
         rst_macro: rst_macro { compatible = "zmk,behavior-macro"; label = "RST_MACRO"; #binding-cells = <0>; bindings = <&sys_reset>; };
@@ -57,7 +81,7 @@
         alpha_layer {
             label = "Alpha";
             // Assumed sensor order: Left Encoder, Right Joy X, Right Joy Y
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &inc_dec_kp RIGHT LEFT  &inc_dec_kp DOWN UP>;
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>;
             bindings = <
             // Left Hand (6 keys)                                                               // Right Hand (6 keys)
             &trans,         &trans,         &kp AT,         &kp DEL,        &kp PRSCRN,     &trans,         &trans,         &kp TILDE,      &trans,         &trans,         &trans,         &trans
@@ -75,7 +99,7 @@
         // Layer: Special Characters (SPE)
         special_layer {
             label = "Special";
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &inc_dec_kp RIGHT LEFT  &inc_dec_kp DOWN UP>; // Inherit Alpha sensors
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>; // Inherit Alpha sensors
             bindings = <
             &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
             &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
@@ -90,7 +114,7 @@
         // Layer: Symbols (SYM)
         symbols_layer {
             label = "Symbols";
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &inc_dec_kp RIGHT LEFT  &inc_dec_kp DOWN UP>; // Inherit
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>; // Inherit
             bindings = <
             &trans,         &trans,         &trans,         &kp CARET,      &kp DEL,        &kp PRSCRN,     &trans,         &kp TILDE,      &trans,         &trans,         &trans,         &trans
             &kp AMPS,       &kp PIPE,       &kp LPAR,       &kp LBRC,       &kp RPAR,       &kp BSPC,        &kp GT,         &kp GRAVE,      &kp STAR,       &kp N8,         &kp N9,         &trans
@@ -105,7 +129,7 @@
         // Layer: Text Navigation (NAV)
         text_nav_layer {
             label = "Navigation";
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &inc_dec_kp RIGHT LEFT  &inc_dec_kp DOWN UP>; // Inherit
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>; // Inherit
             bindings = <
             &trans,         &trans,         &trans,         &kp PG_UP,      &kp DEL,        &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
             &trans,         &trans,         &trans,         &kp UP,         &trans,         &kp BSPC,        &trans,         &trans,         &trans,         &kp N8,         &kp N9,         &trans
@@ -120,7 +144,7 @@
         // Layer: System Controls (SYS)
         system_layer {
             label = "System";
-            sensor-bindings = <&inc_dec_rgb_bri  &inc_dec_rgb_eff  &inc_dec_rgb_spd>; // Encoder, JoyX, JoyY
+            sensor-bindings = <&system_encoder_bindings_behavior &system_joy_x_bindings_behavior &system_joy_y_bindings_behavior>; 
             bindings = <
             &trans,         &trans,         &trans,         &trans,         &bt BT_CLR,     &bt BT_CLR_ALL, &trans,         &trans,         &trans,         &trans,         &trans,         &trans
             &trans,         &bt BT_SEL 0,   &bt BT_SEL 1,   &bt BT_SEL 2,   &bt BT_SEL 3,   &bt BT_SEL 4,   &trans,         &trans,         &trans,         &trans,         &trans,         &trans
@@ -136,7 +160,7 @@
         system_nav_layer {
             label = "System Nav";
             // Encoder: LGUI+Scroll. Joystick: LGUI+Mouse (axes are &none for global mouse passthrough)
-            sensor-bindings = <&inc_dec_mw MWH_UP MWH_DOWN   &none  &none>;
+            sensor-bindings = <&snav_encoder_bindings_behavior &none &none>;
             bindings = <
             &kp LG(TRNS),   &kp LG(TRNS),   &kp LG(AT),     &kp LG(DEL),    &kp LG(PRSCRN), &kp LG(TRNS),   &kp LG(TRNS),   &kp LG(TILDE),  &kp LG(TRNS),   &kp LG(TRNS),   &kp LG(TRNS),   &kp LG(TRNS)
             &kp LG(AMPS),   &kp LG(B),      &kp LG(Y),      &kp LG(O),      &kp LG(U),      &kp LG(BSPC),    &kp LG(X),      &kp LG(L),      &kp LG(D),      &kp LG(W),      &kp LG(V),      &kp LG(Z)
@@ -151,7 +175,7 @@
         // Layer: Mouse Control (MOU)
         mouse_layer {
             label = "Mouse";
-            sensor-bindings = <&inc_dec_mw MWH_UP MWH_DOWN  &inc_dec_mmv RIGHT LEFT  &inc_dec_mmv DOWN UP>; // Encoder, JoyX, JoyY
+            sensor-bindings = <&mouse_encoder_bindings_behavior &mouse_joy_x_bindings_behavior &mouse_joy_y_bindings_behavior>;
             bindings = <
             &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
             &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &mkp MB3,       &trans,         &trans,         &trans
@@ -166,7 +190,7 @@
         // Layer: Qwerty (QWE) - No home row mods from Alpha layer
         qwerty_layer {
             label = "Qwerty";
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN  &inc_dec_kp RIGHT LEFT  &inc_dec_kp DOWN UP>; // Inherit Alpha sensors
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>; // Inherit Alpha sensors
             bindings = <
             &kp MINUS,      &kp PLUS,       &kp N1,         &kp N2,         &kp N3,         &kp N4,         &kp N5,         &kp N6,         &kp N7,         &kp N8,         &kp N9,         &kp TILDE
             &kp RBRC,       &kp LSHFT,      &kp Q,          &kp W,          &kp E,          &kp R,          &kp T,          &kp Y,          &kp U,          &kp I,          &kp O,          &kp P
