@@ -163,12 +163,15 @@
             /* Encoder: LGUI+Scroll. Joystick: LGUI+Mouse (axes are &none for global mouse passthrough) */
             sensor-bindings = <&snav_encoder_bindings_behavior &none &none>;
             bindings = <
-            &kp LG(TRNS),   &kp LG(TRNS),   &kp LG(AT),     &kp LG(DEL),    &kp LG(PRSCRN), &kp LG(TRNS),   &kp LG(TRNS),   &kp LG(TILDE),  &kp LG(TRNS),   &kp LG(TRNS),   &kp LG(TRNS),   &kp LG(TRNS)
-            &kp LG(AMPS),   &kp LG(B),      &kp LG(Y),      &kp LG(O),      &kp LG(U),      &kp LG(BSPC),    &kp LG(X),      &kp LG(L),      &kp LG(D),      &kp LG(W),      &kp LG(V),      &kp LG(Z)
-            &kp LG(QMARK),  &kp LG(C),      &kp LG(I),      &kp LG(E),      &kp LG(A),      &kp LG(MINUS),   &kp LG(K),      &kp LG(H),      &kp LG(T),      &kp LG(N),      &kp LG(S),      &kp LG(EXCL)
-            &kp LG(SEMI),   &kp LG(COMMA),  &kp LG(COLON),  &kp LG(SLASH),  &kp LG(DOT),    &kp LG(DQT),     &kp LG(J),      &kp LG(M),      &kp LG(G),      &kp LG(P),      &kp LG(F),      &kp LG(Q)
+            /* Left Hand (6 keys) */                                                                        /* Right Hand (6 keys) */
+            &trans,         &trans,         &kp LG(AT),     &kp LG(DEL),    &kp LG(PRSCRN), &trans,         &trans,         &kp LG(TILDE),  &trans,         &trans,         &trans,         &trans
+            &kp LG(AMPS),   &kp LG(B),      &kp LG(Y),      &kp LG(O),      &kp LG(U),      &kp LG(BSPC),   &kp LG(X),      &kp LG(L),      &kp LG(D),      &kp LG(W),      &kp LG(V),      &kp LG(Z)
+            &kp LG(QMARK),  &kp LG(C),      &kp LG(I),      &kp LG(E),      &kp LG(A),      &kp LG(MINUS),  &kp LG(K),      &kp LG(H),      &kp LG(T),      &kp LG(N),      &kp LG(S),      &kp LG(EXCL)
+            &kp LG(SEMI),   &kp LG(COMMA),  &kp LG(COLON),  &kp LG(SLASH),  &kp LG(DOT),    &kp LG(DQT),    &kp LG(J),      &kp LG(M),      &kp LG(G),      &kp LG(P),      &kp LG(F),      &kp LG(Q)
             /* Thumb row */
+            /* Left Hand Thumbs (Innermost to Outermost): */
             &lt_snav_tab,   &lt_sys_sqt,    &kp LG(SPACE),  &lt_mou_ent,    &mo MOU,
+            /* Right Hand Thumbs (Innermost to Outermost): */
             &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &mkp MB3,       &mo ALP /* Joystick Click (mapped to 4th right thumb): LGUI + MB3 */
             >;
         };
