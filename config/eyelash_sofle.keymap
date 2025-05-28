@@ -44,23 +44,135 @@
 #define QWE 7  /* Qwerty (Gaming) */
 
 / {
-    /* Custom behaviors required for your new layout */
     behaviors {
-        hm_lctl_i: hm_lctl_i { compatible = "zmk,behavior-hold-tap"; label = "HM_LCTL_I"; #binding-cells = <2>; tapping-term-ms = <220>; quick-tap-ms = <0>; flavor = "tap-preferred"; bindings = <&kp LCTRL> <&kp I>; };
-        hm_lalt_e: hm_lalt_e { compatible = "zmk,behavior-hold-tap"; label = "HM_LALT_E"; #binding-cells = <2>; tapping-term-ms = <220>; quick-tap-ms = <0>; flavor = "tap-preferred"; bindings = <&kp LALT> <&kp E>; };
-        hm_lsft_a: hm_lsft_a { compatible = "zmk,behavior-hold-tap"; label = "HM_LSFT_A"; #binding-cells = <2>; tapping-term-ms = <220>; quick-tap-ms = <0>; flavor = "tap-preferred"; bindings = <&kp LSHFT> <&kp A>; };
-        hm_rctl_n: hm_rctl_n { compatible = "zmk,behavior-hold-tap"; label = "HM_RCTL_N"; #binding-cells = <2>; tapping-term-ms = <220>; quick-tap-ms = <0>; flavor = "tap-preferred"; bindings = <&kp RCTRL> <&kp N>; };
-        hm_ralt_t: hm_ralt_t { compatible = "zmk,behavior-hold-tap"; label = "HM_RALT_T"; #binding-cells = <2>; tapping-term-ms = <220>; quick-tap-ms = <0>; flavor = "tap-preferred"; bindings = <&kp RALT> <&kp T>; };
-        hm_rsft_h: hm_rsft_h { compatible = "zmk,behavior-hold-tap"; label = "HM_RSFT_H"; #binding-cells = <2>; tapping-term-ms = <220>; quick-tap-ms = <0>; flavor = "tap-preferred"; bindings = <&kp RSHFT> <&kp H>; };
-        lt_snav_tab: lt_snav_tab { compatible = "zmk,behavior-hold-tap"; label = "LT_SNAV_TAB"; #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SNAV> <&kp TAB>; };
-        lt_sys_sqt:  lt_sys_sqt  { compatible = "zmk,behavior-hold-tap"; label = "LT_SYS_SQT";  #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SYS>  <&kp SQT>; };
-        lt_mou_ent:  lt_mou_ent  { compatible = "zmk,behavior-hold-tap"; label = "LT_MOU_ENT";  #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo MOU>  <&kp ENTER>; };
-        lt_spe_esc:  lt_spe_esc  { compatible = "zmk,behavior-hold-tap"; label = "LT_SPE_ESC";  #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SPE>  <&kp ESCAPE>; };
-        lt_sym_r:     lt_sym_r     { compatible = "zmk,behavior-hold-tap"; label = "LT_SYM_R";     #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SYM>  <&kp R>; };
-        lt_nav_under: lt_nav_under { compatible = "zmk,behavior-hold-tap"; label = "LT_NAV_UNDER"; #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo NAV>  <&kp UNDER>; };
-        rst_macro:    rst_macro    { compatible = "zmk,behavior-macro";    label = "RST_MACRO";    #binding-cells = <0>; bindings = <&sys_reset>; };
-        boot_macro:   boot_macro   { compatible = "zmk,behavior-macro";    label = "BOOT_MACRO";   #binding-cells = <0>; bindings = <&bootloader>; };
-    };
+        hm_lctl_i: hm_lctl_i {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_LCTL_I";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp LCTRL>, <&kp I>;
+        };
+
+        hm_lalt_e: hm_lalt_e {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_LALT_E";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp LALT>, <&kp E>;
+        };
+
+        hm_lsft_a: hm_lsft_a {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_LSFT_A";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp LSHFT>, <&kp A>;
+        };
+
+        hm_rctl_n: hm_rctl_n {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_RCTL_N";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp RCTRL>, <&kp N>;
+        };
+
+        hm_ralt_t: hm_ralt_t {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_RALT_T";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp RALT>, <&kp T>;
+        };
+
+        hm_rsft_h: hm_rsft_h {
+            compatible = "zmk,behavior-hold-tap";
+            label = "HM_RSFT_H";
+            #binding-cells = <2>;
+            tapping-term-ms = <220>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp RSHFT>, <&kp H>;
+        };
+
+        lt_snav_tab: lt_snav_tab {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LT_SNAV_TAB";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&mo SNAV>, <&kp TAB>;
+        };
+
+        lt_sys_sqt: lt_sys_sqt {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LT_SYS_SQT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&mo SYS>, <&kp SQT>;
+        };
+
+        lt_mou_ent: lt_mou_ent {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LT_MOU_ENT";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&mo MOU>, <&kp ENTER>;
+        };
+
+        lt_spe_esc: lt_spe_esc {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LT_SPE_ESC";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&mo SPE>, <&kp ESCAPE>;
+        };
+
+        lt_sym_r: lt_sym_r {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LT_SYM_R";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&mo SYM>, <&kp R>;
+        };
+
+        lt_nav_under: lt_nav_under {
+            compatible = "zmk,behavior-hold-tap";
+            label = "LT_NAV_UNDER";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            flavor = "hold-preferred";
+            bindings = <&mo NAV>, <&kp UNDER>;
+        };
+
+        rst_macro: rst_macro {
+            compatible = "zmk,behavior-macro";
+            label = "RST_MACRO";
+            #binding-cells = <0>;
+            bindings = <&sys_reset>;
+        };
+
+        boot_macro: boot_macro {
+            compatible = "zmk,behavior-macro";
+            label = "BOOT_MACRO";
+            #binding-cells = <0>;
+            bindings = <&bootloader>;
+        };
+    }; // End of behaviors
 
     /* Sensor behavior from your original, working keymap */
     scroll_encoder: scroll_encoder {
