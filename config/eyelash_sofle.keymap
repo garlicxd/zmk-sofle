@@ -56,10 +56,10 @@
         lt_sys_sqt:  lt_sys_sqt  { compatible = "zmk,behavior-hold-tap"; label = "LT_SYS_SQT";  #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SYS>  <&kp SQT>; };
         lt_mou_ent:  lt_mou_ent  { compatible = "zmk,behavior-hold-tap"; label = "LT_MOU_ENT";  #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo MOU>  <&kp ENTER>; };
         lt_spe_esc:  lt_spe_esc  { compatible = "zmk,behavior-hold-tap"; label = "LT_SPE_ESC";  #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SPE>  <&kp ESCAPE>; };
-        lt_sym_r:    lt_sym_r    { compatible = "zmk,behavior-hold-tap"; label = "LT_SYM_R";    #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SYM>  <&kp R>; };
-        lt_nav_under:lt_nav_under{ compatible = "zmk,behavior-hold-tap"; label = "LT_NAV_UNDER";#binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo NAV>  <&kp UNDER>; };
-        rst_macro: rst_macro { compatible = "zmk,behavior-macro"; label = "RST_MACRO"; #binding-cells = <0>; bindings = <&sys_reset>; };
-        boot_macro: boot_macro { compatible = "zmk,behavior-macro"; label = "BOOT_MACRO"; #binding-cells = <0>; bindings = <&bootloader>; };
+        lt_sym_r:     lt_sym_r     { compatible = "zmk,behavior-hold-tap"; label = "LT_SYM_R";     #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SYM>  <&kp R>; };
+        lt_nav_under: lt_nav_under { compatible = "zmk,behavior-hold-tap"; label = "LT_NAV_UNDER"; #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo NAV>  <&kp UNDER>; };
+        rst_macro:    rst_macro    { compatible = "zmk,behavior-macro";    label = "RST_MACRO";    #binding-cells = <0>; bindings = <&sys_reset>; };
+        boot_macro:   boot_macro   { compatible = "zmk,behavior-macro";    label = "BOOT_MACRO";   #binding-cells = <0>; bindings = <&bootloader>; };
     };
 
     /* Sensor behavior from your original, working keymap */
