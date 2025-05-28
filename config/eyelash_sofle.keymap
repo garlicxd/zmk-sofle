@@ -171,7 +171,7 @@
             &trans          &trans          &hm_lctl_i      &hm_lalt_e      &hm_lsft_a      &trans,         &trans          &mkp MB1        &mkp MB2        &mkp MB4        &mkp MB5        &trans
             &trans          &trans          &trans          &trans          &trans          &trans,         &trans          &trans          &trans          &trans          &trans          &trans
             // Thumb row
-            &mo TRNS        &lt_sys_sqt     &lt_snav_tab    &kp TRNS        &lt_mou_enter   &lt_spe_esc,    &lt_spe_r       &lt_sym_under   &lt_nav_hash    &mkp MB3        &kp NO_ACTION   &mo ALP // Joystick Click: MB3
+            &trans          &lt_sys_sqt     &lt_snav_tab    &kp TRNS        &lt_mou_enter   &lt_spe_esc,    &lt_spe_r       &lt_sym_under   &lt_nav_hash    &mkp MB3        &kp NO_ACTION   &mo ALP // Joystick Click: MB3
             >;
         };
 
