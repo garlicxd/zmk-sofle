@@ -42,6 +42,28 @@
 / {
     behaviors {
 
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "balanced";
+            require-prior-idle-ms = <100>;
+            quick-tap-ms = <125>;
+            tapping-term-ms = <150>;
+        };
+
+        lm: layer_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+            
+            flavor = "balanced";
+            require-prior-idle-ms = <100>;
+            quick-tap-ms = <125>;
+            tapping-term-ms = <150>;
+        };
+
         scroll_encoder: scroll_encoder {
             compatible = "zmk,behavior-sensor-rotate";
             #sensor-binding-cells = <0>;
@@ -81,9 +103,9 @@
             // LEFT HAND                                                                             JOYSTICK       RIGHT HAND
             &trans        &trans         &trans         &kp AT         &kp DELETE     &kp PSCRN      &msc SCRL_UP   &trans         &kp TILDE      &trans         &trans         &trans         &trans
             &kp AMPS      &kp B          &kp Y          &kp O          &kp U          &kp BSPC       &msc SCRL_DOWN &kp X          &kp L          &kp D          &kp W          &kp V          &kp Z
-            &kp QMARK     &kp C          &mt LCTRL I    &mt LALT E     &mt LSHFT A    &kp MINUS      &msc SCRL_LEFT &kp K          &mt RSHFT H    &mt RALT T     &mt RCTRL N    &kp S          &kp EXCL
-            &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &mt LGUI DOT   &kp DQT        &msc SCRL_RIGHT &kp J         &mt RGUI M     &kp G          &kp P          &kp F          &kp Q
-            &kp C_MUTE    &lt SYS LGUI   &mt LGUI SQT   &lt NAV TAB    &kp SPACE      &lt MOU ENTER  &kp ENTER      &lt SPE ESC    &lt SYM R      &lt ARR UNDER  &kp HASH       &to QWE
+            &kp QMARK     &kp C          &hm LCTRL I    &hm LALT E     &hm LSHFT A    &kp MINUS      &msc SCRL_LEFT &kp K          &hm RSHFT H    &hm RALT T     &hm RCTRL N    &kp S          &kp EXCL
+            &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &hm LGUI DOT   &kp DQT        &msc SCRL_RIGHT &kp J         &hm RGUI M     &kp G          &kp P          &kp F          &kp Q
+            &kp C_MUTE    &lm SYS LGUI   &hm LGUI SQT   &lm NAV TAB    &kp SPACE      &lm MOU ENTER  &kp ENTER      &lm SPE ESC    &lm SYM R      &lm ARR UNDER  &kp HASH       &to QWE
             >;
         };
 
@@ -172,7 +194,7 @@
             &kp AMPS      &kp PIPE       &kp LPAR       &kp LBRC       &kp RPAR       &kp BSPC       &kp DOWN       &kp GT         &kp GRAVE      &kp ASTRK      &kp N8         &kp N9         &trans
             &kp QMARK     &kp PRCNT      &kp LBKT       &kp RBKT       &kp LPAR       &kp MINUS      &kp LEFT       &kp PLUS       &kp EQUAL      &kp N0         &kp N1         &kp N2         &kp EXCL
             &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &kp DOT        &kp DQT        &kp RIGHT      &kp LT         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7
-            &trans        &trans         &trans         &lt NAV BSLH   &trans         &kp DLLR       &kp ENTER      &trans         &trans         &trans         &trans         &trans
+            &trans        &trans         &trans         &lm NAV BSLH   &trans         &kp DLLR       &kp ENTER      &trans         &trans         &trans         &trans         &trans
             >;
         };
 
