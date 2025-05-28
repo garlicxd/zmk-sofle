@@ -70,7 +70,7 @@
         compatible = "zmk,keymap";
 
         /* ALPHA LAYER */
-        layer0 {
+        ALP {
             display-name = "ALP";
             sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             bindings = <
@@ -84,7 +84,7 @@
         };
 
         /* SPECIAL CHARS LAYER */
-        layer_1 {
+        SPE {
             display-name = "SPE";
             sensor-bindings = <&scroll_encoder>;
             bindings = <
@@ -98,7 +98,7 @@
         };
 
         /* SYMBOLS LAYER */
-        layer_2 {
+        SYM {
             display-name = "SYM";
             sensor-bindings = <&scroll_encoder>;
             bindings = <
