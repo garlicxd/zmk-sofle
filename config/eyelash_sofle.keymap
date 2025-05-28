@@ -45,7 +45,6 @@
         require-prior-idle-ms = <100>;
         quick-tap-ms = <125>;
         tapping-term-ms = <150>;
-        global-quick-tap;
     };
 
     &lt {
@@ -53,7 +52,6 @@
         require-prior-idle-ms = <100>;
         quick-tap-ms = <125>;
         tapping-term-ms = <150>;
-        global-quick-tap;
     };
 
     scroll_encoder: scroll_encoder {
