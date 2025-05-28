@@ -88,6 +88,6 @@
         MOU { display-name = "Mouse"; bindings = <&trans>; };
         SPE { display-name = "Special"; bindings = <&trans>; };
         SYM { display-name = "Symbols"; bindings = <&trans>; };
-        ARR { display-name = "joystick_arrows"; bindings = <&trans>; };
+        ARR { display-name = "Arrows"; bindings = <&trans>; };
     };
 };
