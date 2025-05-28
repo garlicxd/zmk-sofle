@@ -38,6 +38,30 @@
 #define ARR 7
 
 / {
+    scroll_encoder: scroll_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+    };
+
+    volume_encoder: volume_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
+    };
+
+    rgb_br_encoder: rgb_br_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>;
+    };
+
+    zoom_encoder: zoom_encoder {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>;
+    };
+
     keymap {
         compatible = "zmk,keymap";
 
@@ -46,7 +70,7 @@
         // Knob: Volume, Mute | Joystick: Scrolling
         ///////////////////////////////////////////////////////////////////////////////////
         DEF {
-            sensor-bindings = <&inc_dec_kp C_VOL_UP C_VOL_DN>;
+            sensor-bindings = <&volume_encoder>;
             bindings = <
             // LEFT HAND                                                                             JOYSTICK       RIGHT HAND
             &trans        &trans         &trans         &kp AT         &kp DELETE     &kp PSCRN      &msc SCRL_UP   &trans         &kp TILDE      &trans         &trans         &trans         &trans
@@ -61,6 +85,7 @@
         // LAYER 1: Qwerty (Gaming)
         ///////////////////////////////////////////////////////////////////////////////////
         QWE {
+            // sensor-bindings = <&volume_encoder>;
             bindings = <
             // LEFT HAND                                                                            JOYSTICK        RIGHT HAND
             &kp MINUS     &kp EQUAL      &kp N1         &kp N2         &kp N3         &kp N4         &trans         &kp N5         &kp N6         &kp N7         &kp N8         &kp N9         &kp GRAVE
