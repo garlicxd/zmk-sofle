@@ -8,7 +8,7 @@
 #include <dt-bindings/zmk/keys.h>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/outputs.h>
+#include <dt-bindings/zmk/outputs.hh>
 #include <dt-bindings/zmk/mouse.h>
 
 /* Layer Definitions */
@@ -42,13 +42,9 @@
         /* Right Thumbs */
         lt_spe_esc:  lt_spe_esc  { compatible = "zmk,behavior-hold-tap"; label = "LT_SPE_ESC";  #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SPE>,  <&kp ESCAPE>; };
         lt_sym_r:    lt_sym_r    { compatible = "zmk,behavior-hold-tap"; label = "LT_SYM_R";    #binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo SYM>,  <&kp R>; };
-        lt_nav_under:lt_nav_under{ compatible = "zmk,behavior-hold-tap"; label = "LT_NAV_UNDER";#binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo NAV>,  <&kp UNDER>; }; /* User table had _ for TNav */
+        lt_nav_under:lt_nav_under{ compatible = "zmk,behavior-hold-tap"; label = "LT_NAV_UNDER";#binding-cells = <2>; tapping-term-ms = <200>; flavor = "hold-preferred"; bindings = <&mo NAV>,  <&kp UNDER>; };
 
-        /* * Sensor Binding Behaviors (to be referenced by sensor-bindings in layers)
-         * IMPORTANT: The order of behaviors in a layer's `sensor-bindings` property MUST match
-         * the order of sensors in your board's DTS file (e.g., chosen { zmk,sensors = <&left_encoder &right_joy_x &right_joy_y>; })
-         */
-
+        /* Sensor Binding Behaviors */
         /* Alpha Layer Sensors */
         alpha_encoder_bindings_behavior: alpha_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp C_VOL_UP &kp C_VOL_DN &kp C_MUTE>; };
         alpha_joy_x_bindings_behavior: alpha_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "ALPHA_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp RIGHT &kp LEFT>; };
@@ -63,10 +59,9 @@
         mouse_encoder_bindings_behavior: mouse_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp MWH_UP &kp MWH_DOWN &mkp MB3>; };
         mouse_joy_x_bindings_behavior: mouse_joy_x_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_JOY_X_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&mmv RIGHT &mmv LEFT>; };
         mouse_joy_y_bindings_behavior: mouse_joy_y_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "MOUSE_JOY_Y_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&mmv DOWN &mmv UP>; };
-   
-        /* SNAV Layer Sensors (Encoder for mouse wheel, joystick axes are &none for global mouse passthrough) */
+    
+        /* SNAV Layer Sensors */
         snav_encoder_bindings_behavior: snav_encoder_bindings_behavior { compatible = "zmk,behavior-sensor-rotate-key-press"; label = "SNAV_ENCODER_BEHAVIOR"; #sensor-binding-cells = <0>; bindings = <&kp MWH_UP &kp MWH_DOWN>; };
-        /* No specific behavior nodes needed for &none joystick bindings on SNAV */
     };
 
 
@@ -81,26 +76,25 @@
         /* Layer: Alpha (ALP) */
         alpha_layer {
             label = "Alpha";
-            /* Assumed sensor order: Left Encoder, Right Joy X, Right Joy Y */
             sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>;
             bindings = <
-            /* Left Hand (6 keys) */                                                               /* Right Hand (6 keys) */
+            /* Left Hand (6 keys) */                                                                            /* Right Hand (6 keys) */
             &trans,         &trans,         &kp AT,         &kp DEL,        &kp PRSCRN,     &trans,         &trans,         &kp TILDE,      &trans,         &trans,         &trans,         &trans
-            &kp AMPS,       &kp B,          &kp Y,          &kp O,          &kp U,          &kp BSPC,        &kp X,          &kp L,          &kp D,          &kp W,          &kp V,          &kp Z
-            &kp QMARK,      &kp C,          &hm_lctl_i,     &hm_lalt_e,     &hm_lsft_a,     &kp MINUS,       &kp K,          &hm_rsft_h,     &hm_ralt_t,     &hm_rctl_n,     &kp S,          &kp EXCL
-            &kp SEMI,       &kp COMMA,      &kp COLON,      &kp SLASH,      &kp DOT,        &kp DQT,         &kp J,          &kp M,          &kp G,          &kp P,          &kp F,          &kp Q
+            &kp AMPS,       &kp B,          &kp Y,          &kp O,          &kp U,          &kp BSPC,       &kp X,          &kp L,          &kp D,          &kp W,          &kp V,          &kp Z
+            &kp QMARK,      &kp C,          &hm_lctl_i,     &hm_lalt_e,     &hm_lsft_a,     &kp MINUS,      &kp K,          &hm_rsft_h,     &hm_ralt_t,     &hm_rctl_n,     &kp S,          &kp EXCL
+            &kp SEMI,       &kp COMMA,      &kp COLON,      &kp SLASH,      &kp DOT,        &kp DQT,        &kp J,          &kp M,          &kp G,          &kp P,          &kp F,          &kp Q
             /* Thumb row (5 keys per hand) */
             /* Left Hand Thumbs (Innermost to Outermost): */
-            &lt_snav_tab,   &lt_sys_sqt,    &kp SPACE,      &lt_mou_ent,    &mo MOU,  /* mo MOU from *-->* */
+            &lt_snav_tab,   &lt_sys_sqt,    &kp SPACE,      &lt_mou_ent,    &mo MOU,
             /* Right Hand Thumbs (Innermost to Outermost): */
-            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &to QWE,        &mo ALP   /* mo ALP from *<--* */
+            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &to QWE,        &mo ALP
             >;
         };
 
         /* Layer: Special Characters (SPE) */
         special_layer {
             label = "Special";
-            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>; /* Inherit Alpha sensors */
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>;
             bindings = <
             &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
             &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
@@ -115,26 +109,26 @@
         /* Layer: Symbols (SYM) */
         symbols_layer {
             label = "Symbols";
-            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>; /* Inherit */
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>;
             bindings = <
             &trans,         &trans,         &trans,         &kp CARET,      &kp DEL,        &kp PRSCRN,     &trans,         &kp TILDE,      &trans,         &trans,         &trans,         &trans
-            &kp AMPS,       &kp PIPE,       &kp LPAR,       &kp LBRC,       &kp RPAR,       &kp BSPC,        &kp GT,         &kp GRAVE,      &kp STAR,       &kp N8,         &kp N9,         &trans
-            &kp QMARK,      &kp PRCNT,      &kp LBKT,       &kp RBRC,       &kp RBKT,       &kp MINUS,       &kp PLUS,       &kp EQUAL,      &kp N0,         &kp N1,         &kp N2,         &kp EXCL
-            &kp SEMI,       &kp COMMA,      &kp COLON,      &kp SLASH,      &kp DOT,        &kp DQT,         &kp LT,         &kp N3,         &kp N4,         &kp N5,         &kp N6,         &kp N7
+            &kp AMPS,       &kp PIPE,       &kp LPAR,       &kp LBRC,       &kp RPAR,       &kp BSPC,       &kp GT,         &kp GRAVE,      &kp STAR,       &kp N8,         &kp N9,         &trans
+            &kp QMARK,      &kp PRCNT,      &kp LBKT,       &kp RBRC,       &kp RBKT,       &kp MINUS,      &kp PLUS,       &kp EQUAL,      &kp N0,         &kp N1,         &kp N2,         &kp EXCL
+            &kp SEMI,       &kp COMMA,      &kp COLON,      &kp SLASH,      &kp DOT,        &kp DQT,        &kp LT,         &kp N3,         &kp N4,         &kp N5,         &kp N6,         &kp N7
             /* Thumb row */
-            &kp BSLH,       &kp TRNS,       &kp DLLR,       &kp TRNS,       &mo MOU, /* Left: BSLH (from SNav(Tab) in user table), TRNS, DLLR (from Spc in user table), TRNS, MOU */
-            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &to QWE,        &mo ALP  /* Right: Standard */
+            &kp BSLH,       &kp TRNS,       &kp DLLR,       &kp TRNS,       &mo MOU,
+            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &to QWE,        &mo ALP
             >;
         };
 
         /* Layer: Text Navigation (NAV) */
         text_nav_layer {
             label = "Navigation";
-            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>; /* Inherit */
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>;
             bindings = <
             &trans,         &trans,         &trans,         &kp PG_UP,      &kp DEL,        &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
-            &trans,         &trans,         &trans,         &kp UP,         &trans,         &kp BSPC,        &trans,         &trans,         &trans,         &kp N8,         &kp N9,         &trans
-            &trans,         &kp HOME,       &kp LEFT,       &kp DOWN,       &kp RIGHT,      &kp END,         &trans,         &trans,         &kp N0,         &kp N1,         &kp N2,         &trans
+            &trans,         &trans,         &trans,         &kp UP,         &trans,         &kp BSPC,       &trans,         &trans,         &trans,         &kp N8,         &kp N9,         &trans
+            &trans,         &kp HOME,       &kp LEFT,       &kp DOWN,       &kp RIGHT,      &kp END,        &trans,         &trans,         &kp N0,         &kp N1,         &kp N2,         &trans
             &trans,         &trans,         &trans,         &kp PG_DN,      &trans,         &trans,         &trans,         &kp N3,         &kp N4,         &kp N5,         &kp N6,         &kp N7
             /* Thumb row */
             &lt_snav_tab,   &lt_sys_sqt,    &kp TRNS,       &lt_mou_ent,    &mo MOU,
@@ -153,14 +147,13 @@
             &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
             /* Thumb row */
             &lt_snav_tab,   &lt_sys_sqt,    &kp TRNS,       &lt_mou_ent,    &mo MOU,
-            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &rgb_ug RGB_RST,&mo ALP /* Joystick Click (mapped to 4th right thumb): RGB Reset */
+            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &rgb_ug RGB_RST,&mo ALP
             >;
         };
 
         /* Layer: System Navigation (SNAV) - GUI active */
         system_nav_layer {
             label = "System Nav";
-            /* Encoder: LGUI+Scroll. Joystick: LGUI+Mouse (axes are &none for global mouse passthrough) */
             sensor-bindings = <&snav_encoder_bindings_behavior &none &none>;
             bindings = <
             /* Left Hand (6 keys) */                                                                        /* Right Hand (6 keys) */
@@ -169,10 +162,8 @@
             &kp LG(QMARK),  &kp LG(C),      &kp LG(I),      &kp LG(E),      &kp LG(A),      &kp LG(MINUS),  &kp LG(K),      &kp LG(H),      &kp LG(T),      &kp LG(N),      &kp LG(S),      &kp LG(EXCL)
             &kp LG(SEMI),   &kp LG(COMMA),  &kp LG(COLON),  &kp LG(SLASH),  &kp LG(DOT),    &kp LG(DQT),    &kp LG(J),      &kp LG(M),      &kp LG(G),      &kp LG(P),      &kp LG(F),      &kp LG(Q)
             /* Thumb row */
-            /* Left Hand Thumbs (Innermost to Outermost): */
             &lt_snav_tab,   &lt_sys_sqt,    &kp LG(SPACE),  &lt_mou_ent,    &mo MOU,
-            /* Right Hand Thumbs (Innermost to Outermost): */
-            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &mkp MB3,       &mo ALP /* Joystick Click (mapped to 4th right thumb): LGUI + MB3 */
+            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &mkp MB3,       &mo ALP
             >;
         };
 
@@ -187,14 +178,14 @@
             &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans,         &trans
             /* Thumb row */
             &trans,         &lt_sys_sqt,    &lt_snav_tab,   &kp TRNS,       &lt_mou_ent,    &mo MOU,
-            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &mkp MB3,       &mo ALP /* Joystick Click (mapped to 4th right thumb): MB3 */
+            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &mkp MB3,       &mo ALP
             >;
         };
 
         /* Layer: Qwerty (QWE) - No home row mods from Alpha layer */
         qwerty_layer {
             label = "Qwerty";
-            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>; /* Inherit Alpha sensors */
+            sensor-bindings = <&alpha_encoder_bindings_behavior &alpha_joy_x_bindings_behavior &alpha_joy_y_bindings_behavior>;
             bindings = <
             &kp MINUS,      &kp PLUS,       &kp N1,         &kp N2,         &kp N3,         &kp N4,         &kp N5,         &kp N6,         &kp N7,         &kp N8,         &kp N9,         &kp TILDE
             &kp RBRC,       &kp LSHFT,      &kp Q,          &kp W,          &kp E,          &kp R,          &kp T,          &kp Y,          &kp U,          &kp I,          &kp O,          &kp P
@@ -202,7 +193,7 @@
             &kp DQT,        &kp LALT,       &kp Z,          &kp X,          &kp C,          &kp V,          &kp B,          &kp N,          &kp M,          &kp COMMA,      &kp DOT,        &kp SLASH
             /* Thumb row */
             &lt_snav_tab,   &lt_sys_sqt,    &kp SPACE,      &lt_mou_ent,    &mo MOU,
-            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &to ALP,        &mo ALP /* Joystick Click (mapped to 4th right thumb): to Alpha */
+            &lt_spe_esc,    &lt_sym_r,      &lt_nav_under,  &to ALP,        &mo ALP
             >;
         };
     };
