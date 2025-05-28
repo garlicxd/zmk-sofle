@@ -101,7 +101,7 @@
         // Knob: RGB Control | Joystick: RGB Control
         ///////////////////////////////////////////////////////////////////////////////////
         SYS {
-            sensor-bindings = <&rgb_br_encoder>
+            sensor-bindings = <&rgb_br_encoder>;
             bindings = <
             // LEFT HAND                                                                             JOYSTICK        RIGHT HAND
             &trans        &trans         &trans         &trans         &bt BT_CLR     &bt BT_CLR_ALL &rgb_ug RGB_SAI &trans         &trans         &trans         &trans         &trans        &trans
