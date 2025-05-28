@@ -277,7 +277,7 @@
             &trans &trans &trans &trans &trans &trans      &trans &trans &mkp MB3 &trans &trans &trans
             &trans &trans &hm_lctl_i &hm_lalt_e &hm_lsft_a &trans      &trans &mkp MB1 &mkp MB2 &mkp MB4 &mkp MB5 &trans
             &trans &trans &trans &trans &trans &trans      &trans &trans &trans &trans &trans &trans
-            &trans &lt_sys_sqt &lt_snav_tab &trans &lt_mou_ent &mo MOU
+            &lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
             &lt_spe_esc &lt_sym_r &lt_nav_under &mkp MB3 &mo ALP
             >;
         };
