@@ -186,16 +186,16 @@
 
         /* ALPHA LAYER */
         ALP {
-            display-name = "ALP";
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             bindings = <
-            &trans      &trans      &kp AT      &kp DEL     &kp PRSCRN  &trans          &trans          &kp TILDE   &trans          &trans      &trans  &trans
-            &kp AMPS    &kp B       &kp Y       &kp O       &kp U       &kp BSPC        &kp X           &kp L       &kp D           &kp W       &kp V   &kp Z
-            &kp QMARK   &kp C       &hm_lctl_i  &hm_lalt_e  &hm_lsft_a  &kp MINUS       &kp K           &hm_rsft_h  &hm_ralt_t      &hm_rctl_n  &kp S   &kp EXCL
-            &kp SEMI    &kp COMMA   &kp COLON   &kp SLASH   &kp DOT     &kp DQT         &kp J           &kp M       &kp G           &kp P       &kp F   &kp Q
-            &lt_snav_tab &lt_sys_sqt &kp SPACE &lt_mou_ent &mo MOU
-            &lt_spe_esc &lt_sym_r &lt_nav_under &to QWE &mo ALP
+&kp ESC     &kp N1     &kp N2        &kp N3        &kp N4  &kp N5       &kp UP_ARROW     &kp N6     &kp N7     &kp N8     &kp N9           &kp N0      &kp BACKSPACE
+&kp TAB     &kp Q      &kp W         &kp E         &kp R   &kp T        &kp DOWN_ARROW   &kp Y      &kp U      &kp I      &kp O            &kp P       &kp BSLH
+&kp CAPS    &kp A      &kp S         &kp D         &kp F   &kp G        &kp LEFT_ARROW   &kp H      &kp J      &kp K      &kp L            &kp SEMI    &kp APOS
+&kp LSHFT   &kp Z      &kp X         &kp C         &kp V   &kp B        &kp RIGHT_ARROW  &kp N      &kp M      &kp COMMA  &kp DOT          &kp FSLH    &kp ENTER
+&kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
             >;
+
+            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
+            display-name = "LAYER0";
         };
 
         /* SPECIAL CHARS LAYER */
@@ -203,12 +203,12 @@
             display-name = "SPE";
             sensor-bindings = <&scroll_encoder>;
             bindings = <
-            &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
-            &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
-            &trans &trans &hm_lctl_i &hm_lalt_e &hm_lsft_a &trans     &trans &hm_rsft_h &hm_ralt_t &hm_rctl_n &trans &trans
-            &trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
-            &lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
-            &lt_spe_esc &lt_sym_r &lt_nav_under &to QWE &mo ALP
+&trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
+&trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
+&trans &trans &hm_lctl_i &hm_lalt_e &hm_lsft_a &trans     &trans &hm_rsft_h &hm_ralt_t &hm_rctl_n &trans &trans
+&trans &trans &trans &trans &trans &trans     &trans &trans &trans &trans &trans &trans
+&lt_snav_tab &lt_sys_sqt &trans &lt_mou_ent &mo MOU
+&lt_spe_esc &lt_sym_r &lt_nav_under &to QWE &mo ALP
             >;
         };
 
