@@ -101,10 +101,11 @@
         // Knob: RGB Control | Joystick: RGB Control
         ///////////////////////////////////////////////////////////////////////////////////
         SYS {
+            sensor-bindings = <&rgb_br_encoder>
             bindings = <
             // LEFT HAND                                                                             JOYSTICK        RIGHT HAND
             &trans        &trans         &trans         &trans         &bt BT_CLR     &bt BT_CLR_ALL &rgb_ug RGB_SAI &trans         &trans         &trans         &trans         &trans        &trans
-            &trans        &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &rgb_ug RGB_SAD &trans         &trans         &trans         &trans         &trans        &trans
+            &soft_off     &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &rgb_ug RGB_SAD &trans         &trans         &trans         &trans         &trans        &trans
             &trans        &out OUT_USB   &out OUT_BLE   &trans         &sys_reset     &bootloader    &rgb_ug RGB_EFF &bootloader    &sys_reset     &trans         &trans         &trans        &trans
             &trans        &trans         &trans         &trans         &trans         &trans         &rgb_ug RGB_EFR &trans         &trans         &trans         &trans         &trans        &trans
             &rgb_ug RGB_TOG &trans       &trans         &trans         &trans         &trans         &to DEF         &trans         &trans         &trans         &trans         &trans
@@ -130,13 +131,14 @@
         // Knob: Mouse Wheel | Joystick: Mouse Movement
         ///////////////////////////////////////////////////////////////////////////////////
         MOU {
+            sensor-bindings = <&scroll_encoder>;
             bindings = <
             // LEFT HAND                                                                             JOYSTICK        RIGHT HAND
-            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &trans         &trans         &trans         &trans         &mmv MOVE_UP   &trans         &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &trans         &mkp MB3       &trans         &trans         &mmv MOVE_DOWN &trans         &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &mkp MB2       &trans         &mkp MB1       &trans         &mmv MOVE_LEFT &trans         &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &trans         &trans         &trans         &trans         &mmv MOVE_RIGHT &trans        &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &trans         &trans         &trans         &trans         &mkp MB1       &trans         &trans         &trans         &trans         &trans
             >;
         };
 
@@ -160,11 +162,11 @@
         SYM {
             bindings = <
             // LEFT HAND                                                                            JOYSTICK        RIGHT HAND
-            &trans        &trans         &trans         &kp CARET      &kp DELETE     &kp PSCRN      &trans         &trans         &kp TILDE      &trans         &trans         &trans         &trans
-            &kp AMPS      &kp PIPE       &kp LPAR       &kp LBRC       &kp RPAR       &kp BSPC       &trans         &kp GT         &kp GRAVE      &kp ASTRK      &kp N8         &kp N9         &trans
-            &kp QMARK     &kp PRCNT      &kp LBKT       &kp RBKT       &kp LPAR       &kp MINUS      &trans         &kp PLUS       &kp EQUAL      &kp N0         &kp N1         &kp N2         &kp EXCL
-            &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &kp DOT        &kp DQT        &trans         &kp LT         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7
-            &trans        &trans         &trans         &lt NAV BSLH   &trans         &kp DLLR       &trans         &trans         &trans         &trans         &trans         &trans
+            &trans        &trans         &trans         &kp CARET      &kp DELETE     &kp PSCRN      &kp UP         &trans         &kp TILDE      &trans         &trans         &trans         &trans
+            &kp AMPS      &kp PIPE       &kp LPAR       &kp LBRC       &kp RPAR       &kp BSPC       &kp DOWN       &kp GT         &kp GRAVE      &kp ASTRK      &kp N8         &kp N9         &trans
+            &kp QMARK     &kp PRCNT      &kp LBKT       &kp RBKT       &kp LPAR       &kp MINUS      &kp LEFT       &kp PLUS       &kp EQUAL      &kp N0         &kp N1         &kp N2         &kp EXCL
+            &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &kp DOT        &kp DQT        &kp RIGHT      &kp LT         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7
+            &trans        &trans         &trans         &lt NAV BSLH   &trans         &kp DLLR       &kp ENTER      &trans         &trans         &trans         &trans         &trans
             >;
         };
 
