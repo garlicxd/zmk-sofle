@@ -107,7 +107,17 @@
         // LAYER 4: Mouse
         // Knob: Mouse Wheel | Joystick: Mouse Movement
         ///////////////////////////////////////////////////////////////////////////////////
-        MOU { display-name = "Mouse"; bindings = <&trans>; };
+        MOU {
+            sensor-bindings = <&inc_dec_kp C_WH_D C_WH_U>;
+            bindings = <
+            // LEFT HAND                                                                             JOYSTICK        RIGHT HAND
+            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
+            &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
+            >;
+        };
 
         ///////////////////////////////////////////////////////////////////////////////////
         // LAYER 5: Special
