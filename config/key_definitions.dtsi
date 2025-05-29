@@ -1,4 +1,4 @@
-// Total Keys: 62
+// Total Keys: 64, for Eyelash Sofle - Knob on left, Joystick on right
 
 // Numbers Row (13 keys)
 #define LN5  0
@@ -7,7 +7,7 @@
 #define LN2  3
 #define LN1  4
 #define LN0  5
-#define RJU  6  // Right Joystick Up
+#define RJU  6   // Right Joystick Up
 #define RN0  7
 #define RN1  8
 #define RN2  9
@@ -22,7 +22,7 @@
 #define LT2  16
 #define LT1  17
 #define LT0  18
-#define RJD  19 // Right Joystick Down
+#define RJD  19  // Right Joystick Down
 #define RT0  20
 #define RT1  21
 #define RT2  22
@@ -37,7 +37,7 @@
 #define LM2  29
 #define LM1  30
 #define LM0  31
-#define RJL  32 // Right Joystick Left
+#define RJL  32  // Right Joystick Left
 #define RM0  33
 #define RM1  34
 #define RM2  35
@@ -52,7 +52,7 @@
 #define LB2  42
 #define LB1  43
 #define LB0  44
-#define RJR  45 // Right Joystick Right
+#define RJR  45  // Right Joystick Right
 #define RB0  46
 #define RB1  47
 #define RB2  48
@@ -60,14 +60,33 @@
 #define RB4  50
 #define RB5  51
 
-// Thumb Cluster (10 keys)
-#define LEC  52 // Left Encoder Click
-#define LH2  53 // Assumed
-#define LH1  54 // Assumed
-#define LH0  55 // Assumed
-#define RJC  56 // Right Joystick Click
-#define RH0  57
-#define RH1  58
-#define RH2  59
-#define RH3  60
-#define RH4  61
+// Thumb Cluster (12 keys)
+#define LEC  52  // Left Encoder Click
+#define LH4  53
+#define LH3  54
+#define LH2  55
+#define LH1  56
+#define LH0  57
+#define RJC  58  // Right Joystick Click
+#define RH0  59
+#define RH1  60
+#define RH2  61
+#define RH3  62
+#define RH4  63
+
+// Cluster Definitions
+#define KEYS_L LN5, LN4, LN3, LN2, LN1, LN0, \
+               LT5, LT4, LT3, LT2, LT1, LT0, \
+               LM5, LM4, LM3, LM2, LM1, LM0, \
+               LB5, LB4, LB3, LB2, LB1, LB0
+
+#define KEYS_R RN0, RN1, RN2, RN3, RN4, RN5, \
+               RT0, RT1, RT2, RT3, RT4, RT5, \
+               RM0, RM1, RM2, RM3, RM4, RM5, \
+               RB0, RB1, RB2, RB3, RB4, RB5
+
+#define KEYS_T LEC, LH4, LH3, LH2, LH1, LH0, RJC, RH0, RH1, RH2, RH3, RH4
+
+#define KEYS_J RJU, RJD, RJL, RJR, RJC
+
+#define KEYS_K LEC
