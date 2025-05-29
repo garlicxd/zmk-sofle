@@ -1,0 +1,73 @@
+// Total Keys: 62
+
+// Numbers Row (13 keys)
+#define LN5  0
+#define LN4  1
+#define LN3  2
+#define LN2  3
+#define LN1  4
+#define LN0  5
+#define RJU  6  // Right Joystick Up
+#define RN0  7
+#define RN1  8
+#define RN2  9
+#define RN3  10
+#define RN4  11
+#define RN5  12
+
+// Top Alpha Row (13 keys)
+#define LT5  13
+#define LT4  14
+#define LT3  15
+#define LT2  16
+#define LT1  17
+#define LT0  18
+#define RJD  19 // Right Joystick Down
+#define RT0  20
+#define RT1  21
+#define RT2  22
+#define RT3  23
+#define RT4  24
+#define RT5  25
+
+// Middle Alpha (Homing) Row (13 keys)
+#define LM5  26
+#define LM4  27
+#define LM3  28
+#define LM2  29
+#define LM1  30
+#define LM0  31
+#define RJL  32 // Right Joystick Left
+#define RM0  33
+#define RM1  34
+#define RM2  35
+#define RM3  36
+#define RM4  37
+#define RM5  38
+
+// Bottom Alpha Row (13 keys)
+#define LB5  39
+#define LB4  40
+#define LB3  41
+#define LB2  42
+#define LB1  43
+#define LB0  44
+#define RJR  45 // Right Joystick Right
+#define RB0  46
+#define RB1  47
+#define RB2  48
+#define RB3  49
+#define RB4  50
+#define RB5  51
+
+// Thumb Cluster (10 keys)
+#define LEC  52 // Left Encoder Click
+#define LH2  53 // Assumed
+#define LH1  54 // Assumed
+#define LH0  55 // Assumed
+#define RJC  56 // Right Joystick Click
+#define RH0  57
+#define RH1  58
+#define RH2  59
+#define RH3  60
+#define RH4  61
