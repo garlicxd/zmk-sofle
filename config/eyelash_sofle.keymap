@@ -23,6 +23,7 @@
 
 // TODO: - Combos -
 #include "combos.dtsi"
+#include "joystick.dtsi"
 
 / {
     behaviors {
