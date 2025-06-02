@@ -101,3 +101,6 @@
 #define KEYS_J RJU, RJD, RJL, RJR, RJC
 
 #define KEYS_K LEC
+
+#define ___ &trans
+#define XXX &none
