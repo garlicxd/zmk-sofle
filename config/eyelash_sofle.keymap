@@ -50,7 +50,7 @@
 / {
     behaviors {
 
-        hmr: homerow_mods {
+        hmr: homerow_mods_r {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
@@ -61,7 +61,7 @@
             tapping-term-ms = <150>;
         };
 
-        hml: homerow_mods {
+        hml: homerow_mods_l {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             bindings = <&kp>, <&kp>;
