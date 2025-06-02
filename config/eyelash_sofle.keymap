@@ -46,31 +46,9 @@
 #define SYM 6
 #define ARR 7
 
-// TODO: - Homerow Mods -
-#define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
-    ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
-               tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
-               require-prior-idle-ms = <150>; hold-trigger-on-release;         \
-               hold-trigger-key-positions = <TRIGGER_POS>;)
-
-// MAKE_HRM(hml, &kp, &kp, KEYS_R)
-// MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
-
-// Hack: Make HRM combos tap-only (cf, ZMK issue #544).
-// #define ZMK_COMBO_8(NAME, TAP, POS, LAYERS, COMBO_MS, IDLE_MS, HOLD, SIDE)     \
-//     MAKE_HRM(hm_combo_##NAME, &kp, TAP, SIDE KEYS_T)                           \
-//     ZMK_COMBO_6(NAME, &hm_combo_##NAME HOLD 0, POS, LAYERS, COMBO_MS, IDLE_MS)
-
 // TODO: - Combos -
 #include "combos.dtsi"
 #include "joystick.dtsi"
-
-// TODO: - Morphs
-// Define mod-morph with a *single* mod trigger for less repetition.
-#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
-    ZMK_MOD_MORPH( NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                   \
-                   bindings = <BINDING1>, <BINDING2>; )
-SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)
 
 / {
     behaviors {
@@ -126,7 +104,6 @@ SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)
         };
     };
 };
-
 // hmr: homerow_mods_r {
         //     compatible = "zmk,behavior-hold-tap";
         //     #binding-cells = <2>;
