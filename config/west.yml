@@ -30,4 +30,5 @@ manifest:
     # ZMK modules
 
   self:
-    path: boards
+    # path: boards
+    path: config
