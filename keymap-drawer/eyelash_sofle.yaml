@@ -29,15 +29,15 @@ layers:
   - Z
   - '?'
   - C
-  - {t: I, h: '$$mdi:apple-keyboard-control$$'}
-  - {t: E, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: A, h: '$$mdi:apple-keyboard-shift$$'}
+  - '&hml LCTRL I'
+  - '&hml LALT E'
+  - '&hml LSHFT A'
   - {t: '-', s: _}
   - $$mdi:pan-left$$
   - K
-  - {t: H, h: '$$mdi:apple-keyboard-shift$$'}
-  - {t: T, h: '$$mdi:apple-keyboard-option$$'}
-  - {t: N, h: '$$mdi:apple-keyboard-control$$'}
+  - '&hmr RSHFT H'
+  - '&hmr RALT T'
+  - '&hmr RCTRL N'
   - S
   - '!'
   - {t: ;, s: ':'}
