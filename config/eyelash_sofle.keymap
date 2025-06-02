@@ -21,13 +21,6 @@
 
 // TODO: - HMR -
 
-// TODO: - Morphs
-// Define mod-morph with a *single* mod trigger for less repetition.
-// #define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
-//     ZMK_MOD_MORPH( NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                   \
-//                    bindings = <BINDING1>, <BINDING2>; )
-// SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)
-
 // TODO: - Homerow Mods -
 // #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
 //     ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
@@ -46,6 +39,13 @@
 // TODO: - Combos -
 #include "combos.dtsi"
 #include "joystick.dtsi"
+
+// TODO: - Morphs
+// Define mod-morph with a *single* mod trigger for less repetition.
+#define SIMPLE_MORPH(NAME, MOD, BINDING1, BINDING2)                            \
+    ZMK_MOD_MORPH( NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                   \
+                   bindings = <BINDING1>, <BINDING2>; )
+SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)
 
 / {
     behaviors {
