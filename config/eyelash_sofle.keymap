@@ -29,14 +29,14 @@
 // SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)
 
 // TODO: - Homerow Mods -
-#define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
-    ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
-               tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
-               require-prior-idle-ms = <150>; hold-trigger-on-release;         \
-               hold-trigger-key-positions = <TRIGGER_POS>;)
+// #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                 \
+//     ZMK_HOLD_TAP(NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
+//                tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>;         \
+//                require-prior-idle-ms = <150>; hold-trigger-on-release;         \
+//                hold-trigger-key-positions = <TRIGGER_POS>;)
 
-MAKE_HRM(hml, &kp, &kp, KEYS_R KEYS_T) // Left-hand HRMs.
-MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
+// MAKE_HRM(hml, &kp, &kp, KEYS_R KEYS_T) // Left-hand HRMs.
+// MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
 
 // Hack: Make HRM combos tap-only (cf, ZMK issue #544).
 // #define ZMK_COMBO_8(NAME, TAP, POS, LAYERS, COMBO_MS, IDLE_MS, HOLD, SIDE)     \
@@ -49,6 +49,28 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
 
 / {
     behaviors {
+
+        hmr: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "tap-preferred";
+            require-prior-idle-ms = <100>;
+            quick-tap-ms = <125>;
+            tapping-term-ms = <150>;
+        };
+
+        hml: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            bindings = <&kp>, <&kp>;
+
+            flavor = "tap-preferred";
+            require-prior-idle-ms = <100>;
+            quick-tap-ms = <125>;
+            tapping-term-ms = <150>;
+        };
 
         hm: homerow_mods {
             compatible = "zmk,behavior-hold-tap";
