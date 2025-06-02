@@ -85,7 +85,7 @@ SIMPLE_MORPH(comma_morph, SFT, &kp COMMA, &kp SEMICOLON)
             &trans        &trans         &trans         &kp AT         &kp DELETE     &kp PSCRN      &msc SCRL_UP   &trans         &kp TILDE      &trans         &trans         &trans         &trans
             &kp AMPS      &kp B          &kp Y          &kp O          &kp U          &kp BSPC       &msc SCRL_DOWN &kp X          &kp L          &kp D          &kp W          &kp V          &kp Z
             &kp QMARK     &kp C          &hml LCTRL I   &hml LALT E    &hml LSHFT A   &kp MINUS      &msc SCRL_LEFT &kp K          &hmr RSHFT H   &hmr RALT T    &hmr RCTRL N   &kp S          &kp EXCL
-            &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &hm LGUI DOT   &kp DQT        &msc SCRL_RIGHT &kp J         &hm RGUI M     &kp G          &kp P          &kp F          &kp Q
+            &kp SEMI      &comma_morph      &kp COLON      &kp FSLH       &hm LGUI DOT   &kp DQT        &msc SCRL_RIGHT &kp J         &hm RGUI M     &kp G          &kp P          &kp F          &kp Q
             &kp C_MUTE    ___   ___   ___    &kp SPACE      ___  &kp ENTER      ___    ___      ___  &kp HASH       ___
             >;
         };
