@@ -16,4 +16,4 @@
    ╰──H──────────────────────╯╰───────╯╰─────────────────────╯
 */
 
-ZMK_COMBO(,   &kp LC(X),    LB3 LB1,     DEF NAV NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(,   &kp LC(X),    LB3 LB1,     DEF NAV NUM, COMBO_TERM_FAST, COMBO_IDLE_FAST)
