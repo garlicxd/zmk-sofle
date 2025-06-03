@@ -1,4 +1,4 @@
-// Total Keys: 64, for Eyelash Sofle - Knob on left, Joystick on right
+// Total Keys: 64 for Eyelash Sofle - Knob on left Joystick on right
 /*         
             Left Hand          Joystck        Right Hand
   ╭───────────────────────────┼───────┼───────────────────────────╮
@@ -86,19 +86,19 @@
 #define RH4  63
 
 // Cluster Definitions
-#define KEYS_L LN5, LN4, LN3, LN2, LN1, LN0, \
-               LT5, LT4, LT3, LT2, LT1, LT0, \
-               LM5, LM4, LM3, LM2, LM1, LM0, \
-               LB5, LB4, LB3, LB2, LB1, LB0
+#define KEYS_L LN5 LN4 LN3 LN2 LN1 LN0 \
+               LT5 LT4 LT3 LT2 LT1 LT0 \
+               LM5 LM4 LM3 LM2 LM1 LM0 \
+               LB5 LB4 LB3 LB2 LB1 LB0
 
-#define KEYS_R RN0, RN1, RN2, RN3, RN4, RN5, \
-               RT0, RT1, RT2, RT3, RT4, RT5, \
-               RM0, RM1, RM2, RM3, RM4, RM5, \
-               RB0, RB1, RB2, RB3, RB4, RB5
+#define KEYS_R RN0 RN1 RN2 RN3 RN4 RN5 \
+               RT0 RT1 RT2 RT3 RT4 RT5 \
+               RM0 RM1 RM2 RM3 RM4 RM5 \
+               RB0 RB1 RB2 RB3 RB4 RB5
 
-#define KEYS_T LH4, LH3, LH2, LH1, LH0, RH0, RH1, RH2, RH3, RH4
+#define KEYS_T LH4 LH3 LH2 LH1 LH0 RH0 RH1 RH2 RH3 RH4
 
-#define KEYS_J RJU, RJD, RJL, RJR, RJC
+#define KEYS_J RJU RJD RJL RJR RJC
 
 #define KEYS_K LEC
 
