@@ -1,5 +1,5 @@
 
-#include <joystick.dtsi>
+#include "joystick.dtsi"
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
