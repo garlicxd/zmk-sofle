@@ -12,6 +12,27 @@
 #include "joystick.dtsi"
 #include "eyelash_sofle_keydefs.dtsi"
 
+// - Defaults -
+#define QUICK_TAP_MS 175
+&sk {
+    release-after-ms = <900>;
+    quick-release;
+};
+&sl { // Allow sticky mods to chord across sticky layers.
+    ignore-modifiers;
+};
+&lt {
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+};
+&mt {
+    flavor = "tap-preferred";
+    tapping-term-ms = <220>;
+    quick-tap-ms = <220>;
+    hold-trigger-key-positions = <0>;
+}
+
 / {
 
     scroll_encoder: scroll_encoder {
