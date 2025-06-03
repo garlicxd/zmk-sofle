@@ -10,6 +10,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #include "joystick.dtsi"
+#include "eyelash_sofle_keydefs.dtsi"
 
 / {
 
