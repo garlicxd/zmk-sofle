@@ -26,6 +26,9 @@ manifest:
     - name: zmk-auto-layer
       remote: urob
       revision: main
+    - name: zmk-leader-key
+      remote: urob
+      revision: main
     
     # ZMK modules
 
