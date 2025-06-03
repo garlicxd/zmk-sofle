@@ -8,6 +8,9 @@
 #include <dt-bindings/zmk/outputs.h>
 #include "zmk-helpers/helper.h"
 #include "eyelash_sofle_keydefs.dtsi"
+// TODO: - Combos -
+// #include "combos.dtsi"
+#include "joystick.dtsi"
 
 
 // - Defaults -
@@ -46,20 +49,16 @@
 #define SYM 6
 #define ARR 7
 
-// TODO: - Combos -
-// #include "combos.dtsi"
-#include "joystick.dtsi"
-
 / {
     behaviors {
 
         hml: homerow_mods_l {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; bindings = <&kp>, <&kp>;
             flavor = "balanced"; tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>; hold-trigger-on-release;
-            hold-trigger-key-positions = <KEYS_R>; display-name = "Hold-Tap Mod"; };
+            hold-trigger-key-positions = <>; display-name = "Hold-Tap Mod"; };
 
         hmr: homerow_mods_r {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; bindings = <&kp>, <&kp>;
             flavor = "balanced"; tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>; hold-trigger-on-release;
-            hold-trigger-key-positions = <KEYS_L>; display-name = "Hold-Tap Mod"; };
+            hold-trigger-key-positions = <>; display-name = "Hold-Tap Mod"; };
 
         // hmr: homerow_mods_r {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
         //     bindings = <&kp>, <&kp>; flavor = "tap-preferred"; require-prior-idle-ms = <100>; quick-tap-ms = <125>; tapping-term-ms = <150>; };
