@@ -8,14 +8,29 @@
 #include "eyelash_sofle_keydefs.dtsi"
 #include "joystick.dtsi"
 
+// - Defaults -
+#define QUICK_TAP_MS 175
+&sk {
+    release-after-ms = <900>;
+    quick-release;
+};
+&sl { // Allow sticky mods to chord across sticky layers.
+    ignore-modifiers;
+};
+&lt {
+    flavor = "balanced";
+    tapping-term-ms = <200>;
+    quick-tap-ms = <QUICK_TAP_MS>;
+};
+&mt {
+    flavor = "tap-preferred";
+    tapping-term-ms = <220>;
+    quick-tap-ms = <220>;
+    hold-trigger-key-positions = <0>;
+}
+
 / {
     behaviors {
-        scroll_encoder: scroll_encoder {
-            compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-            tap-ms = <100>;
-        };
         hml: homerow_mods_l {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; bindings = <&kp>, <&kp>;
             flavor = "balanced"; tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>; hold-trigger-on-release;
             hold-trigger-key-positions = <>; display-name = "Hold-Tap Mod"; };
@@ -23,6 +38,17 @@
         hmr: homerow_mods_r {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; bindings = <&kp>, <&kp>;
             flavor = "balanced"; tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>; hold-trigger-on-release;
             hold-trigger-key-positions = <>; display-name = "Hold-Tap Mod"; };
+        scroll_encoder: scroll_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>;
+            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>; };
+
+        volume_encoder: volume_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>;
+            bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>; };
+
+        rgb_br_encoder: rgb_br_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>;
+            bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>; };
+
+        zoom_encoder: zoom_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>;
+            bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>; };
     };
 
     keymap {
@@ -77,269 +103,3 @@
         };
     };
 };
-
-// TODO: add seperate homerow configuration, different timings
-
-#include <behaviors.dtsi>
-#include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
-#include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/rgb.h>
-#include <dt-bindings/zmk/outputs.h>
-#include "zmk-helpers/helper.h"
-#include "eyelash_sofle_keydefs.dtsi"
-// TODO: - Combos -
-// #include "combos.dtsi"
-#include "joystick.dtsi"
-
-
-// - Defaults -
-
-#define QUICK_TAP_MS 175
-
-&sk {
-    release-after-ms = <900>;
-    quick-release;
-};
-
-&sl { // Allow sticky mods to chord across sticky layers.
-    ignore-modifiers;
-};
-
-&lt {
-    flavor = "balanced";
-    tapping-term-ms = <200>;
-    quick-tap-ms = <QUICK_TAP_MS>;
-};
-
-&mt {
-    flavor = "tap-preferred";
-    tapping-term-ms = <220>;
-    quick-tap-ms = <220>;
-    hold-trigger-key-positions = <0>;
-}
-
-// - Layers -
-#define DEF 0
-#define QWE 1
-#define SYS 2
-#define NAV 3
-#define MOU 4
-#define SPE 5
-#define SYM 6
-#define ARR 7
-
-/ {
-    behaviors {
-
-        hml: homerow_mods_l {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; bindings = <&kp>, <&kp>;
-            flavor = "balanced"; tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>; hold-trigger-on-release;
-            hold-trigger-key-positions = <>; display-name = "Hold-Tap Mod"; };
-
-        hmr: homerow_mods_r {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; bindings = <&kp>, <&kp>;
-            flavor = "balanced"; tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>; hold-trigger-on-release;
-            hold-trigger-key-positions = <>; display-name = "Hold-Tap Mod"; };
-
-        // hmr: homerow_mods_r {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
-        //     bindings = <&kp>, <&kp>; flavor = "tap-preferred"; require-prior-idle-ms = <100>; quick-tap-ms = <125>; tapping-term-ms = <150>; };
-
-        //hml: homerow_mods_l {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
-        //    bindings = <&kp>, <&kp>; flavor = "tap-preferred"; require-prior-idle-ms = <100>; quick-tap-ms = <125>; tapping-term-ms = <150>; };
-
-        //hm: homerow_mods {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>;
-        //    bindings = <&kp>, <&kp>; flavor = "tap-preferred"; require-prior-idle-ms = <100>; quick-tap-ms = <125>; tapping-term-ms = <150>; };
-
-        scroll_encoder: scroll_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>; };
-
-        volume_encoder: volume_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>;
-            bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>; };
-
-        rgb_br_encoder: rgb_br_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>;
-            bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>; };
-
-        zoom_encoder: zoom_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>;
-            bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>; };
-        
-    };
-    
-    keymap {
-        compatible = "zmk,keymap";
-
-        ///////////////////////////////////////////////////////////////////////////////////
-        // LAYER 0: Default
-        // Knob: Volume, Mute | Joystick: Scrolling
-        ///////////////////////////////////////////////////////////////////////////////////
-        DEF {
-            sensor-bindings = <&volume_encoder>;
-            bindings = <
-            // LEFT HAND                                                                             JOYSTICK       RIGHT HAND
-            &trans        &trans         &trans         &kp AT         &kp DELETE     &kp PSCRN      &msc SCRL_UP   &trans         &kp TILDE      &trans         &trans         &trans         &trans
-            &kp AMPS      &kp B          &kp Y          &kp O          &kp U          &kp BSPC       &msc SCRL_DOWN &kp X          &kp L          &kp D          &kp W          &kp V          &kp Z
-            &kp QMARK     &kp C          &hml LCTRL I   &hml LALT E    &hml LSHFT A   &kp MINUS      &msc SCRL_LEFT &kp K          &hmr RSHFT H   &hmr RALT T    &hmr RCTRL N   &kp S          &kp EXCL
-            &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &hml LGUI DOT   &kp DQT        &msc SCRL_RIGHT &kp J         &hmr RGUI M     &kp G          &kp P          &kp F          &kp Q
-            &kp C_MUTE    ___   ___   ___    &kp SPACE      ___  &kp ENTER      ___    ___      ___  &kp HASH       ___
-            >;
-        };
-    };
-};
-// hmr: homerow_mods_r {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     #binding-cells = <2>;
-        //     bindings = <&kp>, <&kp>;
-
-        //     flavor = "tap-preferred";
-        //     require-prior-idle-ms = <100>;
-        //     quick-tap-ms = <125>;
-        //     tapping-term-ms = <150>;
-        // };
-
-        // hml: homerow_mods_l {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     #binding-cells = <2>;
-        //     bindings = <&kp>, <&kp>;
-
-        //     flavor = "tap-preferred";
-        //     require-prior-idle-ms = <100>;
-        //     quick-tap-ms = <125>;
-        //     tapping-term-ms = <150>;
-        // };
-
-        // lm: layer_mods {
-        //     compatible = "zmk,behavior-hold-tap";
-        //     #binding-cells = <2>;
-        //     bindings = <&mo>, <&kp>;
-            
-        //     flavor = "balanced";
-        //     require-prior-idle-ms = <100>;
-        //     quick-tap-ms = <125>;
-        //     tapping-term-ms = <150>;
-        // };
-
-        // scroll_encoder: scroll_encoder {
-        //     compatible = "zmk,behavior-sensor-rotate";
-        //     #sensor-binding-cells = <0>;
-        //     bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>;
-        // };
-
-        // volume_encoder: volume_encoder {
-        //     compatible = "zmk,behavior-sensor-rotate";
-        //     #sensor-binding-cells = <0>;
-        //     bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>;
-        // };
-
-        // rgb_br_encoder: rgb_br_encoder {
-        //     compatible = "zmk,behavior-sensor-rotate";
-        //     #sensor-binding-cells = <0>;
-        //     bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>;
-        // };
-
-        // zoom_encoder: zoom_encoder {
-        //     compatible = "zmk,behavior-sensor-rotate";
-        //     #sensor-binding-cells = <0>;
-        //     bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>;
-        // };
-
-                ///////////////////////////////////////////////////////////////////////////////////
-        // LAYER 1: Qwerty (Gaming)
-        ///////////////////////////////////////////////////////////////////////////////////
-        // QWE {
-        //     sensor-bindings = <&volume_encoder>;
-        //     bindings = <
-        //     // LEFT HAND                                                                            JOYSTICK        RIGHT HAND
-        //     &kp MINUS     &kp EQUAL      &kp N1         &kp N2         &kp N3         &kp N4         &trans         &kp N5         &kp N6         &kp N7         &kp N8         &kp N9         &kp GRAVE
-        //     &kp RBRC      &kp LSHFT      &kp Q          &kp W          &kp E          &kp R          &trans         &kp T          &kp Y          &kp U          &kp I          &kp O          &kp P
-        //     &kp LBRC      &kp LCTRL      &kp A          &kp S          &kp D          &kp F          &trans         &kp G          &kp H          &kp J          &kp K          &kp L          &kp SEMI
-        //     &kp DQT       &kp LALT       &kp Z          &kp X          &kp C          &kp V          &trans         &kp B          &kp N          &kp M          &kp COMMA      &kp DOT        &kp FSLH
-        //     &kp C_MUTE    &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &to DEF
-        //     >;
-        // };
-
-        ///////////////////////////////////////////////////////////////////////////////////
-        // LAYER 2: System
-        // Knob: RGB Control | Joystick: RGB Control
-        ///////////////////////////////////////////////////////////////////////////////////
-        // SYS {
-        //     sensor-bindings = <&rgb_br_encoder>;
-        //     bindings = <
-        //     // LEFT HAND                                                                             JOYSTICK        RIGHT HAND
-        //     &trans        &trans         &trans         &trans         &bt BT_CLR     &bt BT_CLR_ALL &rgb_ug RGB_SAI &trans         &trans         &trans         &trans         &trans        &trans
-        //     &soft_off     &bt BT_SEL 1   &bt BT_SEL 2   &bt BT_SEL 3   &bt BT_SEL 4   &bt BT_SEL 5   &rgb_ug RGB_SAD &trans         &trans         &trans         &trans         &trans        &trans
-        //     &trans        &out OUT_USB   &out OUT_BLE   &trans         &sys_reset     &bootloader    &rgb_ug RGB_EFF &bootloader    &sys_reset     &trans         &trans         &trans        &trans
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &rgb_ug RGB_EFR &trans         &trans         &trans         &trans         &trans        &trans
-        //     &rgb_ug RGB_TOG &trans       &trans         &trans         &trans         &trans         &to DEF         &trans         &trans         &trans         &trans         &trans
-        //     >;
-        // };
-
-        ///////////////////////////////////////////////////////////////////////////////////
-        // LAYER 3: Navigation
-        ///////////////////////////////////////////////////////////////////////////////////
-        // NAV {
-        //     bindings = <
-        //     // LEFT HAND                                                                            JOYSTICK        RIGHT HAND
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &kp LC(X)      &kp LC(V)      &kp LC(Y)      &kp LC(Z)      &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     >;
-        // };
-
-        ///////////////////////////////////////////////////////////////////////////////////
-        // LAYER 4: Mouse
-        // Knob: Mouse Wheel | Joystick: Mouse Movement
-        ///////////////////////////////////////////////////////////////////////////////////
-        // MOU {
-        //     sensor-bindings = <&scroll_encoder>;
-        //     bindings = <
-        //     // LEFT HAND                                                                             JOYSTICK        RIGHT HAND
-        //     &trans         &trans         &trans         &trans         &trans         &trans         &mmv MOVE_UP   &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans         &trans         &trans         &mkp MB3       &trans         &trans         &mmv MOVE_DOWN &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans         &trans         &mkp MB2       &trans         &mkp MB1       &trans         &mmv MOVE_LEFT &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans         &trans         &trans         &trans         &trans         &trans         &mmv MOVE_RIGHT &trans        &trans         &trans         &trans         &trans         &trans
-        //     &trans         &trans         &trans         &trans         &trans         &trans         &mkp MB1       &trans         &trans         &trans         &trans         &trans
-        //     >;
-        // };
-
-        ///////////////////////////////////////////////////////////////////////////////////
-        // LAYER 5: Special
-        ///////////////////////////////////////////////////////////////////////////////////
-        // SPE {
-        //     bindings = <
-        //     // LEFT HAND                                                                             JOYSTICK       RIGHT HAND
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans         &trans
-        //     >;
-        // };
-
-        ///////////////////////////////////////////////////////////////////////////////////
-        // LAYER 6: Symbols
-        ///////////////////////////////////////////////////////////////////////////////////
-        // SYM {
-        //     bindings = <
-        //     // LEFT HAND                                                                            JOYSTICK        RIGHT HAND
-        //     &trans        &trans         &trans         &kp CARET      &kp DELETE     &kp PSCRN      &kp UP         &trans         &kp TILDE      &trans         &trans         &trans         &trans
-        //     &kp AMPS      &kp PIPE       &kp LPAR       &kp LBRC       &kp RPAR       &kp BSPC       &kp DOWN       &kp GT         &kp GRAVE      &kp ASTRK      &kp N8         &kp N9         &trans
-        //     &kp QMARK     &kp PRCNT      &kp LBKT       &kp RBRC       &kp RBRC       &kp MINUS      &kp LEFT       &kp PLUS       &kp EQUAL      &kp N0         &kp N1         &kp N2         &kp EXCL
-        //     &kp SEMI      &kp COMMA      &kp COLON      &kp FSLH       &kp DOT        &kp DQT        &kp RIGHT      &kp LT         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7
-        //     &trans        &trans         &trans         &lm NAV BSLH   &trans         &kp DLLR       &kp ENTER      &trans         &trans         &trans         &trans         &trans
-        //     >;
-        // };
-
-        ///////////////////////////////////////////////////////////////////////////////////
-        // LAYER 7: Arrows
-        // Joystick: Arrow Keys
-        ///////////////////////////////////////////////////////////////////////////////////
-        // ARR {
-        //     bindings = <
-        //     // LEFT HAND                                                                             JOYSTICK       RIGHT HAND
-        //     &trans        &trans         &trans         &kp PG_UP      &kp DELETE     &trans         &kp UP         &trans         &trans         &trans         &trans         &trans         &trans
-        //     &trans        &trans         &trans         &kp UP         &trans         &kp BSPC       &kp DOWN       &trans         &trans         &trans         &kp N8         &kp N9         &trans
-        //     &trans        &kp HOME       &kp LEFT       &kp DOWN       &kp RIGHT      &kp END        &kp LEFT       &trans         &trans         &trans         &kp N0         &kp N1         &kp N2
-        //     &trans        &trans         &trans         &kp PG_DN      &trans         &trans         &kp RIGHT      &trans         &kp N3         &kp N4         &kp N5         &kp N6         &kp N7
-        //     &trans        &trans         &trans         &trans         &trans         &trans         &kp ENTER      &trans         &trans         &trans         &trans         &trans
-        //     >;
-        // };
