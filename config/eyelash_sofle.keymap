@@ -9,7 +9,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #include "joystick.dtsi"
-//#include "eyelash_sofle_keydefs.dtsi"
+#include "eyelash_sofle_keydefs.dtsi"
 
 // - Defaults -
 #define QUICK_TAP_MS 175
@@ -30,7 +30,7 @@
     tapping-term-ms = <220>;
     quick-tap-ms = <220>;
     hold-trigger-key-positions = <0>;
-}
+};
 
 / {
 
