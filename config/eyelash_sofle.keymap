@@ -1,4 +1,3 @@
-
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 #include <behaviors.dtsi>
@@ -10,7 +9,7 @@
 #include <dt-bindings/zmk/outputs.h>
 
 #include "joystick.dtsi"
-#include "eyelash_sofle_keydefs.dtsi"
+//#include "eyelash_sofle_keydefs.dtsi"
 
 // - Defaults -
 #define QUICK_TAP_MS 175
