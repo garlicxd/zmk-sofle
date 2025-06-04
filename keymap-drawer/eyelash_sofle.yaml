@@ -28,7 +28,7 @@ layers:
   - P
   - {t: \, s: '|'}
   - $$mdi:apple-keyboard-caps$$
-  - {t: A, h: LGUI}
+  - '&hml LGUI A'
   - S
   - D
   - F
