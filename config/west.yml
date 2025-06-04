@@ -10,6 +10,8 @@ manifest:
       url-base: https://github.com/GPeye
     - name: urob
       url-base: https://github.com/urob
+    - name: theol0403
+      url-base: https://github.com/theol0403
 
   projects:
     - name: mario-peripheral-animation
@@ -33,4 +35,4 @@ manifest:
     # ZMK modules
 
   self:
-    path: boards
+    path: config
