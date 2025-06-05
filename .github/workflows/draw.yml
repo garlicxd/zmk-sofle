@@ -2,10 +2,10 @@ name: Draw Keymap
 on:
   workflow_dispatch:
   push:
-    paths:
-      - "config/**"
-      - .github/workflows/draw.yml
-      - keymap_drawer.config.yaml
+    # paths:
+    #   - "config/**"
+    #   - .github/workflows/draw.yml
+    #   - keymap_drawer.config.yaml
 
 jobs:
   draw:
