@@ -27,7 +27,7 @@
     quick-release;
 };
 &sl { // Allow sticky mods to chord across sticky layers.
-    // ignore-modifiers;
+    /delete-property/ ignore-modifiers;
 };
 &lt {
     flavor = "balanced";
