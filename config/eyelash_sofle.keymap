@@ -58,6 +58,16 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
 
 // ZMK_MACRO(mac_nav, bindings = <&kp F24>, <&macro_release &kp LGUI>, <&sl NAV_SYS>; wait-ms = <0>; tap-ms = <5>;)
 
+ZMK_ADAPTIVE_KEY(
+    shift_repeat, bindings = <&sk LSHFT>;
+    repeat {
+      trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
+      //bindings = <&key_repeat>;
+      bindings = <&kp A>;
+      max-prior-idle-ms = <1200>;
+      strict-modifiers;
+    };)
+
 / {
 
     behaviours {

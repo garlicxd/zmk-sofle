@@ -24,13 +24,14 @@ manifest:
 
     - name: zmk-helpers
       remote: urob
-      revision: main
     - name: zmk-auto-layer
       remote: urob
-      revision: main
     - name: zmk-leader-key
       remote: urob
-      revision: main
+    - name: zmk-adaptive-key
+      remote: urob
+    - name: zmk-tri-state
+      path: modules/zmk/tri-state
     
     # ZMK modules
 
