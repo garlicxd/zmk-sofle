@@ -71,21 +71,49 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
         zoom_encoder: zoom_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>; };
     };
 
-    keymap { 
-        compatible = "zmk,keymap";
-        DEFAULT { sensor-bindings = <&volume_encoder>; display-name = "LAYER0"; bindings = <
+    keymap { compatible = "zmk,keymap";
+
+        DEFAULT { sensor-bindings = <&volume_encoder>; display-name = "DEFAULT"; bindings = <
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp ESC       &kp N1        &kp N2        &kp N3        &kp N4        &kp N5        &trans     &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        &kp BSPC
+    &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp TAB       &kp Q         &kp W         &kp E         &kp R         &kp T         &trans     &kp Y         &kp U         &kp I         &kp O         &kp P         &kp BSLH
+    &trans        &kp V         &kp W         &kp D         &kp L         &kp J         &trans     &trans        &kp U         &kp O         &kp Y         &kp B         &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp CAPS      &hml LGUI A   &kp S         &kp D         &kp F         &kp G         &trans     &kp H         &kp J         &kp K         &kp L         &kp SEMI      &kp APOS
+    &trans        &kp S         &kp N         &kp T         &kp H         &kp K         &trans     &trans        &kp A         &kp E         &kp I         &kp C         &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LSHFT     &kp Z         &kp X         &kp C         &kp V         &kp B         &trans     &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      &kp ENTER
+    &trans        &kp F         &kp P         &kp G         &kp M         &kp X         &trans     &trans        &kp COMMA     &kp DOT       &kp SLASH     &trans        &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &kp LCTRL     &kp LEFT_GUI  &kp LEFT_ALT  &trans        &kp SPACE     &trans     &kp SPACE     &kp ENTER     &trans        &trans        &kp DELETE
+    &kp C_MUTE    &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
+
+        NAV_TXT { sensor-bindings = <&volume_encoder>; display-name = "NAV_TXT"; bindings = <
+//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &trans        &trans        &kp N9        &kp N8        &kp N7        &trans        &trans     &trans        &trans        &kp UP        &trans        &trans        &trans
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &trans        &kp N3        &kp N2        &kp N1        &kp N0        &trans        &trans     &trans        &kp LEFT      &kp DOWN      &kp RIGHT     &trans        &trans
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &trans        &trans        &kp N6        &kp N5        &kp N4        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
+//╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
+    &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans
+//              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
+        >;};
+
+//         NAV_TXT { sensor-bindings = <&volume_encoder>; display-name = "NAV_TXT"; bindings = <
+// //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+//     &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
+// //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+//     &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
+// //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+//     &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
+// //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+//     &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
+// //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
+//     &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans
+// //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
+//         >;};
 
 //         layer_1 {
 //             bindings = <
