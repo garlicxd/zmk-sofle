@@ -57,15 +57,27 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
 #include "joystick.dtsi"
 
 // ZMK_MACRO(mac_nav, bindings = <&kp F24>, <&macro_release &kp LGUI>, <&sl NAV_SYS>; wait-ms = <0>; tap-ms = <5>;)
-
+#define ADAPTIVE_RESET 1200
 ZMK_ADAPTIVE_KEY(
     shift_repeat, bindings = <&sk LSHFT>;
     repeat {
       trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
       bindings = <&key_repeat>;
-      max-prior-idle-ms = <1200>;
+      max-prior-idle-ms = <ADAPTIVE_RESET>;
       strict-modifiers;
     };)
+
+ZMK_ADAPTIVE_KEY(
+    magic, bindings = <&sk LSHFT>;
+
+    repeat {trigger-keys = <A>; bindings = <B>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers;};
+)
+
+ZMK_AUTO_LAYER(al_nav_sys, continue-list = <>; ignore-modifiers;)
+ZMK_AUTO_LAYER(al_nav_app, continue-list = <>; ignore-modifiers;)
+
+ZMK_COMBO(sk_nav_sys, &al_nav_sys NAV_SYS, LM3 LM2, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(sk_nav_app, &al_nav_app NAV_SYS, LM2 LM1, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 / {
 
