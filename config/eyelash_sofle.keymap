@@ -27,7 +27,7 @@
     quick-release;
 };
 &sl { // Allow sticky mods to chord across sticky layers.
-    ignore-modifiers;
+    // ignore-modifiers;
 };
 &lt {
     flavor = "balanced";
@@ -68,7 +68,7 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
         silly_morph: silly_morph {
     compatible = "zmk,behavior-mod-morph";
     label = "SILLY_MORPH";
-    #binding-cells = <0>;
+    #binding-cells = <0>;   
     mods = <(MOD_LGUI)>;
     bindings = <&kp A>, <&kp B>; // Normal: A, With LGUI: B
 };
@@ -93,7 +93,7 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &kp F         &kp P         &kp G         &kp M         &kp X         &trans     &trans        &kp COMMA     &kp DOT       &kp SLASH     &trans        &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &trans        &silly_morph  &trans        &trans     &trans        &trans        &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &trans        &space_morph  &trans        &trans     &trans        &trans        &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
