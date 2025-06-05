@@ -58,7 +58,7 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
   ZMK_MOD_MORPH(NAME, mods = <(MOD_L##MOD | MOD_R##MOD)>;                      \
                 bindings = <BINDING1>, <BINDING2>;)
 SIMPLE_MORPH(space_morph, LALT, &kp SPACE, &sl NAV_APP)
-SIMPLE_MORPH(space_morph, LGUI, &kp SPACE, &sl NAV_SYS)
+// SIMPLE_MORPH(space_morph, LGUI, &kp SPACE, &sl NAV_SYS)
 
 / {
 
@@ -89,7 +89,7 @@ SIMPLE_MORPH(space_morph, LGUI, &kp SPACE, &sl NAV_SYS)
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &kp F         &kp P         &kp G         &kp M         &kp X         &trans     &trans        &kp COMMA     &kp DOT       &kp SLASH     &trans        &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &trans        &space_morph  &trans        &trans     &trans        &trans        &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
