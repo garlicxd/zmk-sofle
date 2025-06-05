@@ -65,6 +65,13 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
         // hmr: homerow_mods_r {compatible = "zmk,behavior-hold-tap"; #binding-cells = <2>; bindings = <&kp>, <&kp>;
         //     flavor = "balanced"; tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>; hold-trigger-on-release;
         //     hold-trigger-key-positions = <KEYS_L>; display-name = "HMR"; };
+        silly_morph: silly_morph {
+    compatible = "zmk,behavior-mod-morph";
+    label = "SILLY_MORPH";
+    #binding-cells = <0>;
+    mods = <(MOD_LGUI)>;
+    bindings = <&kp A>, <&kp B>; // Normal: A, With LGUI: B
+};
         space_morph: space_morph {compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>; mods = <(MOD_LGUI | MOD_RGUI | MOD_LALT | MOD_RALT)>; bindings = <&kp SPACE>, <&space_morph_nav>;};
         space_morph_nav: space_morph_nav {compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>; mods = <(MOD_LGUI | MOD_RGUI)>; bindings = <&sl NAV_APP>, <&sl NAV_SYS>;};
         num_temp: num_temp {compatible = "zmk,behavior-auto-layer"; #binding-cells = <1>; continue-list = <LEFT DOWN UP RIGHT PG_DN PG_UP>; ignore-modifiers; };
@@ -86,7 +93,7 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &kp F         &kp P         &kp G         &kp M         &kp X         &trans     &trans        &kp COMMA     &kp DOT       &kp SLASH     &trans        &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &trans        &space_morph  &trans        &trans     &trans        &trans        &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &trans        &silly_morph  &trans        &trans     &trans        &trans        &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
