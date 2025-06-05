@@ -16,4 +16,4 @@
    ╰──H──────────────────────╯╰───────╯╰─────────────────────╯
 */
 
-ZMK_COMBO(quote, &kp APOSTROPHE, LM4 LM3, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+ZMK_COMBO(quote, &kp APOSTROPHE, LM3 LM2, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
