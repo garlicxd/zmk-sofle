@@ -58,19 +58,19 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
 #include "joystick.dtsi"
 
 #define ADAPTIVE_RESET 1200
-ZMK_ADAPTIVE_KEY(
-    shift_repeat, bindings = <&sk LSHFT>;
-    repeat {
-      trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
-      bindings = <&key_repeat>;
-      max-prior-idle-ms = <ADAPTIVE_RESET>;
-      strict-modifiers;
-    };)
+// ZMK_ADAPTIVE_KEY(
+//     shift_repeat, bindings = <&sk LSHFT>;
+//     repeat {
+//       trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
+//       bindings = <&key_repeat>;
+//       max-prior-idle-ms = <ADAPTIVE_RESET>;
+//       strict-modifiers;
+//     };)
 
 ZMK_ADAPTIVE_KEY(
     magic, bindings = <&sk LSHFT>;
 
-    repeat {trigger-keys = <A>; bindings = <B>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers;};
+    repeat {trigger-keys = <&kp A>; bindings = <&kp B>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers;};
 )
 
 ZMK_AUTO_LAYER(al_nav_sys, continue-list = <>; ignore-modifiers;)
