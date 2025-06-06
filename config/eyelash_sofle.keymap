@@ -19,6 +19,7 @@
 #define NAV_SYS 3
 #define NUM_ARR 4
 #define NUM_SYM 5
+#define OPTIONS 6
 
 // - Defaults -
 #define QUICK_TAP_MS 175
@@ -76,8 +77,8 @@ ZMK_ADAPTIVE_KEY(
 ZMK_AUTO_LAYER(al_nav_sys, continue-list = <>; ignore-modifiers;)
 ZMK_AUTO_LAYER(al_nav_app, continue-list = <>; ignore-modifiers;)
 
-ZMK_COMBO(sk_nav_sys, &al_nav_sys NAV_SYS, LM3 LM2, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
-ZMK_COMBO(sk_nav_app, &al_nav_app NAV_SYS, LM2 LM1, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(sk_nav_sys, &al_nav_sys NAV_SYS, LM3 LM2, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+// ZMK_COMBO(sk_nav_app, &al_nav_app NAV_SYS, LM2 LM1, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
 / {
 
@@ -90,8 +91,8 @@ ZMK_COMBO(sk_nav_app, &al_nav_app NAV_SYS, LM2 LM1, DEFAULT, COMBO_TERM_FAST, CO
         //     flavor = "balanced"; tapping-term-ms = <280>; quick-tap-ms = <QUICK_TAP_MS>; require-prior-idle-ms = <150>; hold-trigger-on-release;
         //     hold-trigger-key-positions = <KEYS_L>; display-name = "HMR"; };
 
-        // space_morph: space_morph {compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>; mods = <(MOD_LGUI | MOD_RGUI | MOD_LALT | MOD_RALT)>; bindings = <&kp SPACE>, <&space_morph_nav>;};
-        // space_morph_nav: space_morph_nav {compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>; mods = <(MOD_LGUI | MOD_RGUI)>; bindings = <&sl NAV_APP>, <&mac_nav>;};
+        space_morph: space_morph {compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>; mods = <(MOD_LGUI | MOD_RGUI | MOD_LALT | MOD_RALT)>; bindings = <&kp SPACE>, <&space_morph_nav>;};
+        space_morph_nav: space_morph_nav {compatible = "zmk,behavior-mod-morph"; #binding-cells = <0>; mods = <(MOD_LGUI | MOD_RGUI)>; bindings = <&sl NAV_APP>, <&mac_nav>;};
         
         num_temp: num_temp {compatible = "zmk,behavior-auto-layer"; #binding-cells = <1>; continue-list = <LEFT DOWN UP RIGHT PG_DN PG_UP>; ignore-modifiers; };
         scroll_encoder: scroll_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&msc SCRL_DOWN>, <&msc SCRL_UP>; };
@@ -112,7 +113,7 @@ ZMK_COMBO(sk_nav_app, &al_nav_app NAV_SYS, LM2 LM1, DEFAULT, COMBO_TERM_FAST, CO
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &kp F         &kp P         &kp G         &kp M         &kp X         &trans     &trans        &kp COMMA     &kp DOT       &kp SLASH     &trans        &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &trans        &kp SPACE     &trans        &trans     &trans        &trans        &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &trans        &space_morph     &trans        &trans     &trans        &kp R         &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
@@ -148,11 +149,11 @@ ZMK_COMBO(sk_nav_app, &al_nav_app NAV_SYS, LM2 LM1, DEFAULT, COMBO_TERM_FAST, CO
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &trans        &kp N9        &kp N8        &kp N7        &trans        &trans     &trans        &trans        &kp UP        &trans        &trans        &trans
+    &trans        &trans        &kp LG(N9)    &kp LG(N9)    &kp LG(N9)    &trans        &trans     &trans        &trans        &kp LG(UP)    &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &kp LG(N3)    &kp LG(N2)    &kp LG(N1)    &kp LA(TAB)   &trans        &trans     &trans        &kp LEFT      &kp DOWN      &kp RIGHT     &trans        &trans
+    &trans        &kp LG(N3)    &kp LG(N2)    &kp LG(N1)    &kp LA(TAB)   &trans        &trans     &trans        &kp LG(LEFT)  &kp LG(DOWN) &kp LG(RIGHT)  &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &trans        &kp N6        &kp N5        &kp N4        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
+    &trans        &trans        &kp LG(N9)    &kp LG(N9)    &kp LG(N9)    &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
     &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
