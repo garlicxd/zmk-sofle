@@ -35,11 +35,11 @@ ZMK_MOD_MORPH(dollar_amp_morph, bindings = <&kp DOLLAR>, <&kp AMPERSAND>; mods =
 ZMK_COMBO(dollar_amp,  &dollar_amp_morph,  LT3 LM3,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
 // SHIFT_MORPH(dquotes_caret, LT2 LM2, &kp DOUBLE_QUOTES, &kp CARET);
-ZMK_MOD_MORPH(dquotes_caret_morph, bindings = <&kp DOUBLE_QUOTES>, <&kp CARET>; mods = <(MOD_LSFT|MOD_RSFT)>;)
-ZMK_COMBO(dquotes_caret, &dquotes_caret_morph, LT2 LM2, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+// ZMK_MOD_MORPH(dquotes_caret_morph, bindings = <&kp DOUBLE_QUOTES>, <&kp CARET>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+// ZMK_COMBO(dquotes_caret, &dquotes_caret_morph, LT2 LM2, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
 #define SHIFT_MORPH(NAME, POSITION, BINDING1, BINDING2) \
    ZMK_MOD_MORPH(NAME##_morph, bindings = <&kp BINDING1>, <&kp BINDING2>; mods = <(MOD_LSFT|MOD_RSFT)>;) \
    ZMK_COMBO(NAME, &NAME##_morph, POSITION, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
-SHIFT_MORPH(plus_minus, LT1 LM1, PLUS, MINUS)
+SHIFT_MORPH(dquotes_caret, LT2 LM2, DOUBLE_QUOTES, CARET)
