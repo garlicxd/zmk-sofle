@@ -26,5 +26,5 @@
 ZMK_COMBO(tab,    &kp TAB,    LB3 LB2,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 ZMK_COMBO(enter,  &kp ENTER,  LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
-ZMK_MOD_MORPH(dollar_amp, bindings = <&kp DOLLAR>, <&kp AMPERSAND>; mods = <(MOD_LSFT|MOD_RSFT)>;)
-ZMK_COMBO(enter,  &kp ENTER,  LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+ZMK_MOD_MORPH(dollar_amp_morph, bindings = <&kp DOLLAR>, <&kp AMPERSAND>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+ZMK_COMBO(dollar_amp,  &dollar_amp_morph,  LT3 LM3,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
