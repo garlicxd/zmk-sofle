@@ -32,6 +32,8 @@ ZMK_COMBO(enter,  &kp ENTER,  LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_
 ZMK_MOD_MORPH(dollar_amp_morph, bindings = <&kp DOLLAR>, <&kp AMPERSAND>; mods = <(MOD_LSFT|MOD_RSFT)>;)
 ZMK_COMBO(dollar_amp,  &dollar_amp_morph,  LT3 LM3,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
-SHIFT_MORPH(dquotes_caret, LT2 LM2, &kp DOUBLE_QUOTE, &kp CARET);
+// SHIFT_MORPH(dquotes_caret, LT2 LM2, &kp DOUBLE_QUOTE, &kp CARET);
+ZMK_MOD_MORPH(dquotes_caret_morph, bindings = <&kp DOUBLE_QUOTE>, <&kp CARET>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+ZMK_COMBO(dquotes_caret, &dquotes_caret_morph, LT2 LM2, 0, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
 // DOUBLE_QUOTES CARET
