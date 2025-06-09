@@ -23,23 +23,28 @@
 // ZMK_COMBO(sk_nav_app, &kp APOSTROPHE, LM3 LM2, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 // ZMK_COMBO(sk_nav_sys, &kp APOSTROPHE, LM3 LM2, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 
+// HORIZONTAL COMBOS
 ZMK_COMBO(tab,    &kp TAB,    LB3 LB2,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 ZMK_COMBO(enter,  &kp ENTER,  LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
-// #define SHIFT_MORPH(NAME, POSITION, BINDING1, BINDING2) \
-//    ZMK_MOD_MORPH(NAME##_morph, bindings = <BINDING1>, <BINDING2>; mods = <(MOD_LSFT|MOD_RSFT)>;) \
-//    ZMK_COMBO(NAME, &NAME##_morph, POSITION, 0, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-
-// ZMK_MOD_MORPH(dollar_amp_morph, bindings = <&kp DOLLAR>, <&kp AMPERSAND>; mods = <(MOD_LSFT|MOD_RSFT)>;)
-// ZMK_COMBO(dollar_amp,  &dollar_amp_morph,  LT3 LM3,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-
-// SHIFT_MORPH(dquotes_caret, LT2 LM2, &kp DOUBLE_QUOTES, &kp CARET);
-// ZMK_MOD_MORPH(dquotes_caret_morph, bindings = <&kp DOUBLE_QUOTES>, <&kp CARET>; mods = <(MOD_LSFT|MOD_RSFT)>;)
-// ZMK_COMBO(dquotes_caret, &dquotes_caret_morph, LT2 LM2, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-
+// SYMBOLS (VERTICAL) COMBOS
 #define SHIFT_MORPH_COMBO(NAME, BINDING1, BINDING2, POSITION) \
    ZMK_MOD_MORPH(NAME##_morph, bindings = <&kp BINDING1>, <&kp BINDING2>; mods = <(MOD_LSFT|MOD_RSFT)>;) \
    ZMK_COMBO(NAME, &NAME##_morph, POSITION, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
-SHIFT_MORPH_COMBO(dquotes_caret,    DOUBLE_QUOTES, CARET,         LT2 LM2)
-SHIFT_MORPH_COMBO(dollar_amp,       DOLLAR,        AMPERSAND,     LT1 LM1)
+SHIFT_MORPH_COMBO(dquotes_caret,    DOUBLE_QUOTES,       CARET,         LT3 LM3)
+SHIFT_MORPH_COMBO(dollar_amp,       DOLLAR,              AMPERSAND,     LT2 LM2)
+SHIFT_MORPH_COMBO(semicolon,        SEMICOLON,           SEMICOLON,     LT1 LM1)
+SHIFT_MORPH_COMBO(hash_at,          HASH,                AT_SIGN,       LT0 LM0)
+SHIFT_MORPH_COMBO(question_pipe,    QUESTION,            PIPE,          LM3 LB3)
+SHIFT_MORPH_COMBO(excl_percent,     EXCLAMATION,         PERCENT,       LM2 LB2)
+SHIFT_MORPH_COMBO(equal,            EQUAL,               EQUAL,         LM1 LB1)
+SHIFT_MORPH_COMBO(plus,             PLUS,                PLUS,          LM0 LB0)
+SHIFT_MORPH_COMBO(tilde,            TILDE,               TILDE,         RT0 RM0)
+SHIFT_MORPH_COMBO(colon,            COLON,               COLON,         RT1 RM1)
+SHIFT_MORPH_COMBO(lbrc_lt,          LEFT_BRACKET,        LESS_THAN,     RT2 RM2)
+SHIFT_MORPH_COMBO(squote_grave,     SINGLE_QUOTE,        GRAVE,         RT3 RM3)
+// TODO: leader key spot RM0 RB0
+SHIFT_MORPH_COMBO(lpar_lbrc,        LEFT_PARENTHESIS,    LEFT_BRACE,    RM1 RB1)
+SHIFT_MORPH_COMBO(rbrc_gt,          RIGHT_BRACKET,       GREATER_THAN,  RM2 RB2)
+SHIFT_MORPH_COMBO(rpar_rbrc,        RIGHT_PARENTHESIS,   RIGHT_BRACE,   RM3 RB3)
