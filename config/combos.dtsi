@@ -4,6 +4,8 @@
 #define COMBO_IDLE_FAST 150
 #define COMBO_IDLE_SLOW 50
 
+#define MAIN_LAYERS DEFAULT
+
 /*         
             Left Hand          Joystck        Right Hand
   ╭───────────────────────────┬───────┬───────────────────────────╮
@@ -20,3 +22,9 @@
 
 // ZMK_COMBO(sk_nav_app, &kp APOSTROPHE, LM3 LM2, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
 // ZMK_COMBO(sk_nav_sys, &kp APOSTROPHE, LM3 LM2, DEFAULT, COMBO_TERM_FAST, COMBO_IDLE_FAST)
+
+ZMK_COMBO(tab,    &kp TAB,    LB3 LB2,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+ZMK_COMBO(enter,  &kp ENTER,  LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+
+ZMK_MOD_MORPH(dollar_amp, bindings = <&kp DOLLAR>, <&kp AMPERSAND>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+ZMK_COMBO(enter,  &kp ENTER,  LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
