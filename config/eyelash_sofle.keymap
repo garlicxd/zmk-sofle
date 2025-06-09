@@ -56,7 +56,6 @@ MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs.
 #include "joystick.dtsi"
 #include "arcane.dtsi"
 
-#define ADAPTIVE_RESET 1200
 // ZMK_ADAPTIVE_KEY(
 //     shift_repeat, bindings = <&sk LSHFT>;
 //     repeat {

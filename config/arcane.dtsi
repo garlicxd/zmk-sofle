@@ -1,9 +1,12 @@
+#define ADAPTIVE_RESET 1200
+
 // Hardcoded, on updating the keymap, the sides have to be adjusted accordingly
 ZMK_ADAPTIVE_KEY(
     arcane_l, bindings = <&sk LSHFT>;
 
     repeat_a {trigger-keys = <A>; bindings = <&kp A>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers;};
 )
+
 ZMK_ADAPTIVE_KEY(
     arcane_r, bindings = <&sk LSHFT>;
 
