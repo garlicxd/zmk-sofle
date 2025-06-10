@@ -116,12 +116,7 @@
     // )
     ZMK_ADAPTIVE_KEY(
         shift_repeat, bindings = <&sk LSHFT>;
-        repeat {
-        trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
-        bindings = <&key_repeat>;
-        max-prior-idle-ms = <ADAPTIVE_RESET>;
-        strict-modifiers;
-    };)
+        repeat {trigger-keys = <B Y O U Q C I E A Z>;bindings = <&key_repeat>;max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
 
 / {
 
