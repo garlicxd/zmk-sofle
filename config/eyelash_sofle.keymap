@@ -81,6 +81,8 @@
     #define SHIFT_MORPH_COMBO(NAME, BINDING1, BINDING2, POSITION) \
         SHIFT_MORPH(NAME##_morph, BINDING1, BINDING2) \
         ZMK_COMBO(NAME, &NAME##_morph, POSITION, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+
+    // LEFT-HAND COMBOS
     SHIFT_MORPH_COMBO(dquotes_caret,    DOUBLE_QUOTES,       CARET,         LT3 LM3)
     SHIFT_MORPH_COMBO(dollar_amp,       DOLLAR,              AMPERSAND,     LT2 LM2)
     SHIFT_MORPH_COMBO(semicolon,        SEMICOLON,           SEMICOLON,     LT1 LM1)
@@ -89,6 +91,8 @@
     SHIFT_MORPH_COMBO(excl_percent,     EXCLAMATION,         PERCENT,       LM2 LB2)
     SHIFT_MORPH_COMBO(equal,            EQUAL,               EQUAL,         LM1 LB1)
     SHIFT_MORPH_COMBO(esc_,             ESCAPE,              ESCAPE,        LM0 LB0)
+
+    // RIGHT-HAND COMBOS
     SHIFT_MORPH_COMBO(tilde,            TILDE,               TILDE,         RT0 RM0)
     SHIFT_MORPH_COMBO(colon,            COLON,               COLON,         RT1 RM1)
     SHIFT_MORPH_COMBO(lbrc_lt,          LEFT_BRACKET,        LESS_THAN,     RT2 RM2)
@@ -98,11 +102,18 @@
     SHIFT_MORPH_COMBO(rbrc_gt,          RIGHT_BRACKET,       GREATER_THAN,  RM2 RB2)
     SHIFT_MORPH_COMBO(rpar_rbrc,        RIGHT_PARENTHESIS,   RIGHT_BRACE,   RM3 RB3)
 
-
 // - Layer Keys -
+
     #define SPC_NAV_GUI &hmt NAV_SYS SPACE
-    ZMK_AUTO_LAYER(al_nav_sys, continue-list = <>; ignore-modifiers;)
-    ZMK_AUTO_LAYER(al_nav_app, continue-list = <>; ignore-modifiers;)
+    // ZMK_AUTO_LAYER(al_nav_sys, continue-list = <>; ignore-modifiers;)
+    // ZMK_AUTO_LAYER(al_nav_app, continue-list = <>; ignore-modifiers;)
+
+    #define ADAPTIVE_RESET 1200
+    // Hardcoded, on updating the keymap, the sides have to be adjusted accordingly
+    ZMK_ADAPTIVE_KEY( arcane_l, bindings = <&sk LSHFT>;
+        repeat_alpha_left { trigger-keys = <B Y O U Q C I E A Z>; bindings = <&key_repeat>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers; }; 
+        repeat_symbs_left { trigger-keys = </ \ - _ , * .>; bindings = <&key_repeat>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers; };
+    )
 
 / {
 
