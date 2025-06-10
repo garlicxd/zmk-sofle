@@ -57,13 +57,16 @@
 
 // - Symbols -
 
+    #define SHIFT_MORPH(NAME, BINDING1, BINDING2) \
+        ZMK_MOD_MORPH(NAME, bindings = <&kp BINDING1>, <&kp BINDING2>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+
     ZMK_MOD_MORPH(space_m, bindings = <&kp SPACE>, <&kp SPACE>; mods = <(MOD_LSFT|MOD_RSFT)>;)
     ZMK_MOD_MORPH(del_bspc, bindings = <&kp DELETE>, <&kp BACKSPACE>; mods = <(MOD_LSFT|MOD_RSFT)>;)
-
-    ZMK_MOD_MORPH(slash_back,           SLASH,               BACKSLASH;     mods = <(MOD_LSFT|MOD_RSFT)>;)
-    ZMK_MOD_MORPH(minus_undr,           MINUS,               UNDERSCORE;    mods = <(MOD_LSFT|MOD_RSFT)>;)
-    ZMK_MOD_MORPH(comma_astr,           COMMA,               ASTERISK;      mods = <(MOD_LSFT|MOD_RSFT)>;)
-    ZMK_MOD_MORPH(dot_,                 DOT,                 DOT;           mods = <(MOD_LSFT|MOD_RSFT)>;)
+    
+    SHIFT_MORPH(slash_back,             SLASH,              BACKSLASH   )
+    SHIFT_MORPH(minus_undr,             MINUS,              UNDERSCORE  )
+    SHIFT_MORPH(comma_astr,             COMMA,              ASTERISK    )
+    SHIFT_MORPH(dot_,                   DOT,                DOT         )
 
     // HORIZONTAL COMBOS
     #define COMBO_TERM_FAST 18
@@ -76,8 +79,8 @@
 
     // VERTICAL COMBOS
     #define SHIFT_MORPH_COMBO(NAME, BINDING1, BINDING2, POSITION) \
-    ZMK_MOD_MORPH(NAME##_morph, bindings = <&kp BINDING1>, <&kp BINDING2>; mods = <(MOD_LSFT|MOD_RSFT)>;) \
-    ZMK_COMBO(NAME, &NAME##_morph, POSITION, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+        SHIFT_MORPH(NAME##_morph, BINDING1, BINDING2) \
+        ZMK_COMBO(NAME, &NAME##_morph, POSITION, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
     SHIFT_MORPH_COMBO(dquotes_caret,    DOUBLE_QUOTES,       CARET,         LT3 LM3)
     SHIFT_MORPH_COMBO(dollar_amp,       DOLLAR,              AMPERSAND,     LT2 LM2)
     SHIFT_MORPH_COMBO(semicolon,        SEMICOLON,           SEMICOLON,     LT1 LM1)
