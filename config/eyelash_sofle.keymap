@@ -116,7 +116,7 @@
     // )
     ZMK_ADAPTIVE_KEY(
         left_arcane, bindings = <&sk LSHFT>;
-        repeat {trigger-keys = <B Y O U Q C I E A Z \\>;bindings = <&key_repeat>;max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+        repeat {trigger-keys = <B Y O U Q C I E A Z />;bindings = <&key_repeat>;max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
 
 / {
 
