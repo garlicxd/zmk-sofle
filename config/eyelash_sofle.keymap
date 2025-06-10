@@ -100,7 +100,7 @@
 
 
 // - Layer Keys -
-    #define SPC_NAV_GUI &hmt NAV_GUI SPACE
+    #define SPC_NAV_GUI &hmt NAV_SYS SPACE
     ZMK_AUTO_LAYER(al_nav_sys, continue-list = <>; ignore-modifiers;)
     ZMK_AUTO_LAYER(al_nav_app, continue-list = <>; ignore-modifiers;)
 
