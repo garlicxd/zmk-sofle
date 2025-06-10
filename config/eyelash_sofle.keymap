@@ -121,7 +121,7 @@
 
     //SHIFT_MORPH(right_runic, right_arcane, right_arcane)
     
-    #define SPC_NAV_GUI &hmt NAV_SYS left_runic
+    #define SPC_NAV_GUI &hmt NAV_SYS SPACE
 / {
 
     behaviours {
