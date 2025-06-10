@@ -112,7 +112,7 @@
     // Hardcoded, on updating the keymap, the sides have to be adjusted accordingly
     ZMK_ADAPTIVE_KEY( arcane_l, bindings = <&sk LSHFT>;
         repeat_alpha_left { trigger-keys = <B Y O U Q C I E A Z>; bindings = <&key_repeat>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers; }; 
-        repeat_symbs_left { trigger-keys = </ \ - _ , * .>; bindings = <&key_repeat>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers; };
+        //repeat_symbs_left { trigger-keys = </ \ - _ , * .>; bindings = <&key_repeat>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers; };
     )
 
 / {
