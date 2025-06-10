@@ -82,7 +82,7 @@
         SHIFT_MORPH(NAME##_morph, BINDING1, BINDING2) \
         ZMK_COMBO(NAME, &NAME##_morph, POSITION, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
-    // LEFT-HAND COMBOS
+    // LEFT-HAND COMBOS --- NOTE: WHEN UPDATING ALSO UPDATE ADAPTIVE KEYS SIDES
     SHIFT_MORPH_COMBO(dquotes_caret,    DOUBLE_QUOTES,       CARET,         LT3 LM3)
     SHIFT_MORPH_COMBO(dollar_amp,       DOLLAR,              AMPERSAND,     LT2 LM2)
     SHIFT_MORPH_COMBO(semicolon,        SEMICOLON,           SEMICOLON,     LT1 LM1)
@@ -116,7 +116,7 @@
     // )
     ZMK_ADAPTIVE_KEY(
         left_arcane, bindings = <&sk LSHFT>;
-        repeat {trigger-keys = <B Y O U Q C I E A Z SLASH>;bindings = <&key_repeat>;max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+        repeat {bindings = <&key_repeat>; trigger-keys = <B Y O U Q C I E A Z SEMICOLON SEMICOLON HASH AT_SIGN>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
 
 / {
 
