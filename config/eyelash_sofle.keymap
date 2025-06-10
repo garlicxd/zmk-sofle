@@ -115,7 +115,7 @@
     //     //repeat_symbs_left { trigger-keys = </ \ - _ , * .>; bindings = <&key_repeat>; max-prior-idle-ms = <ADAPTIVE_RESET>; strict-modifiers; };
     // )
     ZMK_ADAPTIVE_KEY(
-        shift_repeat, bindings = <&sk LSHFT>;
+        arcane_l, bindings = <&sk LSHFT>;
         repeat {trigger-keys = <B Y O U Q C I E A Z>;bindings = <&key_repeat>;max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
 
 / {
