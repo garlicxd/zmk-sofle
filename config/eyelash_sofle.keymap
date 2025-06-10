@@ -102,20 +102,13 @@
 
 // - Layer Keys -
 
-    #define SPC_NAV_GUI &hmt NAV_SYS SPACE
+    //#define SPC_NAV_GUI &hmt NAV_SYS SPACE
     // ZMK_AUTO_LAYER(al_nav_sys, continue-list = <>; ignore-modifiers;)
     // ZMK_AUTO_LAYER(al_nav_app, continue-list = <>; ignore-modifiers;)
 
     #define ADAPTIVE_RESET 1200
     // Hardcoded, on updating the keymap, the sides have to be adjusted accordingly
-    ZMK_ADAPTIVE_KEY(
-    shift_repeat, bindings = <&sk LSHFT>;
-    repeat {
-      trigger-keys = <A B C D E F G H I J K L M N O P Q R S T U V W X Y Z>;
-      bindings = <&key_repeat>;
-      max-prior-idle-ms = <1200>;
-      strict-modifiers;
-    };)
+
     ZMK_ADAPTIVE_KEY(left_arcane, bindings = <&sk LSHFT>;
         repeat {bindings = <&key_repeat>; trigger-keys = <R B Y O U Q C I E A Z SLASH BACKSLASH MINUS UNDERSCORE COMMA ASTERISK DOT DOUBLE_QUOTES CARET DOLLAR AMPERSAND SEMICOLON HASH AT_SIGN QUESTION PIPE EXCLAMATION PERCENT EQUAL ESCAPE>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
@@ -152,7 +145,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp J         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &shift_repeat  SPC_NAV_GUI  &left_runic   &trans     &trans        &kp R         &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &trans        SPC_NAV_GUI  &left_runic   &trans     &trans        &kp R         &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
