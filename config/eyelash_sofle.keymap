@@ -53,7 +53,7 @@
     #define RIGHT_SYMBS TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE
     #define NUM_CHARS N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
 
-    ZMK_AUTO_LAYER(num_word, continue-list = <N0 SLASH MINUS COMMA DOT>; ignore-modifiers;)
+    ZMK_AUTO_LAYER(num_word, continue-list = <NUM_CHARS SLASH MINUS COMMA DOT>; ignore-modifiers;)
 
     #define ADAPTIVE_RESET 1200
     ZMK_ADAPTIVE_KEY(arcane_left, bindings = <&sk LSHFT>;
@@ -66,25 +66,26 @@
     ZMK_MOD_MORPH(runic_left, bindings = <&arcane_left>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
     ZMK_MOD_MORPH(runic_right, bindings = <&arcane_right>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
-    #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                              \
-    ZMK_HOLD_TAP( NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
-                    tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;     \
-                    require-prior-idle-ms = <150>;                              \
-                    hold-trigger-key-positions = <TRIGGER_POS>;                 \
-                    hold-trigger-on-release;                                    \
-                )
+    #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                  \
+        ZMK_HOLD_TAP( NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
+                        tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;     \
+                        require-prior-idle-ms = <150>;                              \
+                        hold-trigger-key-positions = <TRIGGER_POS>;                 \
+                        hold-trigger-on-release;                                    \
+                    )
+    #define MAKE_HMT(NAME, HOLD, TAP) \
+        MAKE_HRM(NAME, HOLD, TAP, KEYS_R KEYS_L KEYS_T)
 
     MAKE_HRM(hml, &kp, &kp, KEYS_R LB0 KEYS_T) // Left-hand HRMs, same hand mod+key for del_bspc
     MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs
-    MAKE_HRM(hmt, &mo, &kp, KEYS_R KEYS_L KEYS_T) // Thumb HRMs
-    MAKE_HRM(hmt_rune_l, &mo, &runic_left, KEYS_R KEYS_L KEYS_T) // runic HRMs
-    MAKE_HRM(hmt_rune_r, &kp, &runic_right, KEYS_R KEYS_L KEYS_T) // TODO: runic HRMs
+    MAKE_HMT(hmt, &mo, &kp)
+    MAKE_HMT(hmt_rune_l, &mo, &runic_left)
+    MAKE_HMT(hmt_rune_r, &kp, &runic_right)
 
     #define SPC_NAV_SYS &hmt NAV_SYS SPACE
     #define RUN_NAV_APP &hmt_rune_l NAV_APP
     #define R_NAV_TXT &hmt NAV_TXT R
     #define RUN_SFT &hmt_rune_r LSHIFT X
-    #define NUM_WRD &num_word NAV_TXT
 
 // - Symbols -
 
@@ -164,7 +165,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        NUM_WRD       SPC_NAV_SYS   RUN_NAV_APP   &trans     RUN_SFT       R_NAV_TXT     &caps_word    &trans        &trans
+    &kp C_MUTE    &trans        &trans        &num_word     SPC_NAV_SYS   RUN_NAV_APP   &trans     RUN_SFT       R_NAV_TXT     &caps_word    &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
