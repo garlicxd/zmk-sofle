@@ -118,9 +118,9 @@
     ZMK_ADAPTIVE_KEY(left_arcane, bindings = <&sk LSHFT>;
         repeat {bindings = <&key_repeat>; trigger-keys = <R B Y O U Q C I E A Z SLASH BACKSLASH MINUS UNDERSCORE COMMA ASTERISK DOT DOUBLE_QUOTES CARET DOLLAR AMPERSAND SEMICOLON HASH AT_SIGN QUESTION PIPE EXCLAMATION PERCENT EQUAL ESCAPE>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
-    ZMK_ADAPTIVE_KEY(right_arcane, bindings = <&sk LSHFT>;  
-        repeat {bindings = <&key_repeat>; trigger-keys = <X L D W V K H T N S TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
-        // TODO: Add magic behavior
+    // ZMK_ADAPTIVE_KEY(right_arcane, bindings = <&sk LSHFT>;  
+    //     repeat {bindings = <&key_repeat>; trigger-keys = <X L D W V K H T N S TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+    //     // TODO: Add magic behavior
 
     ZMK_MOD_MORPH(runic_left, bindings = <&left_arcane>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
     ZMK_MOD_MORPH(runic_right, bindings = <&right_arcane>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)

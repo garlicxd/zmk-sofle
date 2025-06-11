@@ -18,7 +18,7 @@ manifest:
       remote: gpeye
       revision: main 
     - name: zmk
-      remote: urob
+      remote: zmkfirmware
       revision: main
       import: app/west.yml
 
