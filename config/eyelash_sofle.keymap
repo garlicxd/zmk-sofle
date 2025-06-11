@@ -60,7 +60,7 @@
         repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS LEFT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};)
         // TODO: Add magic behavior
     ZMK_ADAPTIVE_KEY(arcane_right, bindings = <&sk LSHFT>;  
-        repeat {bindings = <&key_repeat>; trigger-keys = <RIGHT_CHARS RIGHT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};)
+        repeat {bindings = <&key_repeat>; trigger-keys = <J L D W V K H T N S X M G P F>; max-prior-idle-ms = <ADAPTIVE_RESET>;};)
         // TODO: Add magic behavior
 
     ZMK_MOD_MORPH(runic_left, bindings = <&arcane_left>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
@@ -166,7 +166,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &mo OPTIONS   &trans        NUM_WORD      SPC_NAV_SYS   RUN_NAV_APP   &kp X      &arcane_right  R_NAV_TXT     &caps_word    &trans        &trans
+    &kp C_MUTE    &mo OPTIONS   &trans        NUM_WORD      SPC_NAV_SYS   RUN_NAV_APP   &kp X      &sk LSHFT     R_NAV_TXT     &caps_word    &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
