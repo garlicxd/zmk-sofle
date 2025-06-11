@@ -9,7 +9,7 @@
 
 #define ZMK_HELPER_KEEP_NATIVE 0
 #include "zmk-helpers/helper.h"
-// #include "joystick.dtsi"
+#include "joystick.dtsi"
 
 #include "eyelash_sofle_keydefs.dtsi" // Extra key definitions following urob's setup
 
