@@ -84,8 +84,8 @@
 
     #define SPC_NAV_SYS &hmt NAV_SYS SPACE
     #define R_NAV_TXT &hmt NAV_TXT R
-    #define RUN_NAV_APP &hmt_rune_l NAV_APP X
-    #define RUN_SFT &hmt_rune_r LSHIFT LSHIFT
+    #define RUN_NAV_APP &hmt_rune_l NAV_APP 0
+    #define RUN_SFT &hmt_rune_r LSHIFT 0 
     #define NUM_WORD &num_word NAV_TXT
 
 // - Symbols -
