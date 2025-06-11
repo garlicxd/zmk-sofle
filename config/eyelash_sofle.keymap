@@ -78,12 +78,12 @@
     MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs
     MAKE_HRM(hmt, &mo, &kp, KEYS_R KEYS_L KEYS_T) // Thumb HRMs
     MAKE_HRM(hmt_rune_l, &mo, &runic_left, KEYS_R KEYS_L KEYS_T) // runic HRMs
-    // MAKE_HRM(hmt_rune_r, &kp, &runic_right, KEYS_R KEYS_L KEYS_T) // TODO: runic HRMs
+    MAKE_HRM(hmt_rune_r, &kp, &kp, KEYS_R KEYS_L KEYS_T) // TODO: runic HRMs
 
     #define SPC_NAV_SYS &hmt NAV_SYS SPACE
     #define RUN_NAV_APP &hmt_rune_l NAV_APP
     #define R_NAV_TXT &hmt NAV_TXT R
-    #define RUN_SFT &hmt_rune_r LSHIFT
+    #define RUN_SFT &hmt_rune_r LSHIFT X
     #define NUM_WRD &num_word NAV_TXT
 
 // - Symbols -
@@ -139,17 +139,17 @@
         rgb_br_encoder: rgb_br_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>; };
         zoom_encoder: zoom_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>; };
 
-        hmt_rune_r: hmt_rune_r {
-            compatible = "zmk,behavior-hold-tap";
-            #binding-cells = <2>;
-            flavor = "balanced";
-            require-prior-idle-ms = <150>;
-            tapping-term-ms = <280>;
-            quick-tap-ms = <175>;
-            bindings = <&runic_right  >, <&kp>;
-            hold-trigger-key-positions = <KEYS_R KEYS_L KEYS_T>;
-            hold-trigger-on-release;
-        };
+        // hmt_rune_r: hmt_rune_r {
+        //     compatible = "zmk,behavior-hold-tap";
+        //     #binding-cells = <2>;
+        //     flavor = "balanced";
+        //     require-prior-idle-ms = <150>;
+        //     tapping-term-ms = <280>;
+        //     quick-tap-ms = <175>;
+        //     bindings = <&runic_right  >, <&kp>;
+        //     hold-trigger-key-positions = <KEYS_R KEYS_L KEYS_T>;
+        //     hold-trigger-on-release;
+        // };
     };
 
     keymap { compatible = "zmk,keymap";
