@@ -78,7 +78,7 @@
     MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs
     MAKE_HRM(hmt, &mo, &kp, KEYS_R KEYS_L KEYS_T) // Thumb HRMs
     MAKE_HRM(hmt_rune_l, &mo, &runic_left, KEYS_R KEYS_L KEYS_T) // runic HRMs
-    MAKE_HRM(hmt_rune_r, &kp, &kp, KEYS_R KEYS_L KEYS_T) // TODO: runic HRMs
+    MAKE_HRM(hmt_rune_r, &kp, &runic_right, KEYS_R KEYS_L KEYS_T) // TODO: runic HRMs
 
     #define SPC_NAV_SYS &hmt NAV_SYS SPACE
     #define RUN_NAV_APP &hmt_rune_l NAV_APP
