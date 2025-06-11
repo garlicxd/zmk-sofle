@@ -113,14 +113,14 @@
     #define RIGHT_SYMBS TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE
     #define NUM_CHARS N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
 
-    ZMK_AUTO_LAYER(num_word, continue-list = <NUM_CHARS SLASH MINUS COMMA DOT>; ignore-modifiers;)
+    ZMK_AUTO_LAYER(geaorge, continue-list = <N0 SLASH MINUS COMMA DOT>; ignore-modifiers;)
 
     #define ADAPTIVE_RESET 1200
     ZMK_ADAPTIVE_KEY(left_arcane, bindings = <&sk LSHFT>;
-        repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS LEFT_SYMBS NUM_CHARS>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+        repeat {bindings = <&key_repeat>; trigger-keys = <R /*LEFT_CHARS LEFT_SYMBS NUM_CHARS*/>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
     ZMK_ADAPTIVE_KEY(right_arcane, bindings = <&sk LSHFT>;  
-        repeat {bindings = <&key_repeat>; trigger-keys = <RIGHT_CHARS RIGHT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+        repeat {bindings = <&key_repeat>; trigger-keys = <X/*RIGHT_CHARS RIGHT_SYMBS*/>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
 
     ZMK_MOD_MORPH(runic_left, bindings = <&left_arcane>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
@@ -128,11 +128,11 @@
 
 // - Keymap Definitions -
 
-#define SPC_NAV_SYS &hmt NAV_SYS SPACE
-#define RUN_NAV_APP &hmt_rune_l NAV_APP
-#define R_NAV_TXT &hmt NAV_TXT R
-#define RUN_SFT &hmt_rune_r LSHIFT
-#define NUM_WRD_SFT &num_word NAV_TXT
+// #define SPC_NAV_SYS &hmt NAV_SYS SPACE
+// #define RUN_NAV_APP &hmt_rune_l NAV_APP
+// #define R_NAV_TXT &hmt NAV_TXT R
+// #define RUN_SFT &hmt_rune_r LSHIFT
+// #define NUM_WRD_SFT &num_word NAV_TXT
 
 / {
 
