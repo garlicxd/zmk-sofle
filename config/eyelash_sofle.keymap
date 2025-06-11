@@ -50,14 +50,14 @@
                     hold-trigger-on-release;                                    \
                 )
 
-    MAKE_HRM(hml, &kp, &kp, KEYS_R KEYS_T) // Left-hand HRMs
+    MAKE_HRM(hml, &kp, &kp, KEYS_R LB0 KEYS_T) // Left-hand HRMs, same hand mod+key for del_bspc
     MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs
     // TODO: not the exact functionality id want because cant add random keys
     MAKE_HRM(hmt, &mo, &kp, KEYS_R KEYS_L KEYS_T) // Thumb HRMs
+    MAKE_HRM(hmt_rune_l, &mo, &runic_left, KEYS_R KEYS_L KEYS_T) // Thumb HRMs
 
 // - Symbols -
 
-    ZMK_MOD_MORPH(space_m, bindings = <&kp SPACE>, <&kp SPACE>; mods = <(MOD_LSFT|MOD_RSFT)>;)
     ZMK_MOD_MORPH(del_bspc, bindings = <&kp DELETE>, <&kp BACKSPACE>; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
     // HORIZONTAL COMBOS
@@ -66,8 +66,8 @@
     #define COMBO_IDLE_FAST 150
     #define COMBO_IDLE_SLOW 50
 
-    ZMK_COMBO(tab,    &kp TAB,    LB3 LB2,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-    ZMK_COMBO(enter,  &kp ENTER,  LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+    ZMK_COMBO(tab,    &kp TAB,    LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+    ZMK_COMBO(enter,  &kp ENTER,  LB3 LB2,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
     // VERTICAL COMBOS
     #define SHIFT_MORPH(NAME, BINDING1, BINDING2) \
@@ -116,15 +116,15 @@
         repeat {bindings = <&key_repeat>; trigger-keys = <X L D W V K H T N S TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
 
-    //SHIFT_MORPH(left_runic, left_arcane, left_arcane)
+    //SHIFT_MORPH(runic_left, left_arcane, left_arcane)
 
-    ZMK_MOD_MORPH(left_runic, bindings = <&left_arcane>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
-    ZMK_MOD_MORPH(right_runic, bindings = <&right_arcane>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
+    ZMK_MOD_MORPH(runic_left, bindings = <&left_arcane>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
+    ZMK_MOD_MORPH(runic_right, bindings = <&right_arcane>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
-    //SHIFT_MORPH(right_runic, right_arcane, right_arcane)
+    //SHIFT_MORPH(runic_right, right_arcane, right_arcane)
     
     #define SPC_NAV_SYS &hmt NAV_SYS SPACE
-    // #define RUN_NAV_APP &hmt NAV_APP left_runic
+    #define RUN_NAV_APP &hmt_rune_l NAV_APP
 / {
 
     behaviours {
@@ -147,7 +147,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp J         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &trans        SPC_NAV_SYS   &left_runic    &trans    &right_runic  &kp R         &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &trans        SPC_NAV_SYS   RUN_NAV_APP   &trans    &runic_right  &kp R         &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
