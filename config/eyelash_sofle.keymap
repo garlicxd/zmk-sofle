@@ -66,12 +66,6 @@
     ZMK_MOD_MORPH(runic_left, bindings = <&arcane_left>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
     ZMK_MOD_MORPH(runic_right, bindings = <&arcane_right>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
-    #define SPC_NAV_SYS &hmt NAV_SYS SPACE
-    #define RUN_NAV_APP &hmt_rune_l NAV_APP
-    #define R_NAV_TXT &hmt NAV_TXT R
-    #define RUN_SFT &hmt_rune_r LSHFT
-    #define NUM_WRD_SFT &num_word NAV_TXT
-
     #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                              \
     ZMK_HOLD_TAP( NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
                     tapping-term-ms = <200>; quick-tap-ms = <QUICK_TAP_MS>;     \
@@ -93,7 +87,11 @@
                     hold-trigger-on-release;
                 )
 
-    ZMK_MOD_MORPH(del_bspc, bindings = <&kp DELETE>, <&kp BACKSPACE>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+    #define SPC_NAV_SYS &hmt NAV_SYS SPACE
+    #define RUN_NAV_APP &hmt_rune_l NAV_APP
+    #define R_NAV_TXT &hmt NAV_TXT R
+    #define RUN_SFT &hmt_rune_r LSHFT
+    #define NUM_WRD_SFT &num_word NAV_TXT
 
 // - Symbols -
 
@@ -102,6 +100,8 @@
     #define COMBO_TERM_SLOW 30
     #define COMBO_IDLE_FAST 150
     #define COMBO_IDLE_SLOW 50
+
+    ZMK_MOD_MORPH(del_bspc, bindings = <&kp DELETE>, <&kp BACKSPACE>; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
     ZMK_COMBO(tab,    &kp TAB,    LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
     ZMK_COMBO(enter,  &kp ENTER,  LB3 LB2,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
@@ -159,7 +159,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &trans        SPC_NAV_SYS   RUN_NAV_APP   &trans     &trans        R_NAV_TXT     &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &trans        SPC_NAV_SYS   RUN_NAV_APP   &trans     &runic_right  R_NAV_TXT     &trans        &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
