@@ -53,7 +53,7 @@
     #define RIGHT_SYMBS TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE
     #define NUM_CHARS N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
 
-    ZMK_AUTO_LAYER(geaorge, continue-list = <N0 SLASH MINUS COMMA DOT>; ignore-modifiers;)
+    ZMK_AUTO_LAYER(num_word, continue-list = <N0 SLASH MINUS COMMA DOT>; ignore-modifiers;)
 
     #define ADAPTIVE_RESET 1200
     ZMK_ADAPTIVE_KEY(arcane_left, bindings = <&sk LSHFT>;
@@ -138,6 +138,8 @@
         volume_encoder: volume_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>; };
         rgb_br_encoder: rgb_br_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>; };
         zoom_encoder: zoom_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>; };
+
+        // runic_sft:
     };
 
     keymap { compatible = "zmk,keymap";
@@ -152,7 +154,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &trans        SPC_NAV_SYS   RUN_NAV_APP   &trans     RUN_SFT       R_NAV_TXT     &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &num_word     SPC_NAV_SYS   RUN_NAV_APP   &trans     &trans        R_NAV_TXT     &caps_word    &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
