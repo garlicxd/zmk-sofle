@@ -132,7 +132,7 @@
 #define RUN_NAV_APP &hmt_rune_l NAV_APP
 #define R_NAV_TXT &hmt NAV_TXT R
 #define RUN_SFT &hmt_rune_r LSHIFT
-#define NUM_WRD_SFT &num_word LSHIFT
+#define NUM_WRD_SFT &num_word NAV_TXT
 
 / {
 
