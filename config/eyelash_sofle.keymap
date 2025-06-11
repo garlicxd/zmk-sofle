@@ -123,7 +123,7 @@
     //     // TODO: Add magic behavior
 
     ZMK_MOD_MORPH(runic_left, bindings = <&left_arcane>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
-    ZMK_MOD_MORPH(runic_right, bindings = <&right_arcane>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
+    ZMK_MOD_MORPH(runic_right, bindings = <&kp X>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
 // - Keymap Definitions -
 
