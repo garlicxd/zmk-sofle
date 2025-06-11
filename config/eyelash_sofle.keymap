@@ -86,6 +86,7 @@
     #define RUN_NAV_APP &hmt_rune_l NAV_APP
     #define R_NAV_TXT &hmt NAV_TXT R
     #define RUN_SFT &hmt_rune_r LSHIFT X
+    #define NUM_WORD &num_word NAV_TXT
 
 // - Symbols -
 
@@ -165,7 +166,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &mo OPTIONS   &trans        &num_word     SPC_NAV_SYS   RUN_NAV_APP   &trans     RUN_SFT       R_NAV_TXT     &caps_word    &trans        &trans
+    &kp C_MUTE    &mo OPTIONS   &trans        NUM_WORD      SPC_NAV_SYS   RUN_NAV_APP   &trans     RUN_SFT       R_NAV_TXT     &caps_word    &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
