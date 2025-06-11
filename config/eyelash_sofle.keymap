@@ -116,15 +116,15 @@
     ZMK_AUTO_LAYER(geaorge, continue-list = <N0 SLASH MINUS COMMA DOT>; ignore-modifiers;)
 
     #define ADAPTIVE_RESET 1200
-    ZMK_ADAPTIVE_KEY(shift_arcane_left, bindings = <&sk LSHFT>;
+    ZMK_ADAPTIVE_KEY(magic_shift_left, bindings = <&sk LSHFT>;
         repeat {bindings = <&key_repeat>; trigger-keys = <R /*LEFT_CHARS LEFT_SYMBS NUM_CHARS*/>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
-    ZMK_ADAPTIVE_KEY(shift_arcane_right, bindings = <&sk LSHFT>;  
+    ZMK_ADAPTIVE_KEY(magic_shift_right, bindings = <&sk LSHFT>;  
         repeat {bindings = <&key_repeat>; trigger-keys = <X/*RIGHT_CHARS RIGHT_SYMBS*/>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
 
-    ZMK_MOD_MORPH(runic_left, bindings = <&shift_arcane_left>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
-    ZMK_MOD_MORPH(runic_right, bindings = <&shift_arcane_right>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
+    ZMK_MOD_MORPH(runic_left, bindings = <&magic_shift_left>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
+    ZMK_MOD_MORPH(runic_right, bindings = <&magic_shift_right>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
 // - Keymap Definitions -
 
@@ -152,7 +152,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp PSCRN     &kp B         &kp Y         &kp O         &kp U         &kp Q         &trans     &kp J         &kp L         &kp U         &kp O         &kp B         &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &hml LGUI C   &hml LCTL I   &hml LALT E   &hml LSFT A   &kp Z         &trans     &kp K         &hmr RSFT A   &hmr RALT E   &hmr RCTL I   &hmr RGUI C   &trans
+    &key_repeat   &hml LGUI C   &hml LCTL I   &hml LALT E   &hml LSFT A   &kp Z         &trans     &kp K         &hmr RSFT A   &hmr RALT E   &hmr RCTL I   &hmr RGUI C   &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
