@@ -20,7 +20,7 @@
     #define NAV_TXT 1
     #define NAV_APP 2
     #define NAV_SYS 3
-    #define OPTIONS 6
+    #define OPTIONS 4
 
     #define QUICK_TAP_MS 175
     &sk {
@@ -41,6 +41,9 @@
         quick-tap-ms = <220>;
         hold-trigger-key-positions = <0>;
     };
+    &caps_word {
+        continue-list = <UNDERSCORE MINUS>;
+    };
 
     #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                              \
     ZMK_HOLD_TAP( NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
@@ -54,11 +57,12 @@
     MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs
     // TODO: not the exact functionality id want because cant add random keys
     MAKE_HRM(hmt, &mo, &kp, KEYS_R KEYS_L KEYS_T) // Thumb HRMs
-    MAKE_HRM(hmt_rune_l, &mo, &runic_left, KEYS_R KEYS_L KEYS_T) // Thumb HRMs
-
-// - Symbols -
+    MAKE_HRM(hmt_rune_l, &mo, &runic_left, KEYS_R KEYS_L KEYS_T) // runic HRMs
+    MAKE_HRM(hmt_rune_r, &kp, &runic_right, KEYS_R KEYS_L KEYS_T) // TODO: runic HRMs
 
     ZMK_MOD_MORPH(del_bspc, bindings = <&kp DELETE>, <&kp BACKSPACE>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+
+// - Symbols -
 
     // HORIZONTAL COMBOS
     #define COMBO_TERM_FAST 18
@@ -102,29 +106,33 @@
 
 // - Layer Keys -
 
-    //#define SPC_NAV_GUI &hmt NAV_SYS SPACE
-    // ZMK_AUTO_LAYER(al_nav_sys, continue-list = <>; ignore-modifiers;)
-    // ZMK_AUTO_LAYER(al_nav_app, continue-list = <>; ignore-modifiers;)
+    // Hardcoded, on updating the keymap, the sides have to be adjusted accordingly
+    #define LEFT_CHARS B Y O U Q C I E A Z
+    #define LEFT_SYMBS SLASH BACKSLASH MINUS UNDERSCORE COMMA ASTERISK DOT DOUBLE_QUOTES CARET DOLLAR AMPERSAND SEMICOLON HASH AT_SIGN QUESTION PIPE EXCLAMATION PERCENT EQUAL ESCAPE
+    #define RIGHT_CHARS J L D W V K H T N S X M G P F
+    #define RIGHT_SYMBS TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE
+    #define NUM_CHARS N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
+
+    ZMK_AUTO_LAYER(num_word, continue-list = <NUM_CHARS SLASH MINUS COMMA DOT>; ignore-modifiers;)
 
     #define ADAPTIVE_RESET 1200
-    // Hardcoded, on updating the keymap, the sides have to be adjusted accordingly
-
     ZMK_ADAPTIVE_KEY(left_arcane, bindings = <&sk LSHFT>;
-        repeat {bindings = <&key_repeat>; trigger-keys = <R B Y O U Q C I E A Z SLASH BACKSLASH MINUS UNDERSCORE COMMA ASTERISK DOT DOUBLE_QUOTES CARET DOLLAR AMPERSAND SEMICOLON HASH AT_SIGN QUESTION PIPE EXCLAMATION PERCENT EQUAL ESCAPE>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+        repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS LEFT_SYMBS NUM_CHARS>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
     ZMK_ADAPTIVE_KEY(right_arcane, bindings = <&sk LSHFT>;  
-        repeat {bindings = <&key_repeat>; trigger-keys = <X L D W V K H T N S TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+        repeat {bindings = <&key_repeat>; trigger-keys = <RIGHT_CHARS RIGHT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
         // TODO: Add magic behavior
-
-    //SHIFT_MORPH(runic_left, left_arcane, left_arcane)
 
     ZMK_MOD_MORPH(runic_left, bindings = <&left_arcane>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
     ZMK_MOD_MORPH(runic_right, bindings = <&right_arcane>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
-    //SHIFT_MORPH(runic_right, right_arcane, right_arcane)
-    
-    #define SPC_NAV_SYS &hmt NAV_SYS SPACE
-    #define RUN_NAV_APP &hmt_rune_l NAV_APP
+// - Keymap Definitions -
+
+#define SPC_NAV_SYS &hmt NAV_SYS SPACE
+#define RUN_NAV_APP &hmt_rune_l NAV_APP
+#define R_NAV_TXT &hmt NAV_TXT R
+#define RUN_SHIFT &hmt_rune_r SHIFT
+
 / {
 
     behaviours {
@@ -139,15 +147,15 @@
 
         DEFAULT { sensor-bindings = <&volume_encoder>; display-name = "DEFAULT"; bindings = <
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &trans        &trans        &trans        &trans        &trans        &trans        &trans     &trans        &trans        &trans        &trans        &trans        &trans
+    &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &kp F6        &trans     &kp F7        &kp F8        &kp F9        &kp F10       &kp F11       &kp F12
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &kp B         &kp Y         &kp O         &kp U         &kp Q         &trans     &kp X         &kp L         &kp U         &kp O         &kp B         &trans
+    &kp PSCRN     &kp B         &kp Y         &kp O         &kp U         &kp Q         &trans     &kp J         &kp L         &kp U         &kp O         &kp B         &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &hml LGUI C   &hml LCTL I   &hml LALT E   &hml LSFT A   &kp Z         &trans     &kp K         &hmr RSFT A   &hmr RALT E   &hmr RCTL I   &hmr RGUI C   &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp J         &kp M         &kp G         &kp P         &kp F         &trans
+    &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &trans        &trans        &trans        SPC_NAV_SYS   RUN_NAV_APP   &trans    &runic_right  &kp R         &trans        &trans        &trans
+    &kp C_MUTE    &trans        &trans        &num_word     SPC_NAV_SYS   RUN_NAV_APP   &trans     RUN_SHIFT     R_NAV_TXT     &caps_word    &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
@@ -165,7 +173,7 @@
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
-        NAV_APP { sensor-bindings = <&volume_encoder>; display-name = "NAV_TXT"; bindings = <
+        NAV_APP { sensor-bindings = <&volume_encoder>; display-name = "NAV_APP"; bindings = <
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮        ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
@@ -179,7 +187,7 @@
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯        ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
-        NAV_SYS { sensor-bindings = <&volume_encoder>; display-name = "NAV_TXT"; bindings = <
+        NAV_SYS { sensor-bindings = <&volume_encoder>; display-name = "NAV_SYS"; bindings = <
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮        ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
@@ -193,39 +201,18 @@
 //             ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯        ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
-//         layer_1 {
-//             bindings = <
-// &kp GRAVE   &kp F1           &kp F2          &kp F3           &kp F4           &kp F5             &mmv MOVE_UP     &kp F6           &kp F7           &kp F8      &kp F9     &kp F10           &trans
-// &trans      &kp GRAVE        &mkp LCLK       &mkp MCLK        &mkp RCLK        &mkp MB4           &mmv MOVE_DOWN   &kp PG_UP        &kp END          &kp UP      &kp HOME   &kp MINUS         &kp EQUAL
-// &trans      &kp TILDE        &trans          &trans           &trans           &mkp MB5           &mmv MOVE_LEFT   &kp PG_DN        &kp LEFT         &kp DOWN    &kp RIGHT  &kp LEFT_BRACKET  &kp RIGHT_BRACKET
-// &trans      &rgb_ug RGB_OFF  &rgb_ug RGB_ON  &rgb_ug RGB_EFF  &rgb_ug RGB_EFR  &rgb_ug RGB_SPI    &mmv MOVE_RIGHT  &rgb_ug RGB_BRI  &rgb_ug RGB_BRD  &kp INSERT  &kp F11    &kp F12           &trans
-// &kp C_MUTE  &trans           &trans          &trans           &trans           &trans             &mkp LCLK        &trans           &trans           &trans      &trans     &trans
-//             >;
-
-//             display-name = "layer1";
-//             sensor-bindings = <&scroll_encoder>;
-//         };
-
-//         layer_2 {
-//             bindings = <
-// &kp TILDE  &bt BT_SEL 0  &bt BT_SEL 1    &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4    &mmv MOVE_UP     &kp F6  &kp F7  &kp F8      &kp F9     &kp F10      &trans
-// &trans     &bt BT_CLR    &bt BT_CLR_ALL  &trans        &trans        &trans          &mmv MOVE_DOWN   &trans  &trans  &kp F11     &kp F12    &kp UNDER    &kp PLUS
-// &trans     &out OUT_USB  &out OUT_BLE    &trans        &trans        &trans          &mmv MOVE_LEFT   &trans  &trans  &trans      &trans     &kp LBRC     &kp RBRC
-// &trans     &sys_reset    &trans          &bootloader   &trans        &trans          &mmv MOVE_RIGHT  &trans  &trans  &sys_reset  &soft_off  &bootloader  &trans
-// &trans     &trans        &trans          &trans        &trans        &trans          &mkp LCLK        &trans  &trans  &trans      &trans     &trans
-//             >;
-
-//             sensor-bindings = <&scroll_encoder>;
-//         };
-
-//         layer_3 {
-//             bindings = <
-// &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-// &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-// &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-// &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans  &trans
-// &trans  &trans  &trans  &trans  &trans  &trans    &trans  &trans  &trans  &trans  &trans  &trans
-//             >;
-//         };
+        OPTIONS { sensor-bindings = <&volume_encoder>; display-name = "OPTIONS"; bindings = <
+//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮        ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
+    &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans        &trans
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans        &trans
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &trans        &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &sys_reset    &trans   &sys_reset    &trans        &trans        &trans        &trans        &trans
+//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
+    &trans        &trans        &trans        &out OUT_USB  &out OUT_BLE  &bootloader   &trans   &bootloader   &trans        &trans        &trans        &trans
+//╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
+    &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans
+//             ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯        ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
+        >;};
     };
 };
