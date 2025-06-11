@@ -57,10 +57,10 @@
 
     #define ADAPTIVE_RESET 1200
     ZMK_ADAPTIVE_KEY(arcane_left, bindings = <&sk LSHFT>;
-        repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS LEFT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+        repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS LEFT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};)
         // TODO: Add magic behavior
     ZMK_ADAPTIVE_KEY(arcane_right, bindings = <&sk LSHFT>;  
-        repeat {bindings = <&key_repeat>; trigger-keys = <RIGHT_CHARS RIGHT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;strict-modifiers;};)
+        repeat {bindings = <&key_repeat>; trigger-keys = <RIGHT_CHARS RIGHT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};)
         // TODO: Add magic behavior
 
     ZMK_MOD_MORPH(runic_left, bindings = <&arcane_left>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
