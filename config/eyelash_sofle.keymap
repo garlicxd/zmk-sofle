@@ -75,7 +75,7 @@
     #define ADAPTIVE_RESET 1200
 
     #define RUNE_L &hm_rune_l NAV_APP 0
-        ZMK_ADAPTIVE_KEY(sft_repeat, bindings = <&sk LSHFT>;
+        ZMK_ADAPTIVE_KEY(magic_shift, bindings = <&sk LSHFT>;
             repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS RIGHT_CHARS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
         ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHFT>; wait-ms = <0>; tap-ms = <5>;)
@@ -83,24 +83,12 @@
         MAKE_HRM(hm_rune_l, &mo, &rune_l, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
     
     #define RUNE_R &hm_rune_r LSHIFT 0
-        ZMK_MOD_MORPH(rune_r, bindings = <&sk LSHIFT>, <&sk LSHIFT>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        #include "true_repeat.dtsi"
+        ZMK_ADAPTIVE_KEY(repeat, bindings = <&sk LSHFT>;
+            repeat {TRUE_REPEAT};
+        )
+        ZMK_MOD_MORPH(rune_r, bindings = <&repeat>, <&sk LSHIFT>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_r, &kp, &rune_r, KEYS_R KEYS_L KEYS_T_L) // Tap key, hold runic right
-
-    // ZMK_ADAPTIVE_KEY(arcane_left, bindings = <&sk LSHFT>;
-    //     repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS LEFT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};)
-    //     // TODO: Add magic behavior
-    // ZMK_ADAPTIVE_KEY(arcane_right, bindings = <&sk LSHFT>;  
-    //     repeat {bindings = <&key_repeat>; trigger-keys = <RIGHT_CHARS RIGHT_SYMBS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};)
-    //     // TODO: Add magic behavior
-    // ZMK_MOD_MORPH(runic_left, bindings = <&arcane_left>, <&kp X> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
-    // ZMK_MOD_MORPH(runic_right, bindings = <&arcane_right>, <&kp Y> /* TODO: Will be leader key not sending out shift */; mods = <(MOD_LSFT|MOD_RSFT)>;)
-    // MAKE_HRM(hmt_rune_l, &mo, &runic_left, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
-    // MAKE_HRM(hmt_rune_r, &kp, &runic_right, KEYS_R KEYS_L KEYS_T_L) // Tap key, hold runic right
-    // #define SPC_NAV_SYS &hmt NAV_SYS SPACE
-    // #define R_NAV_TXT &hmt NAV_TXT R
-    // #define RUN_NAV_APP &hmt_rune_l NAV_APP 0
-    // #define RUN_SFT &hmt_rune_r LSHIFT 0 
-    // #define NUM_WORD &num_word NAV_TXT
 
 // - Symbols -
 
@@ -114,6 +102,10 @@
 
     ZMK_COMBO(tab,    &kp TAB,    LB2 LB1,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
     ZMK_COMBO(enter,  &kp ENTER,  LB3 LB2,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+
+    ZMK_MACRO(ent_tab_macro, bindings = <&kp ENTER &kp TAB>; wait-ms = <0>; tap-ms = <5>;)
+    ZMK_COMBO(ent_tab, &kp ENTER, LB3 LB2 LB1, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+
 
     // VERTICAL COMBOS
     #define SHIFT_MORPH(NAME, BINDING1, BINDING2) \
