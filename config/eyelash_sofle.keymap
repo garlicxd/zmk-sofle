@@ -84,9 +84,10 @@
     
     #define RUNE_R &hm_rune_r LSHIFT 0
         #include "true_repeat.dtsi"
-        ZMK_ADAPTIVE_KEY(repeat, bindings = <&sk LSHFT>;
-            repeat {TRUE_REPEAT};
-        )
+        // ZMK_ADAPTIVE_KEY(repeat, bindings = <&sk LSHFT>;
+        //     repeat {TRUE_REPEAT};
+        // )
+        SHIFT_REPEAT(repeat, &sk LSHFT)
         ZMK_MOD_MORPH(rune_r, bindings = <&repeat>, <&sk LSHIFT>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_r, &kp, &rune_r, KEYS_R KEYS_L KEYS_T_L) // Tap key, hold runic right
 
