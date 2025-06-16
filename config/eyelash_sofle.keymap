@@ -79,7 +79,7 @@
             repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS RIGHT_CHARS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
         ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHFT>; wait-ms = <0>; tap-ms = <5>;)
-        ZMK_MOD_MORPH(rune_l, bindings = <&sft_repeat>, <&dot_spc>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        ZMK_MOD_MORPH(rune_l, bindings = <&magic_shift>, <&dot_spc>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_l, &mo, &rune_l, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
     
     #define RUNE_R &hm_rune_r LSHIFT 0
