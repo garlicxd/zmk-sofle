@@ -76,10 +76,37 @@
 
     #define RUNE_L &hm_rune_l NAV_APP 0
         ZMK_ADAPTIVE_KEY(magic_shift, bindings = <&sk LSHFT>;
-            repeat {bindings = <&key_repeat>; trigger-keys = <R LEFT_CHARS RIGHT_CHARS>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            // Alpha SFBs
+            bc {bindings = <&kp C>; trigger-keys = <B>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            cb {bindings = <&kp B>; trigger-keys = <C>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            yi {bindings = <&kp I>; trigger-keys = <Y>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            iy {bindings = <&kp Y>; trigger-keys = <I>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            oe {bindings = <&kp E>; trigger-keys = <O>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            eo {bindings = <&kp O>; trigger-keys = <E>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            au {bindings = <&kp U>; trigger-keys = <A>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            ua {bindings = <&kp A>; trigger-keys = <U>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            qu {bindings = <&kp U>; trigger-keys = <Q>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            za {bindings = <&kp A>; trigger-keys = <Z>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            kl {bindings = <&kp L>; trigger-keys = <K>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            hm {bindings = <&kp M>; trigger-keys = <H>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            lk {bindings = <&kp K>; trigger-keys = <L>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            ml {bindings = <&kp L>; trigger-keys = <M>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            jk {bindings = <&kp K>; trigger-keys = <J>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            xm {bindings = <&kp M>; trigger-keys = <X>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            dg {bindings = <&kp G>; trigger-keys = <D>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            gt {bindings = <&kp T>; trigger-keys = <G>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            td {bindings = <&kp D>; trigger-keys = <T>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            np {bindings = <&kp P>; trigger-keys = <N>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            pn {bindings = <&kp N>; trigger-keys = <P>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            wn {bindings = <&kp N>; trigger-keys = <W>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            sf {bindings = <&kp F>; trigger-keys = <S>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            fs {bindings = <&kp S>; trigger-keys = <F>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            vs {bindings = <&kp S>; trigger-keys = <V>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+
+            dot_spc_sft {bindings = <&spc_sft>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
-        ZMK_MACRO(dot_spc, bindings = <&kp DOT &kp SPACE &sk LSHFT>; wait-ms = <0>; tap-ms = <5>;)
-        ZMK_MOD_MORPH(rune_l, bindings = <&magic_shift>, <&dot_spc>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        ZMK_MACRO(spc_sft, bindings = <&kp SPACE &sk LSHFT>; wait-ms = <0>; tap-ms = <5>;)
+        ZMK_MOD_MORPH(rune_l, bindings = <&magic_shift>, <&spc_shift>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_l, &mo, &rune_l, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
     
     #define RUNE_R &hm_rune_r LSHIFT 0
