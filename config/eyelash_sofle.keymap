@@ -75,7 +75,6 @@
     #define ADAPTIVE_RESET 1200
 
     #define RUNE_L &hm_rune_l NAV_APP 0
-        ZMK_MACRO(spc_sft, bindings = <&kp SPACE &sk LSHFT>; wait-ms = <0>; tap-ms = <5>;)
         ZMK_ADAPTIVE_KEY(magic_shift, bindings = <&sk LSHFT>;
             // Alpha SFBs
             bc {bindings = <&kp C>; trigger-keys = <B>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
@@ -106,7 +105,8 @@
 
             dot_spc_sft {bindings = <&spc_sft>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
-        ZMK_MOD_MORPH(rune_l, bindings = <&magic_shift>, <&spc_shift>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        ZMK_MACRO(spc_sft, bindings = <&kp SPACE &sk LSHFT>; wait-ms = <0>; tap-ms = <5>;)
+        ZMK_MOD_MORPH(rune_l, bindings = <&magic_shift>, <&spc_sft>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_l, &mo, &rune_l, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
     
     #define RUNE_R &hm_rune_r LSHIFT 0
