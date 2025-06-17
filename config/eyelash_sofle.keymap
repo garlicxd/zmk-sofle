@@ -84,10 +84,7 @@
     
     #define RUNE_R &hm_rune_r LSHIFT 0
         #include "true_repeat.dtsi"
-        // ZMK_ADAPTIVE_KEY(repeat, bindings = <&sk LSHFT>;
-        //     repeat {TRUE_REPEAT};
-        // )
-        SHIFT_REPEAT(repeat, &sk LSHFT)
+        TRUE_KEY_REPEAT(repeat, &sk LSHFT)
         ZMK_MOD_MORPH(rune_r, bindings = <&repeat>, <&sk LSHIFT>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_r, &kp, &rune_r, KEYS_R KEYS_L KEYS_T_L) // Tap key, hold runic right
 
@@ -215,7 +212,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &bt BT_SEL 3  &bt BT_SEL 2  &bt BT_SEL 1  &bt BT_SEL 0  &sys_reset    &trans   &sys_reset    &trans        &trans        &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &trans        &trans        &out OUT_USB  &out OUT_BLE  &bootloader   &trans   &bootloader   &trans        &trans        &trans        &trans
+    &trans       &bt BT_CLR_ALL &bt BT_CLR    &out OUT_USB  &out OUT_BLE  &bootloader   &trans   &bootloader   &trans        &trans        &trans        &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
     &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans
 //             ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯        ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯

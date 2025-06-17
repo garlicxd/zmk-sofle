@@ -54,5 +54,5 @@
     repeat_n8 {bindings = <&kp N8>; trigger-keys = <N8>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; \
     repeat_n9 {bindings = <&kp N9>; trigger-keys = <N9>; max-prior-idle-ms = <ADAPTIVE_RESET>;
 
-#define SHIFT_REPEAT(NAME, BINDING) \
+#define TRUE_KEY_REPEAT(NAME, BINDING) \
     ZMK_ADAPTIVE_KEY(NAME, bindings = <BINDING>; repeat {TRUE_REPEAT};)
