@@ -45,6 +45,7 @@
     };
 
 // - Setup Definitions -
+// TODO: spc shift, nav combos for app nav, no magic
 
     // Hardcoded, on updating the keymap, the sides have to be adjusted accordingly
     #define LEFT_CHARS B Y O U Q C I E A Z
@@ -82,11 +83,30 @@
         ZMK_AUTO_LAYER(num_word, continue-list = <NUM_CHARS SLASH MINUS COMMA DOT>; ignore-modifiers;)
 
     #define SPC_NAV_SYS &hmt NAV_SYS SPACE
-    #define RUNE_L &hm_rune_l NAV_APP 0
-        //#include "magic.dtsi"
-        //MAGIC_KEY(magic_shift, &sk LSHIFT)
-        ZMK_ADAPTIVE_KEY(magic_shift, bindings = <&sk LSHIFT>;
-            // Alpha SFBs 
+
+    #define RUNE_L &hm_rune_l LSHIFT 0
+        ZMK_MOD_MORPH(rune_l, bindings = <&sk LSHIFT>, <NUM_WORD>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        MAKE_HRM(hm_rune_l, &kp, &rune_l, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
+
+        SHIFT_MORPH_COMBO( spc_sft_morph, &spc_sft, &num_word_sft, LH1 LH0 )
+        ZMK_MACRO(spc_sft, bindings = <&kp SPACE &sk LSHIFT>; wait-ms = <0>; tap-ms = <5>;)
+        ZMK_MACRO(num_word_sft, bindings = <NUM_WORD &sk LSHIFT>; wait-ms = <0>; tap-ms = <5>;)
+    
+    #define R_NAV_TXT &hmt NAV_TXT R
+    #define RUNE_R &hm_rune_r LSHIFT 0
+        ZMK_ADAPTIVE_KEY(shift_repeat, bindings = <&key_repeat>;
+            spc_sft {bindings = <&sk LSHIFT>; trigger-keys = <SPACE>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+        )
+        ZMK_MOD_MORPH(rune_r, bindings = <&shift_repeat>, <&shift_repeat>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        MAKE_HRM(hm_rune_r, &kp, &rune_r, KEYS_R KEYS_L KEYS_T_L) // Tap key, hold runic right
+
+        SHIFT_MORPH_COMBO( repeat_morph, &double_r, &double_r, RH0 RH1 )
+        ZMK_MACRO(double_r, bindings = <&kp R &kp R>; wait-ms = <0>; tap-ms = <5>;)
+    
+    #define MAGIC &magic_shift
+        ZMK_ADAPTIVE_KEY(magic, bindings = <&sk LSHIFT>;
+            // Alpha SFBs
+            r_repeat {bindings = <&kp R>; trigger-keys = <R>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             bc {bindings = <&kp C>; trigger-keys = <B>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
             cb {bindings = <&kp B>; trigger-keys = <C>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
             yi {bindings = <&kp I>; trigger-keys = <Y>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
@@ -112,23 +132,10 @@
             sf {bindings = <&kp F>; trigger-keys = <S>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
             fs {bindings = <&kp S>; trigger-keys = <F>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
             vs {bindings = <&kp S>; trigger-keys = <V>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
-            dot_spc_sft {bindings = <&spc_sft>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
+            dot_spc_sft {bindings = <&sk LSHIFT>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
-
-ZMK_MACRO(spc_sft, bindings = <&kp SPACE &sk LSHIFT>; wait-ms = <0>; tap-ms = <5>;)
-        ZMK_MOD_MORPH(rune_l, bindings = <&magic_shift>, <&magic_shift>; mods = <(MOD_LSFT|MOD_RSFT)>;)
-        MAKE_HRM(hm_rune_l, &mo, &rune_l, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
-
-        SHIFT_MORPH_COMBO( magic_spc_morph, &magic_spc, &magic_spc, LH1 LH0 )
-        ZMK_MACRO(magic_spc, bindings = <&magic_shift &kp SPACE>; wait-ms = <0>; tap-ms = <5>;)
-    
-    #define R_NAV_TXT &hmt NAV_TXT R
-    #define RUNE_R &hm_rune_r LSHIFT 0
-        ZMK_MOD_MORPH(rune_r, bindings = <&key_repeat>, <&sk LSHIFT>; mods = <(MOD_LSFT|MOD_RSFT)>;)
-        MAKE_HRM(hm_rune_r, &kp, &rune_r, KEYS_R KEYS_L KEYS_T_L) // Tap key, hold runic right
-
-        SHIFT_MORPH_COMBO( repeat_morph, &double_r, &double_r, RH0 RH1 )
-        ZMK_MACRO(double_r, bindings = <&kp R &kp R>; wait-ms = <0>; tap-ms = <5>;)
+        SHIFT_MORPH_COMBO( spc_sft_morph, &magic_r, &magic_r, RH1 RH2 )
+        ZMK_MACRO(magic_r, bindings = <&magic &kp R>; wait-ms = <0>; tap-ms = <5>;) // not 2-way
 
 // - Symbols -
 
@@ -186,7 +193,7 @@ ZMK_MACRO(spc_sft, bindings = <&kp SPACE &sk LSHIFT>; wait-ms = <0>; tap-ms = <5
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &mo OPTIONS   &trans        NUM_WORD      SPC_NAV_SYS   RUNE_L        &kp X      RUNE_R        R_NAV_TXT     &caps_word    &trans        &trans
+    &kp C_MUTE    &mo OPTIONS   &trans        MAGIC         SPC_NAV_SYS   RUNE_L        &kp X      RUNE_R        R_NAV_TXT     &caps_word    &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
