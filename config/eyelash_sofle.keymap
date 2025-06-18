@@ -103,7 +103,7 @@
         SHIFT_MORPH_COMBO( repeat_morph, &double_r, &double_r, RH0 RH1 )
         ZMK_MACRO(double_r, bindings = <&kp R &kp R>; wait-ms = <0>; tap-ms = <5>;)
     
-    #define MAGIC &magic_shift
+    #define MAGIC &magic
         ZMK_ADAPTIVE_KEY(magic, bindings = <&sk LSHIFT>;
             // Alpha SFBs
             r_repeat {bindings = <&kp R>; trigger-keys = <R>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
@@ -193,7 +193,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &mo OPTIONS   &trans        MAGIC         SPC_NAV_SYS   RUNE_L        &kp X      RUNE_R        R_NAV_TXT     &caps_word    &trans        &trans
+    &kp C_MUTE    &mo OPTIONS   &trans        &trans        SPC_NAV_SYS   RUNE_L        &kp X      RUNE_R        R_NAV_TXT     MAGIC         &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
