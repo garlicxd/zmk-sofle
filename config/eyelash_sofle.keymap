@@ -44,7 +44,7 @@
         continue-list = <UNDERSCORE MINUS>;
     };
 
-// - Layer Keys -
+// - Setup Definitions -
 
     // Hardcoded, on updating the keymap, the sides have to be adjusted accordingly
     #define LEFT_CHARS B Y O U Q C I E A Z
@@ -52,6 +52,16 @@
     #define RIGHT_CHARS J L D W V K H T N S X M G P F
     #define RIGHT_SYMBS TILDE COLON LEFT_BRACKET LESS_THAN SINGLE_QUOTE GRAVE PLUS LEFT_PARENTHESIS LEFT_BRACE RIGHT_BRACKET GREATER_THAN RIGHT_PARENTHESIS RIGHT_BRACE
     #define NUM_CHARS N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
+
+    #define COMBO_TERM_FAST 18
+    #define COMBO_TERM_SLOW 30
+    #define COMBO_IDLE_FAST 150
+    #define COMBO_IDLE_SLOW 50
+    #define SHIFT_MORPH(NAME, BINDING1, BINDING2) \
+        ZMK_MOD_MORPH(NAME, bindings = <BINDING1>, <BINDING2>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+    #define SHIFT_MORPH_COMBO(NAME, BINDING1, BINDING2, POSITION) \
+        SHIFT_MORPH(NAME##_morph, BINDING1, BINDING2) \
+        ZMK_COMBO(NAME, &NAME##_morph, POSITION, DEFAULT NAV_TXT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
     #define MAKE_HRM(NAME, HOLD, TAP, TRIGGER_POS)                                  \
         ZMK_HOLD_TAP( NAME, bindings = <HOLD>, <TAP>; flavor = "balanced";          \
@@ -66,62 +76,30 @@
     MAKE_HRM(hmr, &kp, &kp, KEYS_L KEYS_T) // Right-hand HRMs
     MAKE_HRM(hmt, &mo, &kp, KEYS_R KEYS_L KEYS_T) // Tap mod, hold key
 
-    #define R_NAV_TXT &hmt NAV_TXT R
-    #define SPC_NAV_SYS &hmt NAV_SYS SPACE
+// - Layers -
 
     #define NUM_WORD &num_word NAV_TXT
         ZMK_AUTO_LAYER(num_word, continue-list = <NUM_CHARS SLASH MINUS COMMA DOT>; ignore-modifiers;)
 
-    #define ADAPTIVE_RESET 1200
-
+    #define SPC_NAV_SYS &hmt NAV_SYS SPACE
     #define RUNE_L &hm_rune_l NAV_APP 0
-        ZMK_ADAPTIVE_KEY(magic_shift, bindings = <&sk LSHFT>;
-            // Alpha SFBs
-            bc {bindings = <&kp C>; trigger-keys = <B>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            cb {bindings = <&kp B>; trigger-keys = <C>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            yi {bindings = <&kp I>; trigger-keys = <Y>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            iy {bindings = <&kp Y>; trigger-keys = <I>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            oe {bindings = <&kp E>; trigger-keys = <O>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            eo {bindings = <&kp O>; trigger-keys = <E>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            au {bindings = <&kp U>; trigger-keys = <A>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            ua {bindings = <&kp A>; trigger-keys = <U>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            qu {bindings = <&kp U>; trigger-keys = <Q>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            za {bindings = <&kp A>; trigger-keys = <Z>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            kl {bindings = <&kp L>; trigger-keys = <K>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            hm {bindings = <&kp M>; trigger-keys = <H>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            lk {bindings = <&kp K>; trigger-keys = <L>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            ml {bindings = <&kp L>; trigger-keys = <M>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            jk {bindings = <&kp K>; trigger-keys = <J>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            xm {bindings = <&kp M>; trigger-keys = <X>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            dg {bindings = <&kp G>; trigger-keys = <D>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            gt {bindings = <&kp T>; trigger-keys = <G>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            td {bindings = <&kp D>; trigger-keys = <T>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            np {bindings = <&kp P>; trigger-keys = <N>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            pn {bindings = <&kp N>; trigger-keys = <P>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            wn {bindings = <&kp N>; trigger-keys = <W>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            sf {bindings = <&kp F>; trigger-keys = <S>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            fs {bindings = <&kp S>; trigger-keys = <F>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            vs {bindings = <&kp S>; trigger-keys = <V>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-
-            dot_spc_sft {bindings = <&spc_sft>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-        )
-        ZMK_MACRO(spc_sft, bindings = <&kp SPACE &sk LSHFT>; wait-ms = <0>; tap-ms = <5>;)
-        ZMK_MOD_MORPH(rune_l, bindings = <&magic_shift>, <&spc_sft>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        #include "magic.dtsi"
+        MAGIC_KEY(magic_shift, &sk LSHIFT)
+        ZMK_MOD_MORPH(rune_l, bindings = <&magic_shift>, <&magic_shift>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_l, &mo, &rune_l, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
+
+        SHIFT_MORPH_COMBO( magic_spc_morph, &magic_spc, &magic_spc, LH1 LH0 )
+        ZMK_MACRO(magic_spc, bindings = <&magic_shift &kp SPACE>; wait-ms = <0>; tap-ms = <5>;)
     
+    #define R_NAV_TXT &hmt NAV_TXT R
     #define RUNE_R &hm_rune_r LSHIFT 0
-        #include "true_repeat.dtsi"
-        TRUE_KEY_REPEAT(repeat, &sk LSHFT)
-        ZMK_MOD_MORPH(rune_r, bindings = <&repeat>, <&sk LSHIFT>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        ZMK_MOD_MORPH(rune_r, bindings = <&key_repeat>, <&sk LSHIFT>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_r, &kp, &rune_r, KEYS_R KEYS_L KEYS_T_L) // Tap key, hold runic right
 
-// - Symbols -
+        SHIFT_MORPH_COMBO( repeat_morph, &double_r, &double_r, RH0 RH1 )
+        ZMK_MACRO(double_r, bindings = <&kp R &kp R>; wait-ms = <0>; tap-ms = <5>;)
 
-    // HORIZONTAL COMBOS
-    #define COMBO_TERM_FAST 18
-    #define COMBO_TERM_SLOW 30
-    #define COMBO_IDLE_FAST 150
-    #define COMBO_IDLE_SLOW 50
+// - Symbols -
 
     ZMK_MOD_MORPH(del_bspc, bindings = <&kp DELETE>, <&kp BACKSPACE>; mods = <(MOD_LSFT|MOD_RSFT)>;)
 
@@ -131,37 +109,29 @@
     ZMK_MACRO(ent_tab_macro, bindings = <&kp ENTER &kp TAB>; wait-ms = <0>; tap-ms = <5>;)
     ZMK_COMBO(ent_tab, &kp ENTER, LB3 LB2 LB1, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
-
-    // VERTICAL COMBOS
-    #define SHIFT_MORPH(NAME, BINDING1, BINDING2) \
-        ZMK_MOD_MORPH(NAME, bindings = <&kp BINDING1>, <&kp BINDING2>; mods = <(MOD_LSFT|MOD_RSFT)>;)
-    #define SHIFT_MORPH_COMBO(NAME, BINDING1, BINDING2, POSITION) \
-        SHIFT_MORPH(NAME##_morph, BINDING1, BINDING2) \
-        ZMK_COMBO(NAME, &NAME##_morph, POSITION, DEFAULT NAV_TXT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
-
     // LEFT-HAND SYMBOLS --- NOTE: WHEN UPDATING ALSO UPDATE ADAPTIVE KEYS SIDES
-    SHIFT_MORPH(        slash_back,         SLASH,               BACKSLASH      )
-    SHIFT_MORPH(        minus_undr,         MINUS,               UNDERSCORE     )
-    SHIFT_MORPH(        comma_astr,         COMMA,               ASTERISK       )
-    SHIFT_MORPH(        dot_,               DOT,                 DOT            )
-    SHIFT_MORPH_COMBO(  dollar_amp,         DOLLAR,              AMPERSAND,     LT3 LM3 )
-    SHIFT_MORPH_COMBO(  dquotes_caret,      DOUBLE_QUOTES,       CARET,         LT2 LM2 )
-    SHIFT_MORPH_COMBO(  semicolon,          SEMICOLON,           SEMICOLON,     LT1 LM1 )
-    SHIFT_MORPH_COMBO(  hash_at,            HASH,                AT_SIGN,       LT0 LM0 )
-    SHIFT_MORPH_COMBO(  question_pipe,      QUESTION,            PIPE,          LM3 LB3 )
-    SHIFT_MORPH_COMBO(  excl_percent,       EXCLAMATION,         PERCENT,       LM2 LB2 )
-    SHIFT_MORPH_COMBO(  equal,              EQUAL,               EQUAL,         LM1 LB1 )
-    SHIFT_MORPH_COMBO(  esc_,               ESCAPE,              ESCAPE,        LM0 LB0 )
+    SHIFT_MORPH(        slash_back,         &kp SLASH,               &kp BACKSLASH      )
+    SHIFT_MORPH(        minus_undr,         &kp MINUS,               &kp UNDERSCORE     )
+    SHIFT_MORPH(        comma_astr,         &kp COMMA,               &kp ASTERISK       )
+    SHIFT_MORPH(        dot_,               &kp DOT,                 &kp DOT            )
+    SHIFT_MORPH_COMBO(  dollar_amp,         &kp DOLLAR,              &kp AMPERSAND,     LT3 LM3 )
+    SHIFT_MORPH_COMBO(  dquotes_caret,      &kp DOUBLE_QUOTES,       &kp CARET,         LT2 LM2 )
+    SHIFT_MORPH_COMBO(  semicolon,          &kp SEMICOLON,           &kp SEMICOLON,     LT1 LM1 )
+    SHIFT_MORPH_COMBO(  hash_at,            &kp HASH,                &kp AT_SIGN,       LT0 LM0 )
+    SHIFT_MORPH_COMBO(  question_pipe,      &kp QUESTION,            &kp PIPE,          LM3 LB3 )
+    SHIFT_MORPH_COMBO(  excl_percent,       &kp EXCLAMATION,         &kp PERCENT,       LM2 LB2 )
+    SHIFT_MORPH_COMBO(  equal,              &kp EQUAL,               &kp EQUAL,         LM1 LB1 )
+    SHIFT_MORPH_COMBO(  esc_,               &kp ESCAPE,              &kp ESCAPE,        LM0 LB0 )
 
     // RIGHT-HAND COMBOS
-    SHIFT_MORPH_COMBO(  tilde,              TILDE,               TILDE,         RT0 RM0 )
-    SHIFT_MORPH_COMBO(  colon,              COLON,               COLON,         RT1 RM1 )
-    SHIFT_MORPH_COMBO(  lbrc_lt,            LEFT_BRACKET,        LESS_THAN,     RT2 RM2 )
-    SHIFT_MORPH_COMBO(  squote_grave,       SINGLE_QUOTE,        GRAVE,         RT3 RM3 )
-    SHIFT_MORPH_COMBO(  plus,               PLUS,                PLUS,          RM0 RB0 )
-    SHIFT_MORPH_COMBO(  lpar_lbrc,          LEFT_PARENTHESIS,    LEFT_BRACE,    RM1 RB1 )
-    SHIFT_MORPH_COMBO(  rbrc_gt,            RIGHT_BRACKET,       GREATER_THAN,  RM2 RB2 )
-    SHIFT_MORPH_COMBO(  rpar_rbrc,          RIGHT_PARENTHESIS,   RIGHT_BRACE,   RM3 RB3 )
+    SHIFT_MORPH_COMBO(  tilde,              &kp TILDE,               &kp TILDE,         RT0 RM0 )
+    SHIFT_MORPH_COMBO(  colon,              &kp COLON,               &kp COLON,         RT1 RM1 )
+    SHIFT_MORPH_COMBO(  lbrc_lt,            &kp LEFT_BRACKET,        &kp LESS_THAN,     RT2 RM2 )
+    SHIFT_MORPH_COMBO(  squote_grave,       &kp SINGLE_QUOTE,        &kp GRAVE,         RT3 RM3 )
+    SHIFT_MORPH_COMBO(  plus,               &kp PLUS,                &kp PLUS,          RM0 RB0 )
+    SHIFT_MORPH_COMBO(  lpar_lbrc,          &kp LEFT_PARENTHESIS,    &kp LEFT_BRACE,    RM1 RB1 )
+    SHIFT_MORPH_COMBO(  rbrc_gt,            &kp RIGHT_BRACKET,       &kp GREATER_THAN,  RM2 RB2 )
+    SHIFT_MORPH_COMBO(  rpar_rbrc,          &kp RIGHT_PARENTHESIS,   &kp RIGHT_BRACE,   RM3 RB3 )
 
 / {
 
