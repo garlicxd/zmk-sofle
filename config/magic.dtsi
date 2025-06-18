@@ -28,6 +28,6 @@
         fs {bindings = <&kp S>; trigger-keys = <F>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; \
         vs {bindings = <&kp S>; trigger-keys = <V>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; \
         dot_spc_sft {bindings = <&spc_sft>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; \
-    );
+    )
     
 ZMK_MACRO(spc_sft, bindings = <&kp SPACE &sk LSHIFT>; wait-ms = <0>; tap-ms = <5>;)
