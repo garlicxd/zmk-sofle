@@ -187,11 +187,11 @@
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &kp F6        &trans     &kp F7        &kp F8        &kp F9        &kp F10       &kp F11       &kp F12
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp PSCRN     &kp B         &kp Y         &kp O         &kp U         &kp Q         &trans     &kp J         &kp L         &kp D         &kp W         &kp V         &trans
+    &kp PSCRN     &kp B         &kp Y         &kp O         &kp U         &kp Q         &trans     &kp Z         &kp L         &kp D         &kp W         &kp V         &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &hml LGUI C   &hml LCTL I   &hml LALT E   &hml LSFT A   &kp Z         &trans     &kp K         &hmr RSFT H   &hmr RALT T   &hmr RCTL N   &hmr RGUI S   &trans
+    &trans        &hml LGUI C   &hml LCTL I   &hml LALT E   &hml LSFT A   &kp X         &trans     &kp K         &hmr RSFT H   &hmr RALT T   &hmr RCTL N   &hmr RGUI S   &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp X         &kp M         &kp G         &kp P         &kp F         &trans
+    &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp J         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
     &kp C_MUTE    &mo OPTIONS   &trans        &trans        SPC_NAV_SYS   RUNE_L        &kp X      RUNE_R        R_NAV_TXT     MAGIC         &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
