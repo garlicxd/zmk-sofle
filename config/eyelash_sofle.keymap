@@ -100,8 +100,12 @@
         ZMK_MOD_MORPH(rune_r, bindings = <&shift_repeat>, <&shift_repeat>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_r, &kp, &rune_r, KEYS_R KEYS_L KEYS_T_L) // Tap key, hold runic right
 
-        SHIFT_MORPH_COMBO( repeat_morph, &double_r, &double_r, RH0 RH1 )
+        SHIFT_MORPH_COMBO(repeat_r_morph, &repeat_r, &repeat_r, RH0 RH1 )
+        ZMK_ADAPTIVE_KEY(repeat_r, bindings = <&double_r>;
+            tab_tab_r {bindings = <&tab_r>; trigger-keys = <TAB>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+        )
         ZMK_MACRO(double_r, bindings = <&kp R &kp R>; wait-ms = <0>; tap-ms = <5>;)
+        ZMK_MACRO(tab_r, bindings = <&kp TAB &kp R>; wait-ms = <0>; tap-ms = <5>;)
     
     #define MAGIC &magic
         ZMK_ADAPTIVE_KEY(magic, bindings = <&sk LSHIFT>;
