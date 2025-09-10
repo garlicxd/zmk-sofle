@@ -55,7 +55,7 @@
     #define NUM_CHARS N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
     #define ADAPTIVE_RESET 1200
     #define COMBO_TERM_FAST 30
-    #define COMBO_TERM_SLOW 100
+    #define COMBO_TERM_SLOW 150
     #define COMBO_IDLE_FAST 150
     #define COMBO_IDLE_SLOW 50
     #define SHIFT_MORPH(NAME, BINDING1, BINDING2) \
@@ -145,7 +145,7 @@
     ZMK_COMBO(enter,  &kp ENTER,  LB3 LB2,     DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
     ZMK_MACRO(ent_tab_macro, bindings = <&kp ENTER &kp TAB>; wait-ms = <0>; tap-ms = <5>;)
-    ZMK_COMBO(ent_tab, &kp ENTER, LB3 LB2 LB1, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
+    ZMK_COMBO(ent_tab, &ent_tab_macro, LB3 LB2 LB1, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
     // LEFT-HAND SYMBOLS --- NOTE: WHEN UPDATING ALSO UPDATE ADAPTIVE KEYS SIDES
     SHIFT_MORPH(        slash_back,         &kp SLASH,               &kp BACKSLASH      )
