@@ -137,6 +137,7 @@
             fs {bindings = <&kp S>; trigger-keys = <F>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
             vs {bindings = <&kp S>; trigger-keys = <V>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
             dot_spc_sft {bindings = <&sk LSHIFT>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            quote_n {bindings = <&kp N>; trigger-keys = <SINGLE_QUOTE>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
         SHIFT_MORPH_COMBO( spc_sft_morph, &magic_r, &magic_r, RH1 RH2 )
         ZMK_MACRO(magic_r, bindings = <&magic &kp R>; wait-ms = <0>; tap-ms = <5>;) // not 2-way
@@ -152,28 +153,28 @@
     ZMK_COMBO(ent_tab, &ent_tab_macro, LB3 LB2 LB1, DEFAULT, COMBO_TERM_SLOW, COMBO_IDLE_FAST)
 
     // LEFT-HAND SYMBOLS --- NOTE: WHEN UPDATING ALSO UPDATE ADAPTIVE KEYS SIDES
+    SHIFT_MORPH(        colon_semi,         &kp COLON,               &kp SEMICOLON       )
     SHIFT_MORPH(        slash_back,         &kp SLASH,               &kp BACKSLASH      )
-    SHIFT_MORPH(        minus_undr,         &kp MINUS,               &kp UNDERSCORE     )
-    SHIFT_MORPH(        comma_astr,         &kp COMMA,               &kp ASTERISK       )
+    SHIFT_MORPH(        minus_plus,         &kp MINUS,               &kp PLUS     )
     SHIFT_MORPH(        dot_,               &kp DOT,                 &kp DOT            )
-    SHIFT_MORPH_COMBO(  dollar_amp,         &kp DOLLAR,              &kp AMPERSAND,     LT3 LM3 )
-    SHIFT_MORPH_COMBO(  dquotes_caret,      &kp DOUBLE_QUOTES,       &kp CARET,         LT2 LM2 )
-    SHIFT_MORPH_COMBO(  semicolon,          &kp SEMICOLON,           &kp SEMICOLON,     LT1 LM1 )
-    SHIFT_MORPH_COMBO(  hash_at,            &kp HASH,                &kp AT_SIGN,       LT0 LM0 )
-    SHIFT_MORPH_COMBO(  question_pipe,      &kp QUESTION,            &kp PIPE,          LM3 LB3 )
-    SHIFT_MORPH_COMBO(  excl_percent,       &kp EXCLAMATION,         &kp PERCENT,       LM2 LB2 )
-    SHIFT_MORPH_COMBO(  equal,              &kp EQUAL,               &kp EQUAL,         LM1 LB1 )
+    SHIFT_MORPH_COMBO(  dquotes_caret,      &kp DOUBLE_QUOTES,       &kp CARET,         LT3 LM3 )
+    SHIFT_MORPH_COMBO(  dollar_amp,         &kp DOLLAR,              &kp AMPERSAND,     LT2 LM2 )
+    SHIFT_MORPH_COMBO(  commas,             &kp COMMA,               &kp COMMA,         LT1 LM1 )
+    SHIFT_MORPH_COMBO(  hash_tilde,         &kp HASH,                &kp TILDE,         LT0 LM0 )
+    SHIFT_MORPH_COMBO(  question_pipe,      &kp UNDERSCORE,          &kp PIPE,          LM3 LB3 )
+    SHIFT_MORPH_COMBO(  asterisks,          &kp ASTERISK,            &kp ASTERISK,      LM2 LB2 )
+    SHIFT_MORPH_COMBO(  excl_question,      &kp EXCLAMATION,         &kp QUESTION,      LM1 LB1 )
     SHIFT_MORPH_COMBO(  esc_,               &kp ESCAPE,              &kp ESCAPE,        LM0 LB0 )
 
     // RIGHT-HAND COMBOS
-    SHIFT_MORPH_COMBO(  tilde,              &kp TILDE,               &kp TILDE,         RT0 RM0 )
-    SHIFT_MORPH_COMBO(  colon,              &kp COLON,               &kp COLON,         RT1 RM1 )
-    SHIFT_MORPH_COMBO(  lbrc_lt,            &kp LEFT_BRACKET,        &kp LESS_THAN,     RT2 RM2 )
+    SHIFT_MORPH_COMBO(  perc_at,            &kp PERCENT,             &kp AT_SIGN,       RT0 RM0 )
+    SHIFT_MORPH_COMBO(  lpar_lbrc,          &kp LEFT_PARENTHESIS,    &kp LEFT_BRACE,    RT1 RT1 )
+    SHIFT_MORPH_COMBO(  rpar_rbrc,          &kp RIGHT_PARENTHESIS,   &kp RIGHT_BRACE,   RT2 RT2 )
     SHIFT_MORPH_COMBO(  squote_grave,       &kp SINGLE_QUOTE,        &kp GRAVE,         RT3 RM3 )
-    SHIFT_MORPH_COMBO(  plus,               &kp PLUS,                &kp PLUS,          RM0 RB0 )
-    SHIFT_MORPH_COMBO(  lpar_lbrc,          &kp LEFT_PARENTHESIS,    &kp LEFT_BRACE,    RM1 RB1 )
+    SHIFT_MORPH_COMBO(  plus,               &kp PLUS,                &kp PLUS,          RM0 RB0 ) // TODO: leader key
+    SHIFT_MORPH_COMBO(  lpar_lbrc,          &kp EQUALS,              &kp EQUALS,        RM1 RB1 )
     SHIFT_MORPH_COMBO(  rbrc_gt,            &kp RIGHT_BRACKET,       &kp GREATER_THAN,  RM2 RB2 )
-    SHIFT_MORPH_COMBO(  rpar_rbrc,          &kp RIGHT_PARENTHESIS,   &kp RIGHT_BRACE,   RM3 RB3 )
+    SHIFT_MORPH_COMBO(  lbrc_lt,            &kp LEFT_BRACKET,        &kp LESS_THAN,     RM3 RB3 )
 
 / {
 
@@ -195,7 +196,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &hml LGUI C   &hml LCTL I   &hml LALT E   &hml LSFT A   &kp X         &trans     &kp K         &hmr RSFT H   &hmr RALT T   &hmr RCTL N   &hmr RGUI S   &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &slash_back   &minus_undr   &comma_astr   &dot_         &del_bspc     &trans     &kp J         &kp M         &kp G         &kp P         &kp F         &trans
+    &trans        &colon_semi   &slash_back   &minus_plus   &dot_         &del_bspc     &trans     &kp J         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
     &kp C_MUTE    &mo OPTIONS   &trans        &trans        SPC_NAV_SYS   RUNE_L        &kp X      RUNE_R        R_NAV_TXT     MAGIC         &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
@@ -233,9 +234,9 @@
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮        ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &kp LG(N4)    &kp LG(N5)    &kp LG(N6)    &kp LG(N7)    &kp LG(N8)    &trans   &trans        &kp PG_UP     &kp UP        &kp PG_DN     &trans        &trans
+    &trans        &kp LG(N4)    &kp LG(N5)    &kp LG(N6)    &kp LG(N7)    &kp LG(N8)    &trans   &trans        &trans        &trans        &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &kp LG(N3)    &kp LG(N2)    &kp LG(N1)    &kp LG(TAB)   &kp LG(N9)    &trans   &kp HOME      &kp LEFT      &kp DOWN      &kp RIGHT     &kp END       &trans
+    &trans        &kp LG(N3)    &kp LG(N2)    &kp LG(N1)    &kp LG(TAB)   &kp LG(N9)    &trans   &trans        &trans        &trans        &trans        &trans        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &kp LC(C)     &kp LC(X)     &kp LC(V)     &kp LC(Z)     &kp LC(Y)     &trans   &trans        &trans        &trans        &trans        &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
