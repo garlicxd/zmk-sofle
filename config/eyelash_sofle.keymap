@@ -172,7 +172,7 @@
     SHIFT_MORPH_COMBO(  rpar_rbrc,          &kp RIGHT_PARENTHESIS,   &kp RIGHT_BRACE,   RT2 RT2 )
     SHIFT_MORPH_COMBO(  squote_grave,       &kp SINGLE_QUOTE,        &kp GRAVE,         RT3 RM3 )
     SHIFT_MORPH_COMBO(  plus,               &kp PLUS,                &kp PLUS,          RM0 RB0 ) // TODO: leader key
-    SHIFT_MORPH_COMBO(  lpar_lbrc,          &kp EQUALS,              &kp EQUALS,        RM1 RB1 )
+    SHIFT_MORPH_COMBO(  eq_eq,              &kp EQUALS,              &kp EQUALS,        RM1 RB1 )
     SHIFT_MORPH_COMBO(  rbrc_gt,            &kp RIGHT_BRACKET,       &kp GREATER_THAN,  RM2 RB2 )
     SHIFT_MORPH_COMBO(  lbrc_lt,            &kp LEFT_BRACKET,        &kp LESS_THAN,     RM3 RB3 )
 
