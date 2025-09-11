@@ -139,7 +139,7 @@
             dot_spc_sft {bindings = <&sk LSHIFT>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             quote_n {bindings = <&kp N>; trigger-keys = <SINGLE_QUOTE>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
-        SHIFT_MORPH_COMBO( spc_sft_morph, &magic_r, &magic_r, RH1 RH2 )
+        SHIFT_MORPH_COMBO(spc_sft_morph, &magic_r, &magic_r, RH1 RH2 )
         ZMK_MACRO(magic_r, bindings = <&magic &kp R>; wait-ms = <0>; tap-ms = <5>;) // not 2-way
 
 // - Symbols -
@@ -168,8 +168,8 @@
 
     // RIGHT-HAND COMBOS
     SHIFT_MORPH_COMBO(  perc_at,            &kp PERCENT,             &kp AT_SIGN,       RT0 RM0 )
-    SHIFT_MORPH_COMBO(  lpar_lbrc,          &kp LEFT_PARENTHESIS,    &kp LEFT_BRACE,    RT1 RT1 )
-    SHIFT_MORPH_COMBO(  rpar_rbrc,          &kp RIGHT_PARENTHESIS,   &kp RIGHT_BRACE,   RT2 RT2 )
+    SHIFT_MORPH_COMBO(  lpar_lbrc,          &kp LEFT_PARENTHESIS,    &kp LEFT_BRACE,    RT1 RM1 )
+    SHIFT_MORPH_COMBO(  rpar_rbrc,          &kp RIGHT_PARENTHESIS,   &kp RIGHT_BRACE,   RT2 RM2 )
     SHIFT_MORPH_COMBO(  squote_grave,       &kp SINGLE_QUOTE,        &kp GRAVE,         RT3 RM3 )
     SHIFT_MORPH_COMBO(  plus,               &kp PLUS,                &kp PLUS,          RM0 RB0 ) // TODO: leader key
     SHIFT_MORPH_COMBO(  eq_eq,              &kp EQUALS,              &kp EQUALS,        RM1 RB1 )
