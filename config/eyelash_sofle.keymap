@@ -43,6 +43,9 @@
     &caps_word {
         continue-list = <UNDERSCORE MINUS>;
     };
+    &key_repeat {
+        usage-pages = <HID_USAGE_KEY HID_USAGE_CONSUMER>;
+    };
 
 // - Setup Definitions -
 // TODO: spc shift, nav combos for app nav, no magic
