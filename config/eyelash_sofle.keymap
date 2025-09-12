@@ -143,11 +143,13 @@
             dot_spc_sft {bindings = <&sk LSHIFT>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             quote_n {bindings = <&kp N>; trigger-keys = <SINGLE_QUOTE>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             equal_parenthesis {bindings = <&parenthesis>; trigger-keys = <EQUAL>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            greater_parenthesis {bindings = <&parenthesis>; trigger-keys = <GREATER_THAN>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
         ZMK_MACRO(parenthesis, bindings = <&kp SPACE &kp LEFT_PARENTHESIS &kp RIGHT_PARENTHESIS &kp LEFT>; wait-ms = <0>; tap-ms = <5>;)
 
         ZMK_ADAPTIVE_KEY(magic_shifted, bindings = <&magic>;
             equal_braces {bindings = <&braces>; trigger-keys = <EQUAL>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            greater_braces {bindings = <&braces>; trigger-keys = <GREATER_THAN>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
         ZMK_MACRO(braces, bindings = <&kp SPACE &kp LEFT_BRACE &kp RIGHT_BRACE &kp LEFT>; wait-ms = <0>; tap-ms = <5>;)
 
