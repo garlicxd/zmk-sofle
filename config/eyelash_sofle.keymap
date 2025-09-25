@@ -58,9 +58,9 @@
     #define NUM_CHARS N0 N1 N2 N3 N4 N5 N6 N7 N8 N9
     #define ADAPTIVE_RESET 1200
     #define COMBO_TERM_FAST 30
-    #define COMBO_TERM_SLOW 150
-    #define COMBO_IDLE_FAST 150
-    #define COMBO_IDLE_SLOW 50
+    #define COMBO_TERM_SLOW 250
+    #define COMBO_IDLE_FAST 30
+    #define COMBO_IDLE_SLOW 150
     #define SHIFT_MORPH(NAME, BINDING1, BINDING2) \
         ZMK_MOD_MORPH(NAME, bindings = <BINDING1>, <BINDING2>; mods = <(MOD_LSFT|MOD_RSFT)>;)
     #define SHIFT_MORPH_COMBO(NAME, BINDING1, BINDING2, POSITION) \
@@ -111,7 +111,7 @@
     ZMK_MACRO(tab_r, bindings = <&kp TAB &kp R>; wait-ms = <0>; tap-ms = <5>;)
     
     #define MAGIC &magic_morph
-        ZMK_MOD_MORPH(magic_morph, bindings = <&magic>, <&magic_shifted>; mods = <(MOD_LSFT|MOD_RSFT)>;)
+        ZMK_MOD_MORPH(magic_morph, bindings = <&magic>, <&magic>; mods = <(MOD_LSFT|MOD_RSFT)>;) // no magic_shifted added
         ZMK_ADAPTIVE_KEY(magic, bindings = <&sk LSHIFT>;
             // Alpha SFBs
             r_repeat {bindings = <&kp R>; trigger-keys = <R>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
@@ -142,16 +142,18 @@
             vs {bindings = <&kp S>; trigger-keys = <V>; max-prior-idle-ms = <ADAPTIVE_RESET>;}; 
             dot_spc_sft {bindings = <&sk LSHIFT>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             quote_n {bindings = <&kp N>; trigger-keys = <SINGLE_QUOTE>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            equal_parenthesis {bindings = <&parenthesis>; trigger-keys = <EQUAL>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             greater_parenthesis {bindings = <&parenthesis>; trigger-keys = <GREATER_THAN>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            equal_parenthesis {bindings = <&paran_brace_morph>; trigger-keys = <EQUAL>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
+        ZMK_MOD_MORPH(paran_brace_morph, bindings = <&paranthesis>, <&braces>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         ZMK_MACRO(parenthesis, bindings = <&kp SPACE &kp LEFT_PARENTHESIS>; wait-ms = <0>; tap-ms = <5>;)
-
-        ZMK_ADAPTIVE_KEY(magic_shifted, bindings = <&magic>;
-            equal_braces {bindings = <&braces>; trigger-keys = <EQUAL>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-            greater_braces {bindings = <&braces>; trigger-keys = <GREATER_THAN>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
-        )
         ZMK_MACRO(braces, bindings = <&kp SPACE &kp LEFT_BRACE>; wait-ms = <0>; tap-ms = <5>;)
+
+        // instead of magic shifted, have morphs for the functionality
+        // ZMK_ADAPTIVE_KEY(magic_shifted, bindings = <&magic>;
+        //     equal_braces {bindings = <&braces>; trigger-keys = <EQUAL>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+        //     greater_braces {bindings = <&braces>; trigger-keys = <GREATER_THAN>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+        // )
 
     SHIFT_MORPH_COMBO(spc_sft_morph, &magic_r, &magic_r, RH1 RH2 )
     ZMK_MACRO(magic_r, bindings = <&magic &kp R>; wait-ms = <0>; tap-ms = <5>;) // not 2-way
