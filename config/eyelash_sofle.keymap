@@ -143,6 +143,7 @@
             dot_spc_sft {bindings = <&sk LSHIFT>; trigger-keys = <DOT>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             quote_n {bindings = <&kp N>; trigger-keys = <SINGLE_QUOTE>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             greater_parenthesis {bindings = <&parenthesis>; trigger-keys = <GREATER_THAN>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
+            colon_enter {bindings = <&kp ENTER>; trigger-keys = <COLON>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
             equal_parenthesis {bindings = <&paran_brace_morph>; trigger-keys = <EQUAL>; max-prior-idle-ms = <ADAPTIVE_RESET>;};
         )
         ZMK_MOD_MORPH(paran_brace_morph, bindings = <&paranthesis>, <&braces>; mods = <(MOD_LSFT|MOD_RSFT)>;)
