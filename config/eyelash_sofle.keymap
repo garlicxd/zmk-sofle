@@ -20,6 +20,7 @@
     #define NAV_APP 2
     #define NAV_SYS 3
     #define OPTIONS 4
+    #define QWERTY 5
 
     #define QUICK_TAP_MS 175
     &sk {
