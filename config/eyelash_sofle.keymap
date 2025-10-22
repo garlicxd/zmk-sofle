@@ -87,6 +87,8 @@
 
     #define SPC_NAV_SYS &hmt NAV_SYS SPACE
 
+    #define LAY_NAV_APP &hmt NAV_APP SPACE
+
     #define RUNE_L &hm_rune_l LSHIFT 0
         ZMK_MOD_MORPH(rune_l, bindings = <&sk LSHIFT>, <NUM_WORD>; mods = <(MOD_LSFT|MOD_RSFT)>;)
         MAKE_HRM(hm_rune_l, &kp, &rune_l, KEYS_R KEYS_L KEYS_T_R) // Tap mod, hold runic left
@@ -201,21 +203,22 @@
         volume_encoder: volume_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>; };
         rgb_br_encoder: rgb_br_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>; };
         zoom_encoder: zoom_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>; };
+        scroll_encoder: nav_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp LGUI MSE_SCRL_DN>, <&kp LGUI MSE_SCRL_UP>; };
     };
 
     keymap { compatible = "zmk,keymap";
 
-        DEFAULT { sensor-bindings = <&volume_encoder>; display-name = "DEFAULT"; bindings = <
+        DEFAULT { sensor-bindings = <&nav_encoder>; display-name = "DEFAULT"; bindings = <
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮          ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &kp F1        &kp F2        &kp F3        &kp F4        &kp F5        &kp F6        &trans     &kp F7        &kp F8        &kp F9        &kp F10       &kp F11       &kp F12
+    &tog QWERTY   &kp F2        &kp F3        &kp F4        &kp F5        &kp F6        &trans     &kp F7        &kp F8        &kp F9        &kp F10       &kp F11       &kp F12
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp PSCRN     &kp B         &kp Y         &kp O         &kp U         &kp Q         &trans     &kp Z         &kp L         &kp D         &kp W         &kp V         &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &hml LGUI C   &hml LCTL I   &hml LALT E   &hml LSFT A   &kp X         &trans     &kp K         &hmr RSFT H   &hmr RALT T   &hmr RCTL N   &hmr RGUI S   &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans        &slash_back   &minus_plus   &colon_semi   &dot_         &del_bspc     &trans     &kp J         &kp M         &kp G         &kp P         &kp F         &trans
+    &kp F1        &slash_back   &minus_plus   &colon_semi   &dot_         &del_bspc     &trans     &kp J         &kp M         &kp G         &kp P         &kp F         &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤          ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &kp C_MUTE    &mo OPTIONS   &trans        &trans        SPC_NAV_SYS   RUNE_L        &kp X      RUNE_R        R_NAV_TXT     MAGIC         &trans        &trans
+    &kp C_MUTE    &mo OPTIONS   &to QWERTY    LAY_NAV_APP   SPC_NAV_SYS   RUNE_L        &kp X      RUNE_R        R_NAV_TXT     MAGIC         &trans        &trans
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯          ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
 
@@ -277,7 +280,7 @@
 
         QWERTY { sensor-bindings = <&volume_encoder>; display-name = "OPTIONS"; bindings = <
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮        ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans        &trans
+    &trans        &kp N1        &kp N2        &kp N3        &kp N4        &kp N5        &trans   &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &kp Q         &kp W         &kp E         &kp R         &kp T         &trans   &kp Y         &kp U         &kp I         &kp O         &kp P         &trans
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
@@ -285,7 +288,7 @@
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &trans        &kp Z         &kp X         &kp C         &kp V         &kp B         &trans   &kp N         &kp M         &kp COMMA     &kp DOT       &kp FSLH      &trans
 //╰─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤        ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────╯
-    &trans        &trans        &trans        &trans        &trans        &trans        &trans   &trans        &trans        &trans        &trans        &trans       
+    &trans        &trans      &trans          &trans        &kp SPACE     &kp LSHIFT    &trans   &trans        &trans        &trans        &trans        &trans       
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯        ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
         >;};
     };
