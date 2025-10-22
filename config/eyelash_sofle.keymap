@@ -195,6 +195,18 @@
     SHIFT_MORPH_COMBO(  lbrc_lt,            &kp LEFT_BRACKET,        &kp LESS_THAN,     RM2 RB2 )
     SHIFT_MORPH_COMBO(  rbrc_gt,            &kp RIGHT_BRACKET,       &kp GREATER_THAN,  RM3 RB3 )
 
+    // START: Added Macros for LGUI+Scroll
+    ZMK_MACRO(lgui_scroll_up,
+        bindings = <&macro_press &kp LGUI>,   // Press LGUI
+                   <&macro_tap &msc SCRL_UP>,   // Tap Scroll Up
+                   <&macro_release &kp LGUI>; // Release LGUI
+    )
+    ZMK_MACRO(lgui_scroll_down,
+        bindings = <&macro_press &kp LGUI>,   // Press LGUI
+                   <&macro_tap &msc SCRL_DOWN>, // Tap Scroll Down
+                   <&macro_release &kp LGUI>; // Release LGUI
+    )
+
 / {
 
     behaviours {
@@ -203,7 +215,7 @@
         volume_encoder: volume_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>; };
         rgb_br_encoder: rgb_br_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>; };
         zoom_encoder: zoom_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>; };
-        scroll_encoder: nav_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp LGUI MSE_SCRL_DN>, <&kp LGUI MSE_SCRL_UP>; };
+        scroll_encoder: nav_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <lgui_scroll_down>, <&lgui_scroll_up>; };
     };
 
     keymap { compatible = "zmk,keymap";
