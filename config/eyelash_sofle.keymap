@@ -215,7 +215,7 @@
         volume_encoder: volume_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp C_VOL_UP>, <&kp C_VOL_DN>; };
         rgb_br_encoder: rgb_br_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&rgb_ug RGB_BRD>, <&rgb_ug RGB_BRI>; };
         zoom_encoder: zoom_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&kp LC(MINUS)>, <&kp LC(PLUS)>; };
-        scroll_encoder: nav_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <lgui_scroll_down>, <&lgui_scroll_up>; };
+        scroll_encoder: nav_encoder {compatible = "zmk,behavior-sensor-rotate"; #sensor-binding-cells = <0>; bindings = <&lgui_scroll_down>, <&lgui_scroll_up>; };
     };
 
     keymap { compatible = "zmk,keymap";
